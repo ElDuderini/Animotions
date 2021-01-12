@@ -89,19 +89,65 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func expression(anchor: ARFaceAnchor){
         let smileLeft = anchor.blendShapes[.mouthSmileLeft]
         let smileRight = anchor.blendShapes[.mouthSmileRight]
+        let frownLeft = anchor.blendShapes[.mouthFrownLeft]
+        let frownRight = anchor.blendShapes[.mouthFrownRight]
+        let browDownLeft = anchor.blendShapes[.browDownLeft]
+        let browDownRight = anchor.blendShapes[.browDownRight]
+        let browInnerUp = anchor.blendShapes[.browInnerUp]
         let cheekPuff = anchor.blendShapes[.cheekPuff]
         let tongue = anchor.blendShapes[.tongueOut]
+        let eyeWideLeft = anchor.blendShapes[.eyeWideLeft]
+        let eyeWideRight = anchor.blendShapes[.eyeWideRight]
+        let eyeSquintLeft = anchor.blendShapes[.eyeSquintLeft]
+        let eyeSquintRight = anchor.blendShapes[.eyeSquintRight]
+        let eyeLookDownLeft = anchor.blendShapes[.eyeLookDownLeft]
+        let eyeLookDownRight = anchor.blendShapes[.eyeLookDownRight]
+        let noseSneerLeft = anchor.blendShapes[.noseSneerLeft]
+        let noseSneerRight = anchor.blendShapes[.noseSneerRight]
+        let mouthPoggers = anchor.blendShapes[.mouthFunnel]
+        let mouthOpen = anchor.blendShapes[.jawOpen]
         
-        if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9{
-            self.analysis = "You are smiling"
+        //print(frownLeft?.decimalValue)
+        //print(frownRight?.decimalValue)
+        //print(mouthOpen?.decimalValue)
+        //print(browDownRight?.decimalValue)
+        //print(browDownLeft?.decimalValue)
+        
+        if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9
+            && mouthOpen?.decimalValue ?? 0.0 < 0.3{
+            self.analysis = "Happy"
+        }
+        else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9
+                && mouthOpen?.decimalValue ?? 0.0 > 0.3{
+            self.analysis = "Joy"
         }
         
-        if cheekPuff?.decimalValue ?? 0.0 > 0.1{
-            self.analysis = "Your cheeks are puffed"
+        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2{
+            self.analysis = "Sadness"
         }
         
-        if tongue?.decimalValue ?? 0.0 > 0.1 {
-            self.analysis = "You are sticking your tongue out!"
+        else if ((noseSneerLeft?.decimalValue ?? 0.0) + (noseSneerRight?.decimalValue ?? 0.0)) > 0.6{
+            self.analysis = "Disgust"
+        }
+        else if ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.6{
+            self.analysis = "Anger"
+        }
+        else if mouthPoggers?.decimalValue ?? 0.0 > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5{
+            self.analysis = "Poggers"
+        }
+        else if ((eyeWideLeft?.decimalValue ?? 0.0) + (eyeWideRight?.decimalValue ?? 0.0)) > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5 &&  mouthOpen?.decimalValue ?? 0.0 < 0.2{
+            self.analysis = "Surprize"
+        }
+        else if ((eyeWideLeft?.decimalValue ?? 0.0) + (eyeWideRight?.decimalValue ?? 0.0)) > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5 && mouthOpen?.decimalValue ?? 0.0 > 0.5{
+            self.analysis = "Fear"
+        }
+        else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) < 0.8
+                && ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) < 0.1 {
+            self.analysis = "Neutral"
+        }
+        else{
+            //If none of the emotions above are being made, then let the user know their expression is neutural
+            self.analysis = " "
         }
         
         
