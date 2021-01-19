@@ -21,6 +21,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var morphs: [SCNGeometry] = []
     let morpher = SCNMorpher()
     var analysis = ""
+    var selectedScene = "facial-setup-final"
+    var fullSceneName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +33,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+        //Establish which scene will be used
+        fullSceneName = "art.scnassets/" + selectedScene + ".scn"
+        
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/facial-setup-final.scn")!
+        let scene = SCNScene(named: fullSceneName)!
 
         // Access scene's rootNode
         contentNode = scene.rootNode
