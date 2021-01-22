@@ -10,8 +10,8 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
-
+class ARVC: UIViewController, ARSCNViewDelegate {
+    
     @IBOutlet var sceneView: ARSCNView!
     
     @IBOutlet weak var emoteLable: UILabel!
@@ -21,11 +21,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var morphs: [SCNGeometry] = []
     let morpher = SCNMorpher()
     var analysis = ""
-    var selectedScene = "facial-setup-final"
+    var selectedScene = "blue"
     var fullSceneName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let defaults = UserDefaults.standard
         
         // Set ViewController as ARSCNView's delegate
         sceneView.delegate = self
@@ -33,15 +35,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+        if(!isKeyPresentInDefaults(key: "Face")){
+            defaults.set("white", forKey: "Face")
+        }
+        
+        
+        selectedScene = defaults.string(forKey: "Face")!
+        
         //Establish which scene will be used
         fullSceneName = "art.scnassets/" + selectedScene + ".scn"
         
         // Create a new scene
         let scene = SCNScene(named: fullSceneName)!
-
+        
         // Access scene's rootNode
         contentNode = scene.rootNode
-
+        
+    }
+    
+    func isKeyPresentInDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,9 +67,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
-
+    
     // MARK: - ARSCNViewDelegate
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -158,7 +171,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         
         guard let faceAnchor = anchor as? ARFaceAnchor
-            else { return }
+        else { return }
         
         expression(anchor: faceAnchor)
         

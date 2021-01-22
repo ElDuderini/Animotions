@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61B4C5A925B7609A00B48D0F /* ARVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B4C5A825B7609A00B48D0F /* ARVC.swift */; };
+		61B4C5B125B7634800B48D0F /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B4C5B025B7634800B48D0F /* MainMenuVC.swift */; };
+		61B4C5B625B76ADB00B48D0F /* ShopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B4C5B525B76ADB00B48D0F /* ShopVC.swift */; };
 		7942AA2C2342693100A133C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942AA2B2342693100A133C0 /* AppDelegate.swift */; };
 		7942AA2E2342693100A133C0 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 7942AA2D2342693100A133C0 /* art.scnassets */; };
-		7942AA302342693100A133C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942AA2F2342693100A133C0 /* ViewController.swift */; };
 		7942AA332342693100A133C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7942AA312342693100A133C0 /* Main.storyboard */; };
 		7942AA352342693800A133C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7942AA342342693800A133C0 /* Assets.xcassets */; };
 		7942AA382342693800A133C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7942AA362342693800A133C0 /* LaunchScreen.storyboard */; };
@@ -35,10 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		61B4C5A825B7609A00B48D0F /* ARVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVC.swift; sourceTree = "<group>"; };
+		61B4C5B025B7634800B48D0F /* MainMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
+		61B4C5B525B76ADB00B48D0F /* ShopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopVC.swift; sourceTree = "<group>"; };
 		7942AA282342693100A133C0 /* FaceAnimoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceAnimoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7942AA2B2342693100A133C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7942AA2D2342693100A133C0 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		7942AA2F2342693100A133C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7942AA322342693100A133C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7942AA342342693800A133C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7942AA372342693800A133C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,8 +105,10 @@
 			children = (
 				7942AA2B2342693100A133C0 /* AppDelegate.swift */,
 				7942AA2D2342693100A133C0 /* art.scnassets */,
-				7942AA2F2342693100A133C0 /* ViewController.swift */,
 				7942AA312342693100A133C0 /* Main.storyboard */,
+				61B4C5B525B76ADB00B48D0F /* ShopVC.swift */,
+				61B4C5B025B7634800B48D0F /* MainMenuVC.swift */,
+				61B4C5A825B7609A00B48D0F /* ARVC.swift */,
 				7942AA342342693800A133C0 /* Assets.xcassets */,
 				7942AA362342693800A133C0 /* LaunchScreen.storyboard */,
 				7942AA392342693800A133C0 /* Info.plist */,
@@ -260,8 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7942AA302342693100A133C0 /* ViewController.swift in Sources */,
+				61B4C5A925B7609A00B48D0F /* ARVC.swift in Sources */,
 				7942AA2C2342693100A133C0 /* AppDelegate.swift in Sources */,
+				61B4C5B625B76ADB00B48D0F /* ShopVC.swift in Sources */,
+				61B4C5B125B7634800B48D0F /* MainMenuVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
