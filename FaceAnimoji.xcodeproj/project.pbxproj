@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6180EA7125BA7CE8003CAE40 /* OptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */; };
 		61B4C5A925B7609A00B48D0F /* ARVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B4C5A825B7609A00B48D0F /* ARVC.swift */; };
 		61B4C5B125B7634800B48D0F /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B4C5B025B7634800B48D0F /* MainMenuVC.swift */; };
 		61B4C5B625B76ADB00B48D0F /* ShopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B4C5B525B76ADB00B48D0F /* ShopVC.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsVC.swift; sourceTree = "<group>"; };
 		61B4C5A825B7609A00B48D0F /* ARVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVC.swift; sourceTree = "<group>"; };
 		61B4C5B025B7634800B48D0F /* MainMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
 		61B4C5B525B76ADB00B48D0F /* ShopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopVC.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				7942AA2B2342693100A133C0 /* AppDelegate.swift */,
 				7942AA2D2342693100A133C0 /* art.scnassets */,
 				7942AA312342693100A133C0 /* Main.storyboard */,
+				6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */,
 				61B4C5B525B76ADB00B48D0F /* ShopVC.swift */,
 				61B4C5B025B7634800B48D0F /* MainMenuVC.swift */,
 				61B4C5A825B7609A00B48D0F /* ARVC.swift */,
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6180EA7125BA7CE8003CAE40 /* OptionsVC.swift in Sources */,
 				61B4C5A925B7609A00B48D0F /* ARVC.swift in Sources */,
 				7942AA2C2342693100A133C0 /* AppDelegate.swift in Sources */,
 				61B4C5B625B76ADB00B48D0F /* ShopVC.swift in Sources */,

@@ -24,8 +24,18 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     
     var myButtonArray : [String] = []
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.scrollView.contentSize.height = 1
+        
+        scrollView.bounces = false
+        
+        if #available(iOS 11, *){
+            scrollView.contentInsetAdjustmentBehavior = .never
+        }
         
         var tempArray : [String] = []
     
@@ -57,9 +67,9 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             
             let button = UIButton();
             
-            scrollView.addSubview(button)
+           // scrollView.addSubview(button)
             
-            let xCord = view.frame.minX + view.frame.width * CGFloat(index)
+            let xCord = scrollView.frame.midX + 100 + (view.frame.width * CGFloat(index))
             
             contentWidth += view.frame.width
             
@@ -74,6 +84,9 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             button.titleLabel?.font = UIFont(name: "Arial", size: 40)
             button.layer.cornerRadius = 5
             button.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
+            
+            
+            scrollView.addSubview(button)
         }
         
         scrollView.contentSize = CGSize(width: contentWidth, height: view.frame.height)
@@ -83,16 +96,25 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
     }
     
+    
     @IBAction func buttonClick(sender: UIButton){
         if let buttonTitle = sender.title(for: .normal){
             UserDefaults.standard.set(buttonTitle, forKey: "Face")
         }
-        
-        func scrollViewDidScroll(_ scrollView: UIScrollView){
-            pgControll.currentPage = Int(scrollView.contentOffset.x / CGFloat(375))
+    }
+    
+    func Feedback(){
+        if(defaults.bool(forKey: "audioOn")){
+            print("Play Sound")
+        }
+        if(defaults.bool(forKey: "hapticOn")){
+            print("Play Haptics")
         }
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView){
+        pgControll.currentPage = Int(scrollView.contentOffset.x / CGFloat(414))
+    }
 
     /*
     // MARK: - Navigation

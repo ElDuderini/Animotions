@@ -1,37 +1,39 @@
 //
-//  MainMenuVC.swift
+//  OptionsVC.swift
 //  FaceAnimoji
 //
-//  Created by Justin Peters on 1/19/21.
+//  Created by Justin Peters on 1/21/21.
 //  Copyright © 2021 ashutosh.dingankar. All rights reserved.
 //
 
 import UIKit
 
-class MainMenuVC: UIViewController {
+class OptionsVC: UIViewController {
 
+    @IBOutlet weak var hapticToggle: UISwitch!
+    
+    @IBOutlet weak var audioToggle: UISwitch!
+    
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(!isKeyPresentInDefaults(key: "audioOn")){
-            defaults.set(true, forKey: "audioOn")
-        }
+        hapticToggle.isOn = defaults.bool(forKey: "hapticOn")
         
-        if(!isKeyPresentInDefaults(key: "hapticOn")){
-            defaults.set(true, forKey: "hapticOn")
-        }
+        audioToggle.isOn = defaults.bool(forKey: "audioOn")
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func ButtonPress(){
+    @IBAction func ToggleAudio(){
+        defaults.set(audioToggle.isOn, forKey: "audioOn")
         Feedback()
     }
     
-    func isKeyPresentInDefaults(key: String) -> Bool {
-        return UserDefaults.standard.object(forKey: key) != nil
+    @IBAction func ToggleHaptic(){
+        defaults.set(hapticToggle.isOn, forKey: "hapticOn")
+        Feedback()
     }
     
     func Feedback(){
