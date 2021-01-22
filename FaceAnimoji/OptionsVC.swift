@@ -16,6 +16,8 @@ class OptionsVC: UIViewController {
     
     let defaults = UserDefaults.standard
     
+    let hapticFeedback = UIImpactFeedbackGenerator(style: .medium)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +44,7 @@ class OptionsVC: UIViewController {
         }
         if(defaults.bool(forKey: "hapticOn")){
             print("Play Haptics")
+            hapticFeedback.impactOccurred()
         }
     }
 

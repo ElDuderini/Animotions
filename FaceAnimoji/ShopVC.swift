@@ -26,6 +26,8 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     
     let defaults = UserDefaults.standard
     
+    let hapticFeedback = UIImpactFeedbackGenerator(style: .medium)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -109,6 +111,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         }
         if(defaults.bool(forKey: "hapticOn")){
             print("Play Haptics")
+            hapticFeedback.impactOccurred()
         }
     }
     
