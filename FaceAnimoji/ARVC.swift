@@ -18,6 +18,8 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     var contentNode: SCNNode? = nil
     //var contentNode: SCNNode? = nil
     
+    var player : AVAudioPlayer?
+    
     var morphs: [SCNGeometry] = []
     let morpher = SCNMorpher()
     var analysis = ""

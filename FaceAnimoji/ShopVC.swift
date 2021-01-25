@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation.NSFileManager
+import AVFoundation
 
 class ShopVC: UIViewController, UIScrollViewDelegate {
 
@@ -27,6 +28,8 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     let defaults = UserDefaults.standard
     
     let hapticFeedback = UIImpactFeedbackGenerator(style: .medium)
+    
+    var player : AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,12 +105,14 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     @IBAction func buttonClick(sender: UIButton){
         if let buttonTitle = sender.title(for: .normal){
             UserDefaults.standard.set(buttonTitle, forKey: "Face")
+            Feedback()
         }
     }
     
     func Feedback(){
         if(defaults.bool(forKey: "audioOn")){
             print("Play Sound")
+            playSound()
         }
         if(defaults.bool(forKey: "hapticOn")){
             print("Play Haptics")
@@ -117,6 +122,25 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView){
         pgControll.currentPage = Int(scrollView.contentOffset.x / CGFloat(414))
+    }
+    
+    func playSound() {
+        guard let url = Bundle.main.url(forResource: "confirmSound", withExtension: ".wav") else {return}
+        
+        do{
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
+            
+            guard let player = player else { return }
+            
+            player.play()
+            
+        } catch let error{
+            print(error.localizedDescription)
+        }
+        
     }
 
     /*
