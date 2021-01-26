@@ -27,9 +27,15 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     var fullSceneName = ""
     
     var baseFunc = BaseFunctions()
+    var lessonQuestions = LessonBrain()
+    var mainMenu = MainMenuVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lessonQuestions.ShuffleQuestions()
+        
+        self.emoteLable.text = lessonQuestions.getQuestionText()
         
         let defaults = UserDefaults.standard
         
@@ -42,7 +48,6 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         if(!isKeyPresentInDefaults(key: "Face")){
             defaults.set("white", forKey: "Face")
         }
-        
         
         selectedScene = defaults.string(forKey: "Face")!
         
@@ -67,7 +72,6 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         // Pause the view's session
         sceneView.session.pause()
     }
@@ -76,7 +80,6 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         // "Reset" to run the AR session for the first time.
         resetTracking()
     }
@@ -90,17 +93,14 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
-        
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
     }
     
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
@@ -123,12 +123,6 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         let mouthPoggers = anchor.blendShapes[.mouthFunnel]
         let mouthOpen = anchor.blendShapes[.jawOpen]
         
-        //print(frownLeft?.decimalValue)
-        //print(frownRight?.decimalValue)
-        //print(mouthOpen?.decimalValue)
-        //print(browDownRight?.decimalValue)
-        //print(browDownLeft?.decimalValue)
-        
         if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9
             && mouthOpen?.decimalValue ?? 0.0 < 0.3{
             self.analysis = "Happy"
@@ -137,11 +131,9 @@ class ARVC: UIViewController, ARSCNViewDelegate {
                 && mouthOpen?.decimalValue ?? 0.0 > 0.3{
             self.analysis = "Joy"
         }
-        
         else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2{
-            self.analysis = "Sadness"
+            self.analysis = "Sad"
         }
-        
         else if ((noseSneerLeft?.decimalValue ?? 0.0) + (noseSneerRight?.decimalValue ?? 0.0)) > 0.6{
             self.analysis = "Disgust"
         }
@@ -175,8 +167,16 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         
         expression(anchor: faceAnchor)
         
+        if(lessonQuestions.checkAnswer(userAnswer: analysis)){
+            lessonQuestions.nextQuestion()
+            baseFunc.playSound()
+            OperationQueue.main.addOperation{
+                self.emoteLable.text = self.lessonQuestions.getQuestionText()
+            }
+        }
+        
         DispatchQueue.main.async {
-            self.emoteLable.text = self.analysis
+            //self.emoteLable.text = self.analysis
             let blendShapes = faceAnchor.blendShapes
             
             // This will only work correctly if the shape keys are given the exact same name as the blendshape names

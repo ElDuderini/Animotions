@@ -15,6 +15,8 @@ class MainMenuVC: UIViewController {
     
     var BaseFunc = BaseFunctions()
     
+    @IBOutlet weak var pointsLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +28,14 @@ class MainMenuVC: UIViewController {
         if(!isKeyPresentInDefaults(key: "hapticOn")){
             defaults.set(true, forKey: "hapticOn")
         }
+        
+        if(!isKeyPresentInDefaults(key: "points")){
+            defaults.set(0, forKey:"points")
+        }
+        
+        pointsLabel.text = "Points earned: " + String(defaults.integer(forKey: "points"))
+        
+        //Need to figure out a way to detect when a method is dismissed to update these points 
 
         // Do any additional setup after loading the view.
     }

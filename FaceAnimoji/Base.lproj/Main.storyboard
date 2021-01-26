@@ -68,7 +68,7 @@
         <!--Main MenuVC-->
         <scene sceneID="jV4-Wp-6Yj">
             <objects>
-                <viewController id="LxE-eU-dFN" customClass="MainMenuVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="LxE-eU-dFN" customClass="MainMenuVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qqK-oj-4b7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,6 +106,12 @@
                                     <segue destination="68B-iC-ajA" kind="show" id="erc-An-cxW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points earned:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYk-FV-WQI">
+                                <rect key="frame" x="10" y="628" width="394" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hza-pn-1kO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -113,11 +119,17 @@
                             <constraint firstItem="Hza-pn-1kO" firstAttribute="bottom" secondItem="Uf3-vY-r06" secondAttribute="bottom" constant="10" id="6LY-uh-rdU"/>
                             <constraint firstItem="Uf3-vY-r06" firstAttribute="leading" secondItem="Hza-pn-1kO" secondAttribute="leading" constant="40" id="A5M-tq-ktI"/>
                             <constraint firstItem="4Hb-Ex-p57" firstAttribute="centerY" secondItem="qqK-oj-4b7" secondAttribute="centerY" id="CMm-F8-3jA"/>
+                            <constraint firstItem="yYk-FV-WQI" firstAttribute="top" secondItem="4Hb-Ex-p57" secondAttribute="bottom" constant="150" id="G3H-hB-0Z8"/>
+                            <constraint firstItem="Hza-pn-1kO" firstAttribute="trailing" secondItem="yYk-FV-WQI" secondAttribute="trailing" constant="10" id="J3f-6B-dvh"/>
                             <constraint firstItem="4Hb-Ex-p57" firstAttribute="centerX" secondItem="qqK-oj-4b7" secondAttribute="centerX" id="Xs6-Sc-zhj"/>
                             <constraint firstItem="Hza-pn-1kO" firstAttribute="trailing" secondItem="sIg-xs-hfY" secondAttribute="trailing" constant="40" id="kFg-6S-awZ"/>
                             <constraint firstItem="Hza-pn-1kO" firstAttribute="bottom" secondItem="sIg-xs-hfY" secondAttribute="bottom" constant="10" id="mcA-PY-Y4l"/>
+                            <constraint firstItem="yYk-FV-WQI" firstAttribute="leading" secondItem="Hza-pn-1kO" secondAttribute="leading" constant="10" id="oSG-Cy-qW0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pointsLabel" destination="yYk-FV-WQI" id="8zm-A0-ORE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="faH-1N-bhq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

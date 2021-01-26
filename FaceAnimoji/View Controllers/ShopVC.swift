@@ -49,8 +49,6 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
            myButtonArray[index] = myButtonArray[index].replacingOccurrences(of: ".scn", with: "")
         }
         
-        print(myButtonArray)
-        
         scrollView.delegate = self
         
         for index in 0...myButtonArray.count - 1{
