@@ -169,7 +169,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         
         if(lessonQuestions.checkAnswer(userAnswer: analysis)){
             lessonQuestions.nextQuestion()
-            baseFunc.playSound()
+            baseFunc.Feedback()
             OperationQueue.main.addOperation{
                 self.emoteLable.text = self.lessonQuestions.getQuestionText()
             }

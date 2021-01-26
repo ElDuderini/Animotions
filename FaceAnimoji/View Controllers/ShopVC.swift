@@ -73,13 +73,17 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             
             
             scrollView.addSubview(button)
+            
+           // let lable = UILabel()
+            
+            //lable.frame = CGRect(x: xCord, y: view.frame.height/2 - 50, width: 100, height: 20)
+            
+            
         }
         
         scrollView.contentSize = CGSize(width: contentWidth, height: view.frame.height)
         
         pgControll.numberOfPages = myButtonArray.count
-        
-
         // Do any additional setup after loading the view.
     }
     
