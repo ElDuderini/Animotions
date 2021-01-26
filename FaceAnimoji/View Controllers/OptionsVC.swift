@@ -39,7 +39,10 @@ class OptionsVC: UIViewController {
         baseFunc.Feedback()
     }
     
-   
+    @IBAction func Back(){
+        self.dismiss(animated: true, completion: nil)
+        baseFunc.Feedback()
+    }
     /*
     // MARK: - Navigation
 

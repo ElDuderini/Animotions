@@ -37,9 +37,6 @@ class MainMenuVC: UIViewController {
     func isKeyPresentInDefaults(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
-    
-    
-
 
     /*
     // MARK: - Navigation

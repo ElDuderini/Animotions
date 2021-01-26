@@ -21,6 +21,18 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxU-ci-TTw">
+                                <rect key="frame" x="35" y="35" width="68.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn" destination="BV1-FR-VrT" eventType="touchUpInside" id="gV9-7h-RyL"/>
+                                    <action selector="backBtn:" destination="SfY-zE-T6s" eventType="touchUpInside" id="BfC-SW-w1L"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EmoteLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oa4-9m-Kbf">
                                 <rect key="frame" x="0.0" y="763" width="414" height="21"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -35,10 +47,12 @@
                             <constraint firstItem="oa4-9m-Kbf" firstAttribute="trailing" secondItem="BrB-h1-WRS" secondAttribute="trailing" id="01L-t2-4Hi"/>
                             <constraint firstItem="oa4-9m-Kbf" firstAttribute="leading" secondItem="BrB-h1-WRS" secondAttribute="leading" id="32f-fJ-nGo"/>
                             <constraint firstItem="oa4-9m-Kbf" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="719" id="6WR-OF-6Iw"/>
+                            <constraint firstItem="PxU-ci-TTw" firstAttribute="leading" secondItem="U0K-SW-4ec" secondAttribute="leading" constant="35" id="B9T-53-z1F"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
+                            <constraint firstItem="PxU-ci-TTw" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" constant="35" id="tAA-Rs-4Db"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oZU-Nf-Wrf"/>
@@ -129,10 +143,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-WH-y0D">
-                                <rect key="frame" x="35" y="35" width="54" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-WH-y0D">
+                                <rect key="frame" x="35" y="35" width="68.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Back"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                                </state>
                                 <connections>
                                     <action selector="backBtn:" destination="SfY-zE-T6s" eventType="touchUpInside" id="FT1-mW-jhW"/>
                                 </connections>
@@ -203,6 +220,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK9-Xd-Q37">
+                                <rect key="frame" x="35" y="79" width="68.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="Back" destination="68B-iC-ajA" eventType="touchUpInside" id="P1h-Uz-Ye3"/>
+                                    <action selector="backBtn:" destination="SfY-zE-T6s" eventType="touchUpInside" id="QCP-zF-FAe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ujj-fl-eMH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -214,9 +243,11 @@
                             <constraint firstItem="Szp-Ih-omT" firstAttribute="top" secondItem="TDD-SC-gUl" secondAttribute="bottom" constant="34" id="Nb3-EF-9oE"/>
                             <constraint firstItem="Szp-Ih-omT" firstAttribute="leading" secondItem="Ujj-fl-eMH" secondAttribute="leading" constant="50" id="dEh-7v-dDD"/>
                             <constraint firstItem="TDD-SC-gUl" firstAttribute="leading" secondItem="Ujj-fl-eMH" secondAttribute="leading" constant="50" id="jG4-8v-MyM"/>
+                            <constraint firstItem="dK9-Xd-Q37" firstAttribute="top" secondItem="Ujj-fl-eMH" secondAttribute="top" constant="35" id="jWx-jw-2mP"/>
                             <constraint firstItem="Ujj-fl-eMH" firstAttribute="trailing" secondItem="qMg-jW-F56" secondAttribute="trailing" constant="50" id="kAp-7X-31h"/>
                             <constraint firstItem="qMg-jW-F56" firstAttribute="top" secondItem="a3t-ep-m7Y" secondAttribute="bottom" constant="57" id="kqR-HC-7mP"/>
                             <constraint firstItem="a3t-ep-m7Y" firstAttribute="leading" secondItem="Ujj-fl-eMH" secondAttribute="leading" constant="107" id="lHQ-dt-rQa"/>
+                            <constraint firstItem="dK9-Xd-Q37" firstAttribute="leading" secondItem="Ujj-fl-eMH" secondAttribute="leading" constant="35" id="nf6-gg-mWQ"/>
                             <constraint firstItem="TDD-SC-gUl" firstAttribute="top" secondItem="a3t-ep-m7Y" secondAttribute="bottom" constant="54" id="z6q-MM-f44"/>
                         </constraints>
                     </view>
@@ -233,6 +264,7 @@
     </scenes>
     <resources>
         <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

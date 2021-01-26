@@ -185,6 +185,10 @@ class ARVC: UIViewController, ARSCNViewDelegate {
                 }
             }
         }
-        
+    }
+    
+    @IBAction func backBtn(){
+        self.dismiss(animated: true, completion: nil)
+        baseFunc.Feedback()
     }
 }

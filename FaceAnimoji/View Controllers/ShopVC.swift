@@ -87,7 +87,6 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView){
         pgControll.currentPage = Int(scrollView.contentOffset.x / view.frame.width)
-        print(scrollView.contentOffset.x)
     }
     
     
