@@ -25,22 +25,22 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     
     var myButtonArray : [String] = []
     
-    let defaults = UserDefaults.standard
-    
-    let hapticFeedback = UIImpactFeedbackGenerator(style: .medium)
-    
-    var player : AVAudioPlayer?
+    var baseFunc = BaseFunctions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.scrollView.contentSize.height = 1
+        //scrollView(.horizontal)
         
-        scrollView.bounces = false
+       // self.scrollView.contentSize.height = view.frame.height
         
-        if #available(iOS 11, *){
-            scrollView.contentInsetAdjustmentBehavior = .never
-        }
+        //scrollView.hor
+        
+        //scrollView.bounces = false
+        
+        //if #available(iOS 11, *){
+       //     scrollView.contentInsetAdjustmentBehavior = .never
+       // }
         
         var tempArray : [String] = []
     
@@ -50,8 +50,8 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             tempArray = files
             
         }
-        catch let error as Error {
-            print(error)
+        catch let error{
+            print(error.localizedDescription)
         }
         
         myButtonArray = tempArray.filter{
@@ -74,7 +74,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             
            // scrollView.addSubview(button)
             
-            let xCord = scrollView.frame.midX + 100 + (view.frame.width * CGFloat(index))
+            let xCord = scrollView.frame.midX + (view.frame.width * CGFloat(index))
             
             contentWidth += view.frame.width
             
@@ -97,6 +97,8 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = CGSize(width: contentWidth, height: view.frame.height)
         
         pgControll.numberOfPages = myButtonArray.count
+        
+        //scrollView.contentSize =
 
         // Do any additional setup after loading the view.
     }
@@ -105,44 +107,13 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     @IBAction func buttonClick(sender: UIButton){
         if let buttonTitle = sender.title(for: .normal){
             UserDefaults.standard.set(buttonTitle, forKey: "Face")
-            Feedback()
+            baseFunc.Feedback()
         }
-    }
-    
-    func Feedback(){
-        if(defaults.bool(forKey: "audioOn")){
-            print("Play Sound")
-            playSound()
-        }
-        if(defaults.bool(forKey: "hapticOn")){
-            print("Play Haptics")
-            hapticFeedback.impactOccurred()
-        }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView){
-        pgControll.currentPage = Int(scrollView.contentOffset.x / CGFloat(414))
-    }
-    
-    func playSound() {
-        guard let url = Bundle.main.url(forResource: "confirmSound", withExtension: ".wav") else {return}
-        
-        do{
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
-            
-            guard let player = player else { return }
-            
-            player.play()
-            
-        } catch let error{
-            print(error.localizedDescription)
-        }
-        
     }
 
+    @IBAction func backBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

@@ -13,12 +13,11 @@ class MainMenuVC: UIViewController {
 
     let defaults = UserDefaults.standard
     
-    let hapticFeedback = UIImpactFeedbackGenerator(style: .medium)
-    
-    var player : AVAudioPlayer?
+    var BaseFunc = BaseFunctions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         if(!isKeyPresentInDefaults(key: "audioOn")){
             defaults.set(true, forKey: "audioOn")
@@ -32,42 +31,15 @@ class MainMenuVC: UIViewController {
     }
     
     @IBAction func ButtonPress(){
-        Feedback()
+        BaseFunc.Feedback()
     }
     
     func isKeyPresentInDefaults(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
     
-    func Feedback(){
-        if(defaults.bool(forKey: "audioOn")){
-            print("Play Sound")
-            playSound()
-        }
-        if(defaults.bool(forKey: "hapticOn")){
-            print("Play Haptics")
-            hapticFeedback.impactOccurred()
-        }
-    }
     
-    func playSound() {
-        guard let url = Bundle.main.url(forResource: "confirmSound", withExtension: ".wav") else {return}
-        
-        do{
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
-            
-            guard let player = player else { return }
-            
-            player.play()
-            
-        } catch let error{
-            print(error.localizedDescription)
-        }
-        
-    }
+
 
     /*
     // MARK: - Navigation

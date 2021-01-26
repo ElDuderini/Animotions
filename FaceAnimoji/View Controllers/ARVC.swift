@@ -26,6 +26,8 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     var selectedScene = "blue"
     var fullSceneName = ""
     
+    var baseFunc = BaseFunctions()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -163,14 +165,10 @@ class ARVC: UIViewController, ARSCNViewDelegate {
             //If none of the emotions above are being made, then let the user know their expression is neutural
             self.analysis = " "
         }
-        
-        
     }
     
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        
-        
         
         guard let faceAnchor = anchor as? ARFaceAnchor
         else { return }
