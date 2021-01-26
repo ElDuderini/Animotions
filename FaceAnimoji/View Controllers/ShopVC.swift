@@ -30,23 +30,10 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //scrollView(.horizontal)
-        
-       // self.scrollView.contentSize.height = view.frame.height
-        
-        //scrollView.hor
-        
-        //scrollView.bounces = false
-        
-        //if #available(iOS 11, *){
-       //     scrollView.contentInsetAdjustmentBehavior = .never
-       // }
-        
         var tempArray : [String] = []
     
         do{
             let files = try fm.contentsOfDirectory(atPath: path)
-            //print(files)
             tempArray = files
             
         }
@@ -57,8 +44,6 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         myButtonArray = tempArray.filter{
             word in return word.contains(".scn")
         }
-        
-        //print(myButtonArray)
         
         for index in 0...myButtonArray.count - 1{
            myButtonArray[index] = myButtonArray[index].replacingOccurrences(of: ".scn", with: "")
@@ -72,9 +57,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             
             let button = UIButton();
             
-           // scrollView.addSubview(button)
-            
-            let xCord = scrollView.frame.midX + (view.frame.width * CGFloat(index))
+            let xCord = (view.frame.midX - 50) + (view.frame.width * CGFloat(index))
             
             contentWidth += view.frame.width
             
@@ -98,9 +81,13 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         
         pgControll.numberOfPages = myButtonArray.count
         
-        //scrollView.contentSize =
 
         // Do any additional setup after loading the view.
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView){
+        pgControll.currentPage = Int(scrollView.contentOffset.x / view.frame.width)
+        print(scrollView.contentOffset.x)
     }
     
     
@@ -113,6 +100,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
 
     @IBAction func backBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        baseFunc.Feedback()
     }
     /*
     // MARK: - Navigation

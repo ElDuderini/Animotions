@@ -13,11 +13,21 @@ struct LessonBrain {
     var questionNumber = 0
     var score = 0
     
-    let quiz = [
+    let defaults = UserDefaults.standard
+    
+    var quiz = [
         Question(a: "Happy", q: ""),
         Question(a: "Sad", q: ""),
-        Question(a: "Surprized", q: "")
+        Question(a: "Surprized", q: ""),
+        Question(a: "Joy", q: ""),
+        Question(a: "Disgust", q: ""),
+        Question(a: "Fear", q: ""),
+        Question(a: "Neutral", q: "")
     ]
+    
+    mutating func ShuffleQuestions() {
+        quiz.shuffle()
+    }
     
     func getQuestionText() -> String {
         return quiz[questionNumber].text

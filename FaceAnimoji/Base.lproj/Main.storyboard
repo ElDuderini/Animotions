@@ -130,7 +130,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-WH-y0D">
-                                <rect key="frame" x="35" y="5" width="34" height="30"/>
+                                <rect key="frame" x="35" y="35" width="54" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="backBtn:" destination="SfY-zE-T6s" eventType="touchUpInside" id="FT1-mW-jhW"/>
@@ -146,11 +147,11 @@
                             <constraint firstItem="5nh-gs-yyd" firstAttribute="leading" secondItem="ZM6-vM-vYa" secondAttribute="leading" constant="145.5" id="R6W-3b-UOr"/>
                             <constraint firstItem="qrp-d0-MNc" firstAttribute="top" secondItem="ZM6-vM-vYa" secondAttribute="top" id="TIW-Be-A7D"/>
                             <constraint firstItem="ZM6-vM-vYa" firstAttribute="trailing" secondItem="5nh-gs-yyd" secondAttribute="trailing" constant="145.5" id="VGH-JX-JdJ"/>
+                            <constraint firstItem="DC3-WH-y0D" firstAttribute="top" secondItem="bVi-N0-Cei" secondAttribute="top" constant="35" id="aPY-hU-rxZ"/>
                             <constraint firstItem="ZM6-vM-vYa" firstAttribute="bottom" secondItem="5nh-gs-yyd" secondAttribute="bottom" constant="30" id="bLd-hP-p6B"/>
                             <constraint firstItem="ZM6-vM-vYa" firstAttribute="bottom" secondItem="qrp-d0-MNc" secondAttribute="bottom" id="fue-G7-mQg"/>
                             <constraint firstItem="DR4-F6-5Rg" firstAttribute="centerX" secondItem="bVi-N0-Cei" secondAttribute="centerX" id="j75-Qr-mUL"/>
                             <constraint firstItem="qrp-d0-MNc" firstAttribute="trailing" secondItem="ZM6-vM-vYa" secondAttribute="trailing" id="oAd-aw-n5l"/>
-                            <constraint firstItem="DC3-WH-y0D" firstAttribute="top" secondItem="bVi-N0-Cei" secondAttribute="top" constant="5" id="x4g-ux-Vpx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="84v-ei-ZZS"/>
