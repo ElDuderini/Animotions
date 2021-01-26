@@ -8,9 +8,12 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class ShopDataConstruction {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+
     
 }
