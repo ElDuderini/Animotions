@@ -17,8 +17,8 @@
         <attribute name="purchased" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="ShopData" positionX="-36" positionY="9" width="128" height="103"/>
-        <element name="LessonData" positionX="0" positionY="45" width="128" height="88"/>
         <element name="FreeplayData" positionX="27" positionY="72" width="128" height="88"/>
+        <element name="LessonData" positionX="0" positionY="45" width="128" height="88"/>
+        <element name="ShopData" positionX="-36" positionY="9" width="128" height="103"/>
     </elements>
 </model>

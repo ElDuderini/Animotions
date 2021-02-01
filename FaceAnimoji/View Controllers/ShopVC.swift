@@ -26,9 +26,12 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     var myButtonArray : [String] = []
     
     var baseFunc = BaseFunctions()
+    var shopData = ShopDataConstruction()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        shopData.populateData()
         
         var tempArray : [String] = []
     

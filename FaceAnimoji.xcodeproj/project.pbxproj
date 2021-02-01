@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6138C36C25C8AD44000CA925 /* FreePlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6138C36B25C8AD44000CA925 /* FreePlayVC.swift */; };
 		615DFF1325C0BB2100A268A1 /* AnimotionsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 615DFF1125C0BB2100A268A1 /* AnimotionsData.xcdatamodeld */; };
 		615DFF1925C0BF3E00A268A1 /* ShopDataConstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615DFF1825C0BF3E00A268A1 /* ShopDataConstruction.swift */; };
 		6180EA7125BA7CE8003CAE40 /* OptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6138C36B25C8AD44000CA925 /* FreePlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreePlayVC.swift; sourceTree = "<group>"; };
 		615DFF1225C0BB2100A268A1 /* AnimotionsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimotionsData.xcdatamodel; sourceTree = "<group>"; };
 		615DFF1825C0BF3E00A268A1 /* ShopDataConstruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDataConstruction.swift; sourceTree = "<group>"; };
 		6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsVC.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				61B4C5B525B76ADB00B48D0F /* ShopVC.swift */,
 				61B4C5B025B7634800B48D0F /* MainMenuVC.swift */,
 				61B4C5A825B7609A00B48D0F /* ARVC.swift */,
+				6138C36B25C8AD44000CA925 /* FreePlayVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				6180EA8925BF9A84003CAE40 /* BaseFunctions.swift in Sources */,
 				6180EA8F25BF9EFD003CAE40 /* Question.swift in Sources */,
 				61B4C5B125B7634800B48D0F /* MainMenuVC.swift in Sources */,
+				6138C36C25C8AD44000CA925 /* FreePlayVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
