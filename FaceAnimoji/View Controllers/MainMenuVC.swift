@@ -17,9 +17,12 @@ class MainMenuVC: UIViewController {
     
     @IBOutlet weak var pointsLabel: UILabel!
     
+    var shopData = ShopDataConstruction()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        shopData.populateData()
         
         if(!isKeyPresentInDefaults(key: "audioOn")){
             defaults.set(true, forKey: "audioOn")

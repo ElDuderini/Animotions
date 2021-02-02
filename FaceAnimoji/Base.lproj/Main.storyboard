@@ -346,7 +346,7 @@
                                     <constraint firstAttribute="height" constant="40" id="w3g-SH-ukL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Angry" backgroundImage="rectangle.fill" catalog="system">
+                                <state key="normal" title="Anger" backgroundImage="rectangle.fill" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>

@@ -10,9 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class ShopDataConstruction {
-    
-    var faces : [NSManagedObject] = []
+class ShopDataConstruction{
     
     let fm = FileManager.default
     
@@ -20,31 +18,23 @@ class ShopDataConstruction {
     
     var sceneArray : [String] = []
     
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var items:[ShopData] = []
+    
     var priceIncrese : Int = 0
     
     func populateData() {
         
         priceIncrese = 50
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
+        //        do{
+        //            self.items = try context.fetch(ShopData.fetchRequest())
+        //        }
+        //        catch{
+        //            print("Can't retrive data");
+        //        }
         
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ShopData")
-        
-        do {
-            faces = try managedContext.fetch(fetchRequest)
-            print("FetchedData")
-            print(faces)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return
-        }
-        
-        let entity = NSEntityDescription.entity(forEntityName: "ShopData", in: managedContext)!
-        let face = NSManagedObject(entity: entity, insertInto: managedContext)
-    
         do{
             let files = try fm.contentsOfDirectory(atPath: path)
             sceneArray = files
@@ -63,25 +53,78 @@ class ShopDataConstruction {
         
         for index in 0...sceneArray.count - 1{
             
-            save(name: sceneArray[index], cost: Int32(priceIncrese), face: face)
+            let request = ShopData.fetchRequest() as NSFetchRequest<ShopData>
+            
+            let predString = "name CONTAINS '" + sceneArray[index] + "'"
+            
+            let pred = NSPredicate(format: predString)
+            request.predicate = pred
+            
+            do{
+                items = try context.fetch(request)
+            }
+            catch{
+                print("Unable to retrive data")
+            }
+            
+            if(items.isEmpty){
+                save(name: sceneArray[index], cost: Int64(Int32(priceIncrese)))
+                print("New entry created for " + sceneArray[index])
+            }
+            else{
+                print("Dupe prevented for " + sceneArray[index])
+            }
             
             priceIncrese += priceIncrese;
         }
         
     }
     
-    
-    func save(name: String, cost: Int32, face: NSManagedObject) {
+    func save(name: String, cost: Int64) {
         
-        face.setValue(name, forKeyPath: "name")
-        face.setValue(false, forKey: "purchased")
-        face.setValue(cost, forKey: "price")
-        face.setValue(Date(), forKey: "dateCreated")
+        let newFace = ShopData(context: self.context)
+        
+        newFace.setValue(name, forKeyPath: "name")
+        newFace.setValue(false, forKey: "purchased")
+        newFace.setValue(cost, forKey: "price")
+        newFace.setValue(Date(), forKey: "dateCreated")
         
         do {
-            try face.managedObjectContext?.save()
+            try self.context.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+    }
+    
+    func deleteData(){
+        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = ShopData.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        let persistantContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        
+        do{
+            try persistantContainer.viewContext.execute(deleteRequest)
+            print("Deleted items")
+        }
+        catch{
+            print("Unable to delete items")
+        }
+    }
+    
+    func listFaces(){
+        do{
+            self.items = try context.fetch(ShopData.fetchRequest())
+        }
+        catch{
+            print("Can't retrive data");
+        }
+        
+        
+        //print(items[0].name)
+        
+        
+//        for index in 0...items.count - 1{
+//            print(items[index].name!)
+//        }
     }
 }
