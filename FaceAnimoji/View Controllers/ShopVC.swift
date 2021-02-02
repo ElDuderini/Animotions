@@ -9,48 +9,50 @@
 import UIKit
 import Foundation.NSFileManager
 import AVFoundation
+import CoreData
 
 class ShopVC: UIViewController, UIScrollViewDelegate {
-
+    
     let fm = FileManager.default
     
     let path = Bundle.main.resourcePath! + "/art.scnassets"
     
     @IBOutlet weak var pgControll: UIPageControl!
     
+    @IBOutlet weak var pointsLabel: UILabel!
     
     @IBOutlet weak var scrollView: UIScrollView!
     
     var contentWidth : CGFloat = 0.0
     
-    var myButtonArray : [String] = []
+    var myButtonArray : [ShopData] = []
+    
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var baseFunc = BaseFunctions()
     var shopData = ShopDataConstruction()
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        shopData.populateData()
-        
-        var tempArray : [String] = []
+        changePointsValue()
+        generateStore()
+        // Do any additional setup after loading the view.
+    }
     
+    func generateStore(){
+        
+        scrollView.contentSize = CGSize(width: view.frame.height, height: view.frame.height)
+        
         do{
-            let files = try fm.contentsOfDirectory(atPath: path)
-            tempArray = files
-            
+            self.myButtonArray = try context.fetch(ShopData.fetchRequest())
         }
-        catch let error{
-            print(error.localizedDescription)
+        catch{
+            print("Can't retrive data");
         }
         
-        myButtonArray = tempArray.filter{
-            word in return word.contains(".scn")
-        }
-        
-        for index in 0...myButtonArray.count - 1{
-           myButtonArray[index] = myButtonArray[index].replacingOccurrences(of: ".scn", with: "")
-        }
         
         scrollView.delegate = self
         
@@ -64,7 +66,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             
             button.frame = CGRect(x: xCord, y: view.frame.height/2, width: 100, height: 100)
             
-            button.setTitle(myButtonArray[index], for: .normal)
+            button.setTitle(myButtonArray[index].name, for: .normal)
             button.backgroundColor = UIColor.systemBlue
             button.layer.borderColor = UIColor.brown.cgColor
             button.layer.borderWidth = 5
@@ -77,17 +79,26 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             
             scrollView.addSubview(button)
             
-           // let lable = UILabel()
+            let lable = UILabel()
             
-            //lable.frame = CGRect(x: xCord, y: view.frame.height/2 - 50, width: 100, height: 20)
+            if(myButtonArray[index].purchased){
+                lable.text = "Purchased"
+            }
+            else{
+                lable.text = "Buy: " + String(myButtonArray[index].price)
+            }
             
+            lable.frame = CGRect(x: xCord - 100, y: view.frame.height/2 + 100, width: 300, height: 100)
+            lable.font = UIFont(name: "Arial", size: 35)
+            lable.textAlignment = NSTextAlignment.center
+            
+            scrollView.addSubview(lable)
             
         }
         
         scrollView.contentSize = CGSize(width: contentWidth, height: view.frame.height)
         
         pgControll.numberOfPages = myButtonArray.count
-        // Do any additional setup after loading the view.
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView){
@@ -97,23 +108,69 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     
     @IBAction func buttonClick(sender: UIButton){
         if let buttonTitle = sender.title(for: .normal){
-            UserDefaults.standard.set(buttonTitle, forKey: "Face")
+            
+            let request = ShopData.fetchRequest() as NSFetchRequest<ShopData>
+            
+            let predString = "name CONTAINS '" + buttonTitle + "'"
+            
+            let pred = NSPredicate(format: predString)
+            request.predicate = pred
+            
+            var item:[ShopData] = []
+            
+            do{
+                item = try context.fetch(request)
+            }
+            catch{
+                print("Unable to retrive data")
+            }
+            
+            if(item[0].purchased){
+                defaults.set(buttonTitle, forKey: "Face")
+            }
+            else{
+                if(item[0].price < UserDefaults.standard.integer(forKey: "points")){
+                    item[0].setValue(true, forKey: "purchased")
+                    defaults.setValue(defaults.integer(forKey: "points") - Int(item[0].price), forKey: "points")
+                    defaults.set(buttonTitle, forKey: "Face")
+                    do {
+                        try self.context.save()
+                    } catch let error as NSError {
+                        print("Could not save. \(error), \(error.userInfo)")
+                    }
+                    changePointsValue()
+                    removeSubviews()
+                    generateStore()
+                }
+            }
+            
             baseFunc.Feedback()
         }
     }
-
+    
     @IBAction func backBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         baseFunc.Feedback()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func changePointsValue(){
+        pointsLabel.text = "Points earned: " + String(defaults.integer(forKey: "points"))
     }
-    */
-
+    
+    func removeSubviews(){
+        let subViews = self.scrollView.subviews
+        for subView in subViews{
+            subView.removeFromSuperview()
+        }
+    }
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

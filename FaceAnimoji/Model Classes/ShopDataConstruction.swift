@@ -28,13 +28,6 @@ class ShopDataConstruction{
         
         priceIncrese = 50
         
-        //        do{
-        //            self.items = try context.fetch(ShopData.fetchRequest())
-        //        }
-        //        catch{
-        //            print("Can't retrive data");
-        //        }
-        
         do{
             let files = try fm.contentsOfDirectory(atPath: path)
             sceneArray = files
@@ -109,22 +102,5 @@ class ShopDataConstruction{
         catch{
             print("Unable to delete items")
         }
-    }
-    
-    func listFaces(){
-        do{
-            self.items = try context.fetch(ShopData.fetchRequest())
-        }
-        catch{
-            print("Can't retrive data");
-        }
-        
-        
-        //print(items[0].name)
-        
-        
-//        for index in 0...items.count - 1{
-//            print(items[index].name!)
-//        }
     }
 }

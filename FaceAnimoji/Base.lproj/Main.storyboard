@@ -106,12 +106,6 @@
                                     <segue destination="68B-iC-ajA" kind="show" id="erc-An-cxW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points earned:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYk-FV-WQI">
-                                <rect key="frame" x="10" y="574" width="394" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gfx-5h-eHF">
                                 <rect key="frame" x="10" y="434" width="394" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -127,8 +121,6 @@
                         <constraints>
                             <constraint firstItem="Hza-pn-1kO" firstAttribute="bottom" secondItem="Uf3-vY-r06" secondAttribute="bottom" constant="10" id="6LY-uh-rdU"/>
                             <constraint firstItem="Uf3-vY-r06" firstAttribute="leading" secondItem="Hza-pn-1kO" secondAttribute="leading" constant="40" id="A5M-tq-ktI"/>
-                            <constraint firstItem="yYk-FV-WQI" firstAttribute="top" secondItem="Gfx-5h-eHF" secondAttribute="bottom" constant="80" id="Am2-8b-xdy"/>
-                            <constraint firstItem="Hza-pn-1kO" firstAttribute="trailing" secondItem="yYk-FV-WQI" secondAttribute="trailing" constant="10" id="J3f-6B-dvh"/>
                             <constraint firstItem="Gfx-5h-eHF" firstAttribute="leading" secondItem="Hza-pn-1kO" secondAttribute="leading" constant="10" id="PUe-xY-PbJ"/>
                             <constraint firstItem="4Hb-Ex-p57" firstAttribute="top" secondItem="Hza-pn-1kO" secondAttribute="top" constant="250" id="XgZ-fO-hRX"/>
                             <constraint firstItem="4Hb-Ex-p57" firstAttribute="leading" secondItem="Hza-pn-1kO" secondAttribute="leading" constant="10" id="bRA-SX-q1G"/>
@@ -136,13 +128,9 @@
                             <constraint firstItem="Hza-pn-1kO" firstAttribute="trailing" secondItem="4Hb-Ex-p57" secondAttribute="trailing" constant="10" id="jkl-Uk-CLM"/>
                             <constraint firstItem="Hza-pn-1kO" firstAttribute="trailing" secondItem="sIg-xs-hfY" secondAttribute="trailing" constant="40" id="kFg-6S-awZ"/>
                             <constraint firstItem="Hza-pn-1kO" firstAttribute="bottom" secondItem="sIg-xs-hfY" secondAttribute="bottom" constant="10" id="mcA-PY-Y4l"/>
-                            <constraint firstItem="yYk-FV-WQI" firstAttribute="leading" secondItem="Hza-pn-1kO" secondAttribute="leading" constant="10" id="oSG-Cy-qW0"/>
                             <constraint firstItem="Hza-pn-1kO" firstAttribute="trailing" secondItem="Gfx-5h-eHF" secondAttribute="trailing" constant="10" id="qUb-Hd-XBx"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="pointsLabel" destination="yYk-FV-WQI" id="8zm-A0-ORE"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="faH-1N-bhq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,6 +156,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points earned:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUC-gI-aF2">
+                                <rect key="frame" x="10" y="316" width="394" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-WH-y0D">
                                 <rect key="frame" x="35" y="35" width="68.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -184,8 +178,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qrp-d0-MNc" firstAttribute="leading" secondItem="ZM6-vM-vYa" secondAttribute="leading" id="2Kr-Di-lg9"/>
+                            <constraint firstItem="qUC-gI-aF2" firstAttribute="leading" secondItem="ZM6-vM-vYa" secondAttribute="leading" constant="10" id="32g-oa-ehf"/>
                             <constraint firstItem="DC3-WH-y0D" firstAttribute="leading" secondItem="bVi-N0-Cei" secondAttribute="leading" constant="35" id="A1E-Go-zEx"/>
                             <constraint firstItem="DR4-F6-5Rg" firstAttribute="top" secondItem="ZM6-vM-vYa" secondAttribute="top" constant="100" id="GfJ-xp-p97"/>
+                            <constraint firstItem="ZM6-vM-vYa" firstAttribute="trailing" secondItem="qUC-gI-aF2" secondAttribute="trailing" constant="10" id="LJf-wx-O21"/>
                             <constraint firstItem="5nh-gs-yyd" firstAttribute="leading" secondItem="ZM6-vM-vYa" secondAttribute="leading" constant="145.5" id="R6W-3b-UOr"/>
                             <constraint firstItem="qrp-d0-MNc" firstAttribute="top" secondItem="ZM6-vM-vYa" secondAttribute="top" id="TIW-Be-A7D"/>
                             <constraint firstItem="ZM6-vM-vYa" firstAttribute="trailing" secondItem="5nh-gs-yyd" secondAttribute="trailing" constant="145.5" id="VGH-JX-JdJ"/>
@@ -194,12 +190,14 @@
                             <constraint firstItem="ZM6-vM-vYa" firstAttribute="bottom" secondItem="qrp-d0-MNc" secondAttribute="bottom" id="fue-G7-mQg"/>
                             <constraint firstItem="DR4-F6-5Rg" firstAttribute="centerX" secondItem="bVi-N0-Cei" secondAttribute="centerX" id="j75-Qr-mUL"/>
                             <constraint firstItem="qrp-d0-MNc" firstAttribute="trailing" secondItem="ZM6-vM-vYa" secondAttribute="trailing" id="oAd-aw-n5l"/>
+                            <constraint firstItem="qUC-gI-aF2" firstAttribute="top" secondItem="DR4-F6-5Rg" secondAttribute="bottom" constant="100" id="upl-h3-T6T"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="84v-ei-ZZS"/>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
                         <outlet property="pgControll" destination="5nh-gs-yyd" id="4n5-Jx-lLE"/>
+                        <outlet property="pointsLabel" destination="qUC-gI-aF2" id="2eR-eC-Xpr"/>
                         <outlet property="scrollView" destination="qrp-d0-MNc" id="GIL-c2-rQa"/>
                     </connections>
                 </viewController>
