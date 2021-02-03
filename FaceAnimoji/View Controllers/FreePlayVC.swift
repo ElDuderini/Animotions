@@ -24,12 +24,21 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     var selectedScene = "blue"
     var fullSceneName = ""
     
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var baseFunc = BaseFunctions()
     //var lessonQuestions = LessonBrain()
     var mainMenu = MainMenuVC()
     
+    var correcntResponces = 0
+    
+    var totalQuestions = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        correcntResponces = 0
+        totalQuestions = 0
         
         let defaults = UserDefaults.standard
         
@@ -174,14 +183,32 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func backBtn(){
+        saveSessionData()
         self.dismiss(animated: true, completion: nil)
         baseFunc.Feedback()
     }
 
 @IBAction func awnserButton(sender: UIButton){
+    
     if analysis == sender.title(for: .normal){
         UserDefaults.standard.setValue(UserDefaults.standard.integer(forKey: "points") + 10, forKey: "points")
+        correcntResponces += 1
         baseFunc.Feedback()
     }
 }
+    
+    func saveSessionData(){
+        let newEntry = FreeplayData(context: self.context)
+        
+        newEntry.setValue(correcntResponces, forKeyPath: "questionsAnswered")
+        
+        let percentRight = Float(correcntResponces/totalQuestions) * 100
+        newEntry.setValue(percentRight, forKey: "sucessRate")
+        
+        do {
+            try self.context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
 }

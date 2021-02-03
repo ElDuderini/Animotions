@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6138C36C25C8AD44000CA925 /* FreePlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6138C36B25C8AD44000CA925 /* FreePlayVC.swift */; };
+		6138C37225C9DBF4000CA925 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 6138C37125C9DBF4000CA925 /* Charts */; };
+		6138C37A25CA0FC9000CA925 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6138C37925CA0FC9000CA925 /* StatsViewController.swift */; };
 		615DFF1325C0BB2100A268A1 /* AnimotionsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 615DFF1125C0BB2100A268A1 /* AnimotionsData.xcdatamodeld */; };
 		615DFF1925C0BF3E00A268A1 /* ShopDataConstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615DFF1825C0BF3E00A268A1 /* ShopDataConstruction.swift */; };
 		6180EA7125BA7CE8003CAE40 /* OptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */; };
@@ -44,8 +46,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6138C37625C9DBF5000CA925 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6138C36B25C8AD44000CA925 /* FreePlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreePlayVC.swift; sourceTree = "<group>"; };
+		6138C37925CA0FC9000CA925 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		615DFF1225C0BB2100A268A1 /* AnimotionsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimotionsData.xcdatamodel; sourceTree = "<group>"; };
 		615DFF1825C0BF3E00A268A1 /* ShopDataConstruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDataConstruction.swift; sourceTree = "<group>"; };
 		6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsVC.swift; sourceTree = "<group>"; };
@@ -76,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6138C37225C9DBF4000CA925 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +113,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6138C37D25CA112C000CA925 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		615DFF1725C0BE8700A268A1 /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +139,7 @@
 				61B4C5B025B7634800B48D0F /* MainMenuVC.swift */,
 				61B4C5A825B7609A00B48D0F /* ARVC.swift */,
 				6138C36B25C8AD44000CA925 /* FreePlayVC.swift */,
+				6138C37925CA0FC9000CA925 /* StatsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -126,6 +151,7 @@
 				7942AA412342693800A133C0 /* FaceAnimojiTests */,
 				7942AA4C2342693800A133C0 /* FaceAnimojiUITests */,
 				7942AA292342693100A133C0 /* Products */,
+				6138C37D25CA112C000CA925 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,12 +210,16 @@
 				7942AA242342693100A133C0 /* Sources */,
 				7942AA252342693100A133C0 /* Frameworks */,
 				7942AA262342693100A133C0 /* Resources */,
+				6138C37625C9DBF5000CA925 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = FaceAnimoji;
+			packageProductDependencies = (
+				6138C37125C9DBF4000CA925 /* Charts */,
+			);
 			productName = FaceAnimoji;
 			productReference = 7942AA282342693100A133C0 /* FaceAnimoji.app */;
 			productType = "com.apple.product-type.application";
@@ -262,6 +292,9 @@
 				Base,
 			);
 			mainGroup = 7942AA1F2342693100A133C0;
+			packageReferences = (
+				6138C37025C9DBF4000CA925 /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 7942AA292342693100A133C0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -317,6 +350,7 @@
 				6180EA8925BF9A84003CAE40 /* BaseFunctions.swift in Sources */,
 				6180EA8F25BF9EFD003CAE40 /* Question.swift in Sources */,
 				61B4C5B125B7634800B48D0F /* MainMenuVC.swift in Sources */,
+				6138C37A25CA0FC9000CA925 /* StatsViewController.swift in Sources */,
 				6138C36C25C8AD44000CA925 /* FreePlayVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,6 +686,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6138C37025C9DBF4000CA925 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6138C37125C9DBF4000CA925 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6138C37025C9DBF4000CA925 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		615DFF1125C0BB2100A268A1 /* AnimotionsData.xcdatamodeld */ = {

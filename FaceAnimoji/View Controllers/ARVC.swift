@@ -26,6 +26,8 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     var selectedScene = "blue"
     var fullSceneName = ""
     
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var baseFunc = BaseFunctions()
     var lessonQuestions = LessonBrain()
     var mainMenu = MainMenuVC()
