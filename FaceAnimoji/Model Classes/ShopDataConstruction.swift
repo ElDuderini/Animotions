@@ -24,6 +24,8 @@ class ShopDataConstruction{
     
     var priceIncrese : Int = 0
     
+    var priceIncrement = 50
+    
     func populateData() {
         
         priceIncrese = 50
@@ -43,6 +45,8 @@ class ShopDataConstruction{
         for index in 0...sceneArray.count - 1{
             sceneArray[index] = sceneArray[index].replacingOccurrences(of: ".scn", with: "")
         }
+        
+        sceneArray.sort()
         
         for index in 0...sceneArray.count - 1{
             
@@ -68,7 +72,7 @@ class ShopDataConstruction{
                 print("Dupe prevented for " + sceneArray[index])
             }
             
-            priceIncrese += priceIncrese;
+            priceIncrese += priceIncrement;
         }
         
     }

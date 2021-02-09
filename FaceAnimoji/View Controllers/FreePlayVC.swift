@@ -34,8 +34,13 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     
     var totalQuestions = 0
     
+    var beginTime = clock()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        beginTime = clock()
         
         correcntResponces = 0
         totalQuestions = 0
@@ -183,24 +188,30 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func backBtn(){
-        saveSessionData()
+        if(totalQuestions != 0){
+            saveSessionData()
+        }
         self.dismiss(animated: true, completion: nil)
         baseFunc.Feedback()
     }
-
-@IBAction func awnserButton(sender: UIButton){
     
-    if analysis == sender.title(for: .normal){
-        UserDefaults.standard.setValue(UserDefaults.standard.integer(forKey: "points") + 10, forKey: "points")
-        correcntResponces += 1
-        baseFunc.Feedback()
+    @IBAction func awnserButton(sender: UIButton){
+        totalQuestions += 1
+        if analysis == sender.title(for: .normal){
+            UserDefaults.standard.setValue(UserDefaults.standard.integer(forKey: "points") + 10, forKey: "points")
+            correcntResponces += 1
+            baseFunc.Feedback()
+        }
     }
-}
     
     func saveSessionData(){
         let newEntry = FreeplayData(context: self.context)
         
         newEntry.setValue(correcntResponces, forKeyPath: "questionsAnswered")
+        newEntry.setValue(Date(), forKey: "sessionDate")
+        
+        let timeInController = Double(clock() - beginTime) / Double(CLOCKS_PER_SEC)
+        newEntry.setValue(timeInController, forKey: "timeSpent")
         
         let percentRight = Float(correcntResponces/totalQuestions) * 100
         newEntry.setValue(percentRight, forKey: "sucessRate")

@@ -32,8 +32,18 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     var lessonQuestions = LessonBrain()
     var mainMenu = MainMenuVC()
     
+    var totalQuestions = 0
+    var beginTime = clock()
+    var beginTimePerQuestion = clock()
+    
+    var timePerQuestion = [Double]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        beginTime = clock()
+        beginTimePerQuestion = clock()
+        timePerQuestion.removeAll()
         
         lessonQuestions.ShuffleQuestions()
         
@@ -170,6 +180,10 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         expression(anchor: faceAnchor)
         
         if(lessonQuestions.checkAnswer(userAnswer: analysis)){
+            totalQuestions += 1
+            let timeForResponse = Double(clock() - beginTimePerQuestion) / Double(CLOCKS_PER_SEC)
+            timePerQuestion.append(timeForResponse)
+            beginTimePerQuestion = clock()
             lessonQuestions.nextQuestion()
             baseFunc.Feedback()
             OperationQueue.main.addOperation{
@@ -190,7 +204,31 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func backBtn(){
+        if(totalQuestions != 0){
+            saveSessionData()
+        }
         self.dismiss(animated: true, completion: nil)
         baseFunc.Feedback()
+    }
+    
+    func saveSessionData(){
+        let newEntry = LessonData(context: self.context)
+        
+        newEntry.setValue(totalQuestions, forKeyPath: "questionsAnswered")
+        newEntry.setValue(Date(), forKey: "sessionDate")
+        
+        let timeInController = Double(clock() - beginTime) / Double(CLOCKS_PER_SEC)
+        newEntry.setValue(timeInController, forKey: "timeSpent")
+        
+        
+        let totalTime = timePerQuestion.reduce(0, +)
+        let avgTimeSpentPerQuestion = totalTime / Double(timePerQuestion.count)
+        newEntry.setValue(avgTimeSpentPerQuestion, forKey: "avgTimeForResponse")
+        
+        do {
+            try self.context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
 }
