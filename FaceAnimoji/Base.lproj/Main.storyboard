@@ -543,11 +543,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbe-5J-soa" customClass="LineChartView" customModule="Charts">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbe-5J-soa" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="326" width="414" height="186"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylu-Wd-k0q" customClass="LineChartView" customModule="Charts">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylu-Wd-k0q" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="732" width="414" height="130"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
