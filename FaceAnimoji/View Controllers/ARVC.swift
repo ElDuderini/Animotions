@@ -139,11 +139,12 @@ class ARVC: UIViewController, ARSCNViewDelegate {
             && mouthOpen?.decimalValue ?? 0.0 < 0.3{
             self.analysis = "Happy"
         }
-        else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9
-                && mouthOpen?.decimalValue ?? 0.0 > 0.3{
-            self.analysis = "Joy"
-        }
-        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2{
+//        else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9
+//                && mouthOpen?.decimalValue ?? 0.0 > 0.3{
+//            self.analysis = "Joy"
+//        }
+        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.6 {
+           // print("sad")
             self.analysis = "Sad"
         }
         else if ((noseSneerLeft?.decimalValue ?? 0.0) + (noseSneerRight?.decimalValue ?? 0.0)) > 0.6{
@@ -164,6 +165,10 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) < 0.8
                 && ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) < 0.1 {
             self.analysis = "Neutral"
+        }
+        else if((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) < 0.2 {
+           // print("anxious")
+            self.analysis = "Anxious"
         }
         else{
             //If none of the emotions above are being made, then let the user know their expression is neutural
@@ -192,12 +197,20 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         }
         
         DispatchQueue.main.async {
-            //self.emoteLable.text = self.analysis
             let blendShapes = faceAnchor.blendShapes
             
             // This will only work correctly if the shape keys are given the exact same name as the blendshape names
             for (key, value) in blendShapes {
-                if let fValue = value as? Float{                    self.contentNode?.childNodes[0].morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
+                if let fValue = value as? Float{
+                    var childNodes: [SCNNode]?
+                    
+                    childNodes = self.contentNode?.childNodes
+                    
+                    for child in childNodes!{
+                       // print(child.morpher?.weight(forTargetNamed: key.rawValue))
+                      //  print(key.rawValue)
+                        child.morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
+                    }
                 }
             }
         }

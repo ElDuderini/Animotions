@@ -91,7 +91,7 @@ class StatsViewController: UIViewController {
             freeplayQuestionsLabel.text = freeplayQuestionText + "NA"
         }
         else{
-            var sucessRate : Float = 0
+            var sucessRate : Double = 0
             var totalQuestions = 0
             
             for freeplay in freeplayItems{
@@ -99,7 +99,7 @@ class StatsViewController: UIViewController {
                 sucessRate += freeplay.sucessRate
             }
             
-            sucessRate = sucessRate/Float(freeplayItems.count)
+            sucessRate = sucessRate/Double(freeplayItems.count)
             
             accuracyLabel.text = accuracyText + String(sucessRate) + "%"
             freeplayQuestionsLabel.text = freeplayQuestionText + String(totalQuestions)
@@ -203,8 +203,6 @@ class StatsViewController: UIViewController {
         
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        
-        print("Exported data")
         
         var file_name = "lessonData.csv"
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

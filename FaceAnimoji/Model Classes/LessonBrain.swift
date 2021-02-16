@@ -34,7 +34,7 @@ struct LessonBrain {
         Question(a: "Surprize", q: "How do you feel when a friend comes over that you weren't expecting?"),
         
         //scrap joy for now
-        Question(a: "Joy", q: "How do you feel when you get a gift you really wanted for your birthday?"),
+        //Question(a: "Joy", q: "How do you feel when you get a gift you really wanted for your birthday?"),
         
         Question(a: "Disgust", q: "How do you feel when you smell something bad?"),
         Question(a: "Disgust", q: "How do you feel when something tastes bad?"),
@@ -55,9 +55,12 @@ struct LessonBrain {
         Question(a: "Neutral", q: "How do you feel while you are waiting?"),
         Question(a: "Neutral", q: "How do you feel when nothing is happening?"),
         Question(a: "Neutral", q: "How do you feel you can't find something to do?"),
-        Question(a: "Neutral", q: "How do you feel when there is nothing to watch on TV?")
+        Question(a: "Neutral", q: "How do you feel when there is nothing to watch on TV?"),
         
-       // Question(a: "Anxious", q: ""),
+        Question(a: "Anxious", q: "How do you feel when you are at the dentist?"),
+        Question(a: "Anxious", q: "How do you feel when you are on a airplane?"),
+        Question(a: "Anxious", q: "How do you feel when you are at the doctor?"),
+        Question(a: "Anxious", q: "How do you feel when you try something different?"),
         
         //Add Anxious
     ]

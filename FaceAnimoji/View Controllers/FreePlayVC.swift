@@ -30,9 +30,9 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     //var lessonQuestions = LessonBrain()
     var mainMenu = MainMenuVC()
     
-    var correcntResponces = 0
+    var correcntResponces : Double = 0
     
-    var totalQuestions = 0
+    var totalQuestions : Double = 0
     
     var beginTime = clock()
     
@@ -139,7 +139,7 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
                 && mouthOpen?.decimalValue ?? 0.0 > 0.3{
             self.analysis = "Joy"
         }
-        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2{
+        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.6 {
             self.analysis = "Sad"
         }
         else if ((noseSneerLeft?.decimalValue ?? 0.0) + (noseSneerRight?.decimalValue ?? 0.0)) > 0.6{
@@ -156,6 +156,9 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         }
         else if ((eyeWideLeft?.decimalValue ?? 0.0) + (eyeWideRight?.decimalValue ?? 0.0)) > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5 && mouthOpen?.decimalValue ?? 0.0 > 0.5{
             self.analysis = "Fear"
+        }
+        else if((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) < 0.2 {
+            self.analysis = "Anxious"
         }
         else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) < 0.8
                 && ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) < 0.1 {
@@ -188,8 +191,8 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
                     childNodes = self.contentNode?.childNodes
                     
                     for child in childNodes!{
-                        print(child.morpher?.weight(forTargetNamed: key.rawValue))
-                        print(key.rawValue)
+                       // print(child.morpher?.weight(forTargetNamed: key.rawValue))
+                      //  print(key.rawValue)
                         child.morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
                     }
                     //  self.contentNode?.childNodes[0].morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
@@ -224,7 +227,10 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         let timeInController = Double(clock() - beginTime) / Double(CLOCKS_PER_SEC)
         newEntry.setValue(timeInController, forKey: "timeSpent")
         
-        let percentRight = Float(correcntResponces/totalQuestions) * 100
+        let percentRight = (correcntResponces/totalQuestions) * 100
+        print(correcntResponces)
+        print(totalQuestions)
+        print(correcntResponces/totalQuestions)
         newEntry.setValue(percentRight, forKey: "sucessRate")
         
         do {
