@@ -9,6 +9,8 @@
 import Foundation
 import AVFoundation
 import UIKit
+import ARKit
+import SceneKit
 
 class BaseFunctions {
     
@@ -43,6 +45,16 @@ class BaseFunctions {
         } catch let error{
             print(error.localizedDescription)
         }
+    }
+    
+    open func screenShot(sceneView:ARSCNView) -> UIImage?{
         
+        let screenshotImage : UIImage? = sceneView.snapshot()
+        
+        if let image = screenshotImage{
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
+        
+        return screenshotImage
     }
 }

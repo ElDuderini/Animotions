@@ -68,6 +68,14 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         // Access scene's rootNode
         contentNode = scene.rootNode
         
+        
+        var childNodes: [SCNNode]?
+        
+        childNodes = self.contentNode?.childNodes
+        
+        for child in childNodes!{
+            child.morpher?.unifiesNormals = true
+        }
     }
     
     func isKeyPresentInDefaults(key: String) -> Bool {
@@ -135,10 +143,10 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
             && mouthOpen?.decimalValue ?? 0.0 < 0.3{
             self.analysis = "Happy"
         }
-        else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9
-                && mouthOpen?.decimalValue ?? 0.0 > 0.3{
-            self.analysis = "Joy"
-        }
+        //        else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9
+        //                && mouthOpen?.decimalValue ?? 0.0 > 0.3{
+        //            self.analysis = "Joy"
+        //        }
         else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.6 {
             self.analysis = "Sad"
         }
@@ -179,23 +187,20 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         expression(anchor: faceAnchor)
         
         DispatchQueue.main.async {
-            //self.emoteLable.text = self.analysis
             let blendShapes = faceAnchor.blendShapes
             
             // This will only work correctly if the shape keys are given the exact same name as the blendshape names
             for (key, value) in blendShapes {
                 if let fValue = value as? Float{
-                    //let nodeArray: [SCNNode] = self.contentNode?.childNodes(passingTest: (SCNNode, UnsafeMutablePointer<ObjCBool>) -> Bool -> [SCNNode])
                     var childNodes: [SCNNode]?
                     
                     childNodes = self.contentNode?.childNodes
                     
                     for child in childNodes!{
-                       // print(child.morpher?.weight(forTargetNamed: key.rawValue))
-                      //  print(key.rawValue)
+                        // print(child.morpher?.weight(forTargetNamed: key.rawValue))
+                        //  print(key.rawValue)
                         child.morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
                     }
-                    //  self.contentNode?.childNodes[0].morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
                 }
             }
         }
@@ -238,5 +243,10 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+    }
+    
+    @IBAction func cameraPress(sender: UIButton){
+        baseFunc.Feedback()
+        baseFunc.screenShot(sceneView: sceneView)
     }
 }

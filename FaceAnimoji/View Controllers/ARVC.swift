@@ -72,6 +72,14 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         // Access scene's rootNode
         contentNode = scene.rootNode
         
+        var childNodes: [SCNNode]?
+        
+        childNodes = self.contentNode?.childNodes
+        
+        for child in childNodes!{
+            child.morpher?.unifiesNormals = true
+        }
+        
     }
     
     func isKeyPresentInDefaults(key: String) -> Bool {
@@ -222,6 +230,11 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         }
         self.dismiss(animated: true, completion: nil)
         baseFunc.Feedback()
+    }
+    
+    @IBAction func cameraPress(sender: UIButton){
+        baseFunc.Feedback()
+        baseFunc.screenShot(sceneView: sceneView)
     }
     
     func saveSessionData(){
