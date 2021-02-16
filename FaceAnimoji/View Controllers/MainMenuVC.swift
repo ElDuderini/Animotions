@@ -20,6 +20,8 @@ class MainMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //shopData.deleteData()
+        
         shopData.populateData()
         
         if(!isKeyPresentInDefaults(key: "audioOn")){

@@ -134,10 +134,7 @@ class StatsViewController: UIViewController {
     func setData(chart:LineChartView){
         
         var entries = [ChartDataEntry]()
-        //var referenceTimeInterval : TimeInterval = 0
-        //var dateObjects = [Date]()
         var index = 1
-        
 
         if(chart == freeplayChart){
             
@@ -149,37 +146,7 @@ class StatsViewController: UIViewController {
                 let entry = ChartDataEntry(x: Double(xAxis), y: yAxis)
                 entries.append(entry)
             }
-//
-//            if(freeplayItems.count == 0){
-//                return
-//            }
-//
-//            for date in freeplayItems{
-//                dateObjects.append(date.sessionDate ?? Date())
-//            }
-//
-//            if let minTimeInterval = (dateObjects.map{$0.timeIntervalSince1970}).min() {
-//                referenceTimeInterval = minTimeInterval
-//            }
-//
-//            let formatter = DateFormatter()
-//            formatter.dateStyle = .medium
-//            formatter.timeStyle = .none
-//            formatter.locale = Locale.current
-//
-//            let xValuesNumberFormatter = ChartAxisFormetter(referenceTimeInterval: referenceTimeInterval, dateFormatter: formatter)
-//            freeplayChart.xAxis.valueFormatter = xValuesNumberFormatter
-//
-//            for index in 0...freeplayItems.count - 1{
-//                let timeInterval = dateObjects[index].timeIntervalSince1970
-//                let xValue = (timeInterval - referenceTimeInterval) / (3600 * 24)
-//
-//                let yValue = Double(freeplayItems[index].sucessRate)
-//                let entry = ChartDataEntry(x: xValue, y: yValue)
-//                print(index)
-//                entries.append(entry)
-//            }
-//
+
             let dataSet = LineChartDataSet(entries: entries, label: "Sucess rate %")
             dataSet.mode = .linear
             dataSet.drawCirclesEnabled = false
@@ -198,8 +165,6 @@ class StatsViewController: UIViewController {
             percentFormat.percentSymbol = "%"
             
             freeplayChart.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: percentFormat )
-            
-            
 
         }
         else if(chart == lessonChart){
@@ -219,8 +184,6 @@ class StatsViewController: UIViewController {
             dataSet.lineWidth = 2.8
             dataSet.drawFilledEnabled = true
             dataSet.drawValuesEnabled = false
-            
-            
 
             let data = LineChartData(dataSet: dataSet)
 
@@ -233,6 +196,57 @@ class StatsViewController: UIViewController {
     @IBAction func backBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         baseFunc.Feedback()
+    }
+    
+    @IBAction func exportData(_ sender: Any){
+        baseFunc.Feedback()
+        
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        
+        print("Exported data")
+        
+        var file_name = "lessonData.csv"
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        var fileURL = path.appendingPathComponent(file_name)
+        
+        var csvLesson = "Session Number,Session Date,Questions Answered,Session Length,Average Response Time\n"
+        
+        var num = 0
+        
+        for lesson in lessonItems{
+            num += 1
+            csvLesson.append("\(num),\(df.string(from: lesson.sessionDate ?? Date())),\(lesson.questionsAnswered),\(lesson.timeSpent),\(lesson.avgTimeForResponse)\n")
+        }
+        
+        do{
+            try csvLesson.write(to: fileURL, atomically: true, encoding: .utf8)
+            print("Exported Lessons")
+        }
+        catch{
+            print("Unable to export lesson data")
+        }
+        
+        file_name = "freePlayData.csv"
+        fileURL = path.appendingPathComponent(file_name)
+        
+        var csvfreePlay = "Session Number,Session Date,Questions Answered,Session Length,Sucess Rate\n"
+        
+        num = 0
+        
+        for freeplay in freeplayItems{
+            num += 1
+            csvfreePlay.append("\(num),\(df.string(from: freeplay.sessionDate ?? Date() )),\(freeplay.questionsAnswered),\(freeplay.timeSpent),\(freeplay.sucessRate)\n")
+        }
+        
+        do{
+            try csvfreePlay.write(to: fileURL, atomically: true, encoding: .utf8)
+            print("Exported Freeplay")
+        }
+        catch{
+            print("Unable to export freeplay data")
+        }
+        
     }
     
     /*

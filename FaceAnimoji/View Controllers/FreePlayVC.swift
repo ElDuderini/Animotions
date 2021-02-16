@@ -181,7 +181,18 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
             
             // This will only work correctly if the shape keys are given the exact same name as the blendshape names
             for (key, value) in blendShapes {
-                if let fValue = value as? Float{                    self.contentNode?.childNodes[0].morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
+                if let fValue = value as? Float{
+                    //let nodeArray: [SCNNode] = self.contentNode?.childNodes(passingTest: (SCNNode, UnsafeMutablePointer<ObjCBool>) -> Bool -> [SCNNode])
+                    var childNodes: [SCNNode]?
+                    
+                    childNodes = self.contentNode?.childNodes
+                    
+                    for child in childNodes!{
+                        print(child.morpher?.weight(forTargetNamed: key.rawValue))
+                        print(key.rawValue)
+                        child.morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
+                    }
+                    //  self.contentNode?.childNodes[0].morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
                 }
             }
         }
