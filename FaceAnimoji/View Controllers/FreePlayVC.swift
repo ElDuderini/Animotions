@@ -36,6 +36,8 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     
     var beginTime = clock()
     
+    var student:StudentData? = nil
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +47,7 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         correcntResponces = 0
         totalQuestions = 0
         
-        let defaults = UserDefaults.standard
+       // let defaults = UserDefaults.standard
         
         // Set ViewController as ARSCNView's delegate
         sceneView.delegate = self
@@ -53,11 +55,13 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
-        if(!isKeyPresentInDefaults(key: "Face")){
-            defaults.set("white", forKey: "Face")
-        }
+//        if(!isKeyPresentInDefaults(key: "Face")){
+//            defaults.set("white", forKey: "Face")
+//        }
         
-        selectedScene = defaults.string(forKey: "Face")!
+        selectedScene = (student?.lastUsedMask)!
+            
+            //defaults.string(forKey: "Face")!
         
         //Establish which scene will be used
         fullSceneName = "art.scnassets/" + selectedScene + ".scn"
@@ -78,9 +82,9 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    func isKeyPresentInDefaults(key: String) -> Bool {
-        return UserDefaults.standard.object(forKey: key) != nil
-    }
+//    func isKeyPresentInDefaults(key: String) -> Bool {
+//        return UserDefaults.standard.object(forKey: key) != nil
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -217,7 +221,9 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     @IBAction func awnserButton(sender: UIButton){
         totalQuestions += 1
         if analysis == sender.title(for: .normal){
-            UserDefaults.standard.setValue(UserDefaults.standard.integer(forKey: "points") + 10, forKey: "points")
+            let addedPoints = student!.points + 10
+            student?.setValue(addedPoints, forKey: "points")
+            //UserDefaults.standard.setValue(UserDefaults.standard.integer(forKey: "points") + 10, forKey: "points")
             correcntResponces += 1
             baseFunc.Feedback()
         }
@@ -231,6 +237,8 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         
         let timeInController = Double(clock() - beginTime) / Double(CLOCKS_PER_SEC)
         newEntry.setValue(timeInController, forKey: "timeSpent")
+        
+        newEntry.setValue(student!, forKey: "student")
         
         let percentRight = (correcntResponces/totalQuestions) * 100
         print(correcntResponces)

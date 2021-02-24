@@ -40,6 +40,8 @@ class StatsViewController: UIViewController {
     let accuracyText = "Response Accuracy: "
     let freeplayQuestionText = "Questions awnsered: "
     
+    var student:StudentData? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,11 +51,18 @@ class StatsViewController: UIViewController {
         generateChart(chart: lessonChart)
         generateChart(chart: freeplayChart)
         
+        let requestLesson = LessonData.fetchRequest() as NSFetchRequest<LessonData>
+        
+        let predString = "student == %@"
+        
+        let pred = NSPredicate(format: predString, student!)
+        requestLesson.predicate = pred
+        
         do{
-            lessonItems = try context.fetch(NSFetchRequest(entityName: "LessonData"))
+            lessonItems = try context.fetch(requestLesson)
         }
         catch{
-            print("Unable to retrive lesson data")
+            print("Unable to retrive data")
         }
         
         if(lessonItems.isEmpty){
@@ -75,16 +84,23 @@ class StatsViewController: UIViewController {
             avgResponseLabel.text = avgResponseText + String(lessonResponseTime) + " seconds"
             lessonQuestionsLabel.text = lessonQuestionText + String(totalQuestions)
             
-            setData(chart: lessonChart)
+            if(lessonItems.count != 1){
+                setData(chart: lessonChart)
+            }
+            
         }
+        
+        
+        let requestFreeplay = FreeplayData.fetchRequest() as NSFetchRequest<FreeplayData>
+        
+        requestFreeplay.predicate = pred
         
         do{
-            freeplayItems = try context.fetch(NSFetchRequest(entityName: "FreeplayData"))
+            freeplayItems = try context.fetch(requestFreeplay)
         }
         catch{
-            print("Unable to retrive freeplay data")
+            print("Unable to retrive data")
         }
-        
         
         if(freeplayItems.isEmpty){
             accuracyLabel.text = accuracyText + "NA"
@@ -104,7 +120,9 @@ class StatsViewController: UIViewController {
             accuracyLabel.text = accuracyText + String(sucessRate) + "%"
             freeplayQuestionsLabel.text = freeplayQuestionText + String(totalQuestions)
             
-            setData(chart: freeplayChart)
+            if(freeplayItems.count != 1){
+                setData(chart: freeplayChart)
+            }
         }
         // Do any additional setup after loading the view.
     }
@@ -204,7 +222,7 @@ class StatsViewController: UIViewController {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd hh:mm:ss"
         
-        var file_name = "lessonData.csv"
+        var file_name = (student?.teacher?.username)! + " " + (student?.fullName)! + " lessonData.csv"
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         var fileURL = path.appendingPathComponent(file_name)
         
@@ -225,7 +243,7 @@ class StatsViewController: UIViewController {
             print("Unable to export lesson data")
         }
         
-        file_name = "freePlayData.csv"
+        file_name = (student?.teacher?.username)! + " " + (student?.fullName)! + " freePlayData.csv"
         fileURL = path.appendingPathComponent(file_name)
         
         var csvfreePlay = "Session Number,Session Date,Questions Answered,Session Length,Sucess Rate\n"
@@ -246,15 +264,4 @@ class StatsViewController: UIViewController {
         }
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

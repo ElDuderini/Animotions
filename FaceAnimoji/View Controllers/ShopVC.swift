@@ -32,7 +32,9 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     var baseFunc = BaseFunctions()
     var shopData = ShopDataConstruction()
     
-    let defaults = UserDefaults.standard
+   // let defaults = UserDefaults.standard
+    
+    var student : StudentData? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +48,30 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         
         scrollView.contentSize = CGSize(width: view.frame.height, height: view.frame.height)
         
+        
+        let request = ShopData.fetchRequest() as NSFetchRequest<ShopData>
+
+        let predString = "student == %@"
+
+        let pred = NSPredicate(format: predString, student!)
+
+        request.predicate = pred
+
         do{
-            self.myButtonArray = try context.fetch(ShopData.fetchRequest())
+            self.myButtonArray = try context.fetch(request)
         }
         catch{
-            print("Can't retrive data");
+            print("Unable to retrive data")
         }
+        
+//        do{
+//
+//
+//            self.myButtonArray = try context.fetch(ShopData.fetchRequest())
+//        }
+//        catch{
+//            print("Can't retrive data");
+//        }
         
         
         scrollView.delegate = self
@@ -111,9 +131,9 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             
             let request = ShopData.fetchRequest() as NSFetchRequest<ShopData>
             
-            let predString = "name CONTAINS '" + buttonTitle + "'"
+            let predString = "name == '" + buttonTitle + "' && student == %@"
             
-            let pred = NSPredicate(format: predString)
+            let pred = NSPredicate(format: predString, student!)
             request.predicate = pred
             
             var item:[ShopData] = []
@@ -126,13 +146,18 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             }
             
             if(item[0].purchased){
-                defaults.set(buttonTitle, forKey: "Face")
+                //defaults.set(buttonTitle, forKey: "Face")
+                student?.setValue(buttonTitle, forKey: "lastUsedMask")
             }
             else{
-                if(item[0].price < UserDefaults.standard.integer(forKey: "points")){
+                if(item[0].price < student!.points){
                     item[0].setValue(true, forKey: "purchased")
-                    defaults.setValue(defaults.integer(forKey: "points") - Int(item[0].price), forKey: "points")
-                    defaults.set(buttonTitle, forKey: "Face")
+                    
+                    let pointsAfterDeduction = student!.points - Int64(item[0].price)
+                    student?.setValue(pointsAfterDeduction, forKey: "points")
+                    student?.setValue(buttonTitle, forKey: "lastUsedMask")
+                    //defaults.setValue(defaults.integer(forKey: "points") - Int(item[0].price), forKey: "points")
+                    //defaults.set(buttonTitle, forKey: "Face")
                     do {
                         try self.context.save()
                     } catch let error as NSError {
@@ -154,7 +179,8 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     }
     
     func changePointsValue(){
-        pointsLabel.text = "Points earned: " + String(defaults.integer(forKey: "points"))
+        pointsLabel.text = "Points earned: " + String(student!.points)
+        //String(defaults.integer(forKey: "points"))
     }
     
     func removeSubviews(){
@@ -163,14 +189,4 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             subView.removeFromSuperview()
         }
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

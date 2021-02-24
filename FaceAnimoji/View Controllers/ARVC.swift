@@ -38,6 +38,8 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     
     var timePerQuestion = [Double]()
     
+    var student:StudentData? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,19 +51,21 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         
         self.emoteLable.text = lessonQuestions.getQuestionText()
         
-        let defaults = UserDefaults.standard
+        //let defaults = UserDefaults.standard
         
         // Set ViewController as ARSCNView's delegate
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+//
+//        if(!isKeyPresentInDefaults(key: "Face")){
+//            defaults.set("white", forKey: "Face")
+//        }
         
-        if(!isKeyPresentInDefaults(key: "Face")){
-            defaults.set("white", forKey: "Face")
-        }
-        
-        selectedScene = defaults.string(forKey: "Face")!
+        selectedScene = student!.lastUsedMask!
+            
+            //defaults.string(forKey: "Face")!
         
         //Establish which scene will be used
         fullSceneName = "art.scnassets/" + selectedScene + ".scn"
@@ -152,7 +156,6 @@ class ARVC: UIViewController, ARSCNViewDelegate {
 //            self.analysis = "Joy"
 //        }
         else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.6 {
-           // print("sad")
             self.analysis = "Sad"
         }
         else if ((noseSneerLeft?.decimalValue ?? 0.0) + (noseSneerRight?.decimalValue ?? 0.0)) > 0.6{
@@ -175,7 +178,6 @@ class ARVC: UIViewController, ARSCNViewDelegate {
             self.analysis = "Neutral"
         }
         else if((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) < 0.2 {
-           // print("anxious")
             self.analysis = "Anxious"
         }
         else{
@@ -192,7 +194,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         
         expression(anchor: faceAnchor)
         
-        if(lessonQuestions.checkAnswer(userAnswer: analysis)){
+        if(lessonQuestions.checkAnswer(userAnswer: analysis, studentData: student!)){
             totalQuestions += 1
             let timeForResponse = Double(clock() - beginTimePerQuestion) / Double(CLOCKS_PER_SEC)
             timePerQuestion.append(timeForResponse)
@@ -242,6 +244,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         
         newEntry.setValue(totalQuestions, forKeyPath: "questionsAnswered")
         newEntry.setValue(Date(), forKey: "sessionDate")
+        newEntry.setValue(student!, forKey: "student")
         
         let timeInController = Double(clock() - beginTime) / Double(CLOCKS_PER_SEC)
         newEntry.setValue(timeInController, forKey: "timeSpent")

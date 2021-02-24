@@ -26,7 +26,7 @@ class ShopDataConstruction{
     
     var priceIncrement = 50
     
-    func populateData() {
+    func populateData(studentData:StudentData) {
         
         priceIncrese = 50
         
@@ -52,9 +52,9 @@ class ShopDataConstruction{
             
             let request = ShopData.fetchRequest() as NSFetchRequest<ShopData>
             
-            let predString = "name CONTAINS '" + sceneArray[index] + "'"
+            let predString = "name == '" + sceneArray[index] + "' && student == %@"
             
-            let pred = NSPredicate(format: predString)
+            let pred = NSPredicate(format: predString, studentData)
             request.predicate = pred
             
             do{
@@ -65,7 +65,7 @@ class ShopDataConstruction{
             }
             
             if(items.isEmpty){
-                save(name: sceneArray[index], cost: Int64(Int32(priceIncrese)))
+                save(name: sceneArray[index], cost: Int64(Int32(priceIncrese)), studentData: studentData)
                 print("New entry created for " + sceneArray[index])
             }
             else{
@@ -77,7 +77,7 @@ class ShopDataConstruction{
         
     }
     
-    func save(name: String, cost: Int64) {
+    func save(name: String, cost: Int64, studentData: StudentData) {
         
         let newFace = ShopData(context: self.context)
         
@@ -85,6 +85,7 @@ class ShopDataConstruction{
         newFace.setValue(false, forKey: "purchased")
         newFace.setValue(cost, forKey: "price")
         newFace.setValue(Date(), forKey: "dateCreated")
+        newFace.setValue(studentData, forKey: "student")
         
         do {
             try self.context.save()

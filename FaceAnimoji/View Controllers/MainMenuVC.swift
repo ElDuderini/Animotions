@@ -8,21 +8,34 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class MainMenuVC: UIViewController {
-
+    
     let defaults = UserDefaults.standard
+    
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    @IBOutlet weak var currentStudentLabel: UILabel!
     
     var BaseFunc = BaseFunctions()
     
     var shopData = ShopDataConstruction()
     
+    var teachers:[TeacherData] = []
+    
+    var teacher:TeacherData?
+    
+    var students:[StudentData] = []
+    
+    var student:StudentData?
+    
+    @IBOutlet var mainMenuButtonArray: [UIButton]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //shopData.deleteData()
-        
-        shopData.populateData()
         
         if(!isKeyPresentInDefaults(key: "audioOn")){
             defaults.set(true, forKey: "audioOn")
@@ -35,8 +48,80 @@ class MainMenuVC: UIViewController {
         if(!isKeyPresentInDefaults(key: "points")){
             defaults.set(0, forKey:"points")
         }
+        
+        loadStudentName()
+    }
+    
+    func loadStudentName(){
+        if(teacher!.selectedStudent != nil){
+            currentStudentLabel.text = teacher!.selectedStudent
+            for button in mainMenuButtonArray{
+                button.isEnabled = true
+            }
+            getCurrentStudent()
+            shopData.populateData(studentData: student!)
+        }
+        else{
+            currentStudentLabel.text = "Please create a student before playing"
+            
+            for button in mainMenuButtonArray{
+                button.isEnabled = false
+            }
+        }
+    }
+    
+    func getCurrentStudent(){
+        print("Updating table")
+        
+        let request = StudentData.fetchRequest() as NSFetchRequest<StudentData>
 
-        // Do any additional setup after loading the view.
+        let predString = "teacher == %@ && fullName == '" + currentStudentLabel.text! + "'"
+
+        let pred = NSPredicate(format: predString, teacher!)
+
+        request.predicate = pred
+
+        do{
+            students = try context.fetch(request)
+        }
+        catch{
+            print("Unable to retrive data")
+        }
+        
+        student = students[0]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "studentVC" :
+            let destinationVC:StudentVC = segue.destination as! StudentVC
+            destinationVC.teacher = teacher
+            destinationVC.mainMenu = self
+            break;
+        
+        case "statsVC" :
+            let destinationVC:StatsViewController = segue.destination as! StatsViewController
+            destinationVC.student = student
+            break;
+            
+        case "freeplayVC":
+            let destinationVC:FreePlayVC = segue.destination as! FreePlayVC
+            destinationVC.student = student
+            break;
+            
+        case "lessonVC":
+            let destinationVC:ARVC = segue.destination as! ARVC
+            destinationVC.student = student
+            break;
+            
+        case "shopVC":
+            let destinationVC:ShopVC = segue.destination as! ShopVC
+            destinationVC.student = student
+            break;
+            
+        default:
+            break;
+        }
     }
     
     @IBAction func ButtonPress(){
@@ -46,15 +131,9 @@ class MainMenuVC: UIViewController {
     func isKeyPresentInDefaults(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func logOutBtn(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        BaseFunc.Feedback()
     }
-    */
-
 }

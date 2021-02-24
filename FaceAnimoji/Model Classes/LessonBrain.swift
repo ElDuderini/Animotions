@@ -13,7 +13,7 @@ struct LessonBrain {
     var questionNumber = 0
     var score = 0
     
-    let defaults = UserDefaults.standard
+   // let defaults = UserDefaults.standard
     
     var quiz = [
         Question(a: "Happy", q: "How do you feel when you play with your friends?"),
@@ -87,10 +87,12 @@ struct LessonBrain {
         }
     }
     
-    mutating func checkAnswer(userAnswer: String) -> Bool {
+    mutating func checkAnswer(userAnswer: String, studentData: StudentData) -> Bool {
         if userAnswer == quiz[questionNumber].answer {
             score += 10
-            defaults.setValue(defaults.integer(forKey: "points") + 10, forKey: "points")
+            let addedPoints = studentData.points + 10
+            studentData.setValue(addedPoints, forKey: "points")
+            //defaults.setValue(defaults.integer(forKey: "points") + 10, forKey: "points")
             return true
         } else {
             return false
