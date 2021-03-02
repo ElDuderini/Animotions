@@ -39,6 +39,8 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        baseFunc.setUpBackground(view: self.view, imageName: "BackgroundPink")
+        
         changePointsValue()
         generateStore()
         // Do any additional setup after loading the view.
@@ -64,16 +66,6 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             print("Unable to retrive data")
         }
         
-//        do{
-//
-//
-//            self.myButtonArray = try context.fetch(ShopData.fetchRequest())
-//        }
-//        catch{
-//            print("Can't retrive data");
-//        }
-        
-        
         scrollView.delegate = self
         
         for index in 0...myButtonArray.count - 1{
@@ -87,10 +79,10 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             button.frame = CGRect(x: xCord, y: view.frame.height/2, width: 100, height: 100)
             
             button.setTitle(myButtonArray[index].name, for: .normal)
-            button.backgroundColor = UIColor.systemBlue
+            button.backgroundColor = UIColor.systemOrange
             button.layer.borderColor = UIColor.brown.cgColor
             button.layer.borderWidth = 5
-            button.setTitleColor(UIColor.black, for: .normal)
+            button.setTitleColor(UIColor.white, for: .normal)
             button.contentHorizontalAlignment = .center
             button.titleLabel?.font = UIFont(name: "Arial", size: 40)
             button.layer.cornerRadius = 5
@@ -146,7 +138,6 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             }
             
             if(item[0].purchased){
-                //defaults.set(buttonTitle, forKey: "Face")
                 student?.setValue(buttonTitle, forKey: "lastUsedMask")
             }
             else{
@@ -156,8 +147,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
                     let pointsAfterDeduction = student!.points - Int64(item[0].price)
                     student?.setValue(pointsAfterDeduction, forKey: "points")
                     student?.setValue(buttonTitle, forKey: "lastUsedMask")
-                    //defaults.setValue(defaults.integer(forKey: "points") - Int(item[0].price), forKey: "points")
-                    //defaults.set(buttonTitle, forKey: "Face")
+                    
                     do {
                         try self.context.save()
                     } catch let error as NSError {
@@ -180,7 +170,6 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     
     func changePointsValue(){
         pointsLabel.text = "Points earned: " + String(student!.points)
-        //String(defaults.integer(forKey: "points"))
     }
     
     func removeSubviews(){

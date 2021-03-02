@@ -22,6 +22,8 @@ class OptionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        baseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
+        
         hapticToggle.isOn = defaults.bool(forKey: "hapticOn")
         
         audioToggle.isOn = defaults.bool(forKey: "audioOn")
@@ -43,14 +45,4 @@ class OptionsVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
         baseFunc.Feedback()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

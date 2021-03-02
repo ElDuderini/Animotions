@@ -57,4 +57,18 @@ class BaseFunctions {
         
         return screenshotImage
     }
+    
+    func setUpBackground(view: UIView, imageName:String){
+        
+        let background = UIImage(named: imageName)
+        
+        var imageView:UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode = UIView.ContentMode.scaleToFill
+        imageView.clipsToBounds = true
+        imageView.image = background
+        imageView.center = view.center
+        view.addSubview(imageView)
+        view.sendSubviewToBack(imageView)
+    }
 }

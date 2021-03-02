@@ -27,7 +27,7 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var baseFunc = BaseFunctions()
-    //var lessonQuestions = LessonBrain()
+    
     var mainMenu = MainMenuVC()
     
     var correcntResponces : Double = 0
@@ -47,21 +47,14 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         correcntResponces = 0
         totalQuestions = 0
         
-       // let defaults = UserDefaults.standard
-        
         // Set ViewController as ARSCNView's delegate
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        
-//        if(!isKeyPresentInDefaults(key: "Face")){
-//            defaults.set("white", forKey: "Face")
-//        }
-        
+
         selectedScene = (student?.lastUsedMask)!
             
-            //defaults.string(forKey: "Face")!
         
         //Establish which scene will be used
         fullSceneName = "art.scnassets/" + selectedScene + ".scn"
@@ -81,10 +74,6 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
             child.morpher?.unifiesNormals = true
         }
     }
-    
-//    func isKeyPresentInDefaults(key: String) -> Bool {
-//        return UserDefaults.standard.object(forKey: key) != nil
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -223,7 +212,6 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         if analysis == sender.title(for: .normal){
             let addedPoints = student!.points + 10
             student?.setValue(addedPoints, forKey: "points")
-            //UserDefaults.standard.setValue(UserDefaults.standard.integer(forKey: "points") + 10, forKey: "points")
             correcntResponces += 1
             baseFunc.Feedback()
         }

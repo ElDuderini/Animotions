@@ -16,7 +16,6 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var emoteLable: UILabel!
     var contentNode: SCNNode? = nil
-    //var contentNode: SCNNode? = nil
     
     var player : AVAudioPlayer?
     
@@ -51,21 +50,13 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         
         self.emoteLable.text = lessonQuestions.getQuestionText()
         
-        //let defaults = UserDefaults.standard
-        
         // Set ViewController as ARSCNView's delegate
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-//
-//        if(!isKeyPresentInDefaults(key: "Face")){
-//            defaults.set("white", forKey: "Face")
-//        }
         
         selectedScene = student!.lastUsedMask!
-            
-            //defaults.string(forKey: "Face")!
         
         //Establish which scene will be used
         fullSceneName = "art.scnassets/" + selectedScene + ".scn"

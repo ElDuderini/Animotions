@@ -43,7 +43,6 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         BaseFunc.Feedback()
         
         var fullNameFeild : UITextField?
-       // var lastNameFeild : UITextField?
         
         let dialogMessage = UIAlertController(title: "Add new student", message: "Please provide student full name", preferredStyle: .alert)
         
@@ -51,7 +50,6 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             (ACTION) -> Void in
             
             let full = fullNameFeild?.text
-           // let last = lastNameFeild?.text
             
             if (full != ""){
                 self.createStudent(fullName: full!)
@@ -74,11 +72,6 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             textFeild.placeholder = "Enter full name"
         }
         
-//        dialogMessage.addTextField{(textFeild) in
-//            lastNameFeild = textFeild
-//            textFeild.placeholder = "Enter last name"
-//        }
-        
         self.present(dialogMessage, animated: true, completion: nil)
         
     }
@@ -88,20 +81,22 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let newStudent = StudentData(context: self.context)
         
         newStudent.setValue(fullName, forKeyPath: "fullName")
-        //newStudent.setValue(last, forKey: "lastName")
         newStudent.setValue(0, forKey: "points")
         newStudent.setValue("white", forKey: "lastUsedMask")
         newStudent.setValue(teacher!, forKey: "teacher");
         
         updateTeacher(student: newStudent)
+        saveContex()
         
+        updateTable()
+    }
+    
+    func saveContex() {
         do {
             try self.context.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
-        
-        updateTable()
     }
     
     func updateTeacher(student: StudentData){
@@ -122,6 +117,8 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 
         do{
             studentArray = try context.fetch(request)
+            
+            print(studentArray)
         }
         catch{
             print("Unable to retrive data")
@@ -159,13 +156,74 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         return cell!
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete{
-//            let student = studentArray[indexPath.row]
-//            context.delete(student)
-//            updateTable()
-//        }
-//    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+            let alert = UIAlertController(title: "", message: "Change student name", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: { (textField) in
+                if(self.searching){
+                    textField.text = self.studentSearchArray[indexPath.row].fullName
+                }
+                else {
+                    textField.text = self.studentArray[indexPath.row].fullName
+                }
+            })
+            alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
+                if(self.searching){
+                    self.studentSearchArray[indexPath.row].setValue(alert.textFields?.first?.text!, forKey: "fullName")
+                    self.updateTeacher(student: self.studentSearchArray[indexPath.row])
+                }
+                else{
+                    self.studentArray[indexPath.row].setValue(alert.textFields?.first?.text!, forKey: "fullName")
+                    self.updateTeacher(student: self.studentArray[indexPath.row])
+                }
+                
+                self.saveContex()
+                self.studentList.reloadData()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: false)
+        })
+
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { [self] (action, indexPath) in
+            var studentName:String
+            if(searching){
+                studentName = self.studentSearchArray[indexPath.row].fullName!
+            }
+            else{
+                studentName = self.studentArray[indexPath.row].fullName!
+            }
+            let alert = UIAlertController(title: "", message: "Are you sure you want to delete " + studentName + "?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (updateAction) in
+                if(searching){
+                    
+                    if(teacher?.selectedStudent == self.studentSearchArray[indexPath.row].fullName){
+                        teacher!.setValue("", forKey: "selectedStudent")
+                    }
+                    
+                    context.delete(self.studentSearchArray[indexPath.row])
+                }
+                else{
+                    
+                    if(teacher?.selectedStudent == self.studentArray[indexPath.row].fullName){
+                        teacher!.setValue("", forKey: "selectedStudent")
+                    }
+                    
+                    context.delete(self.studentArray[indexPath.row])
+                }
+                
+                self.saveContex()
+                self.studentList.reloadData()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: false)
+        })
+
+        return [deleteAction, editAction]
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         studentSearchArray = studentArray.filter({$0.fullName!.prefix(searchText.count) == searchText})

@@ -25,9 +25,9 @@
         <attribute name="fullName" optional="YES" attributeType="String"/>
         <attribute name="lastUsedMask" optional="YES" attributeType="String"/>
         <attribute name="points" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="freeplaySessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FreeplayData" inverseName="student" inverseEntity="FreeplayData"/>
-        <relationship name="lessonSessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LessonData" inverseName="student" inverseEntity="LessonData"/>
-        <relationship name="shopData" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShopData" inverseName="student" inverseEntity="ShopData"/>
+        <relationship name="freeplaySessions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FreeplayData" inverseName="student" inverseEntity="FreeplayData"/>
+        <relationship name="lessonSessions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LessonData" inverseName="student" inverseEntity="LessonData"/>
+        <relationship name="shopData" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ShopData" inverseName="student" inverseEntity="ShopData"/>
         <relationship name="teacher" maxCount="1" deletionRule="Nullify" destinationEntity="TeacherData" inverseName="students" inverseEntity="TeacherData"/>
     </entity>
     <entity name="TeacherData" representedClassName="TeacherData" syncable="YES" codeGenerationType="class">

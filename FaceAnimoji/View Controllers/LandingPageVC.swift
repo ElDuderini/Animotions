@@ -23,10 +23,14 @@ class LandingPageVC: UIViewController {
     
     let defaults = UserDefaults.standard
     
+    var baseFunc = BaseFunctions()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         passwordField.isSecureTextEntry = true
+        
+        baseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
         
         // Do any additional setup after loading the view.
     }
@@ -82,6 +86,7 @@ class LandingPageVC: UIViewController {
     }
     
     @IBAction func enterBtn(_ sender: UIButton) {
+        baseFunc.Feedback()
         
         if(entryTypeToggle.selectedSegmentIndex == 0){
             

@@ -35,7 +35,7 @@ class MainMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //shopData.deleteData()
+        BaseFunc.setUpBackground(view: self.view, imageName: "BackgroundGreen")
         
         if(!isKeyPresentInDefaults(key: "audioOn")){
             defaults.set(true, forKey: "audioOn")
@@ -53,7 +53,7 @@ class MainMenuVC: UIViewController {
     }
     
     func loadStudentName(){
-        if(teacher!.selectedStudent != nil){
+        if(teacher!.selectedStudent != nil && teacher!.selectedStudent != ""){
             currentStudentLabel.text = teacher!.selectedStudent
             for button in mainMenuButtonArray{
                 button.isEnabled = true
