@@ -11,7 +11,7 @@ import CoreData
 
 class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-
+    
     @IBOutlet weak var studentSearch: UISearchBar!
     
     @IBOutlet weak var studentList: UITableView!
@@ -31,6 +31,8 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     var searching = false
     
     var studentSearchArray:[StudentData] = []
+    
+    var studentNameCheck:[StudentData] = []
     
     //Need to set up checks for duplicate students in a future patch
     
@@ -57,10 +59,12 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             
             if (full != ""){
                 self.createStudent(fullName: full!)
+                //self.updateTable()
             }
             else{
                 return
             }
+            self.updateTable()
         })
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel){
@@ -80,8 +84,46 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         
     }
     
+    //This method is used to make sure that the teacher doesn't make a student with the same name
+    func searchStudent(studentName:String) -> Bool{
+        let request = StudentData.fetchRequest() as NSFetchRequest<StudentData>
+        
+        let predString = "fullName == %@ && teacher == %@"
+        
+        let pred = NSPredicate(format: predString, studentName, teacher!)
+        request.predicate = pred
+        
+        do{
+            studentNameCheck = try context.fetch(request)
+        }
+        catch{
+            print("Unable to retrive data")
+        }
+        
+        if(studentNameCheck.isEmpty){
+            print("No students found")
+            return false
+        }
+        else{
+            print("Teacher name " + studentName + " found!")
+            return true
+        }
+    }
+    
+    //This is a warning message the teacher gets when they try to add a student with a name that already exists in coreData
+    func warningAlert() {
+        let alert = UIAlertController(title: "", message: "Duplicate names not allowed", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: false)
+    }
+    
     //If the user adds a new student, then create a new studentEntry in studentData
     func createStudent(fullName: String){
+        
+        if(searchStudent(studentName: fullName)){
+            warningAlert()
+            return;
+        }
         
         let newStudent = StudentData(context: self.context)
         
@@ -118,13 +160,13 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         print("Updating table")
         
         let request = StudentData.fetchRequest() as NSFetchRequest<StudentData>
-
+        
         let predString = "teacher == %@"
-
+        
         let pred = NSPredicate(format: predString, teacher!)
-
+        
         request.predicate = pred
-
+        
         do{
             studentArray = try context.fetch(request)
             
@@ -144,13 +186,13 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     //When touching a cell in the tableview, then update the currentStudent
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-//        if(searching){
-//            let student = studentSearchArray[indexPath.row]
-//            updateTeacher(student: student)
-//        }
-//        else{
-            let student = studentArray[indexPath.row]
-            updateTeacher(student: student)
+        //        if(searching){
+        //            let student = studentSearchArray[indexPath.row]
+        //            updateTeacher(student: student)
+        //        }
+        //        else{
+        let student = studentArray[indexPath.row]
+        updateTeacher(student: student)
         //}
     }
     
@@ -180,7 +222,7 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
     //Set up edit actions for the teacher to use
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
@@ -196,8 +238,15 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
                 }
             })
             alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
+                
+                let studentName = alert.textFields?.first?.text!
+                if(self.searchStudent(studentName: studentName!)){
+                    self.warningAlert()
+                    return;
+                }
+                
                 if(self.searching){
-                    self.studentSearchArray[indexPath.row].setValue(alert.textFields?.first?.text!, forKey: "fullName")
+                    self.studentSearchArray[indexPath.row].setValue(studentName, forKey: "fullName")
                     self.updateTeacher(student: self.studentSearchArray[indexPath.row])
                 }
                 else{
@@ -248,7 +297,7 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alert, animated: false)
         })
-
+        
         return [deleteAction, editAction]
     }
     
