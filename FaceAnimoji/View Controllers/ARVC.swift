@@ -22,7 +22,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     var morphs: [SCNGeometry] = []
     let morpher = SCNMorpher()
     var analysis = ""
-    var selectedScene = "blue"
+    var selectedScene = ""
     var fullSceneName = ""
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -42,12 +42,16 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Log the starting time when the user opens this screen, for both the session and per question
         beginTime = clock()
         beginTimePerQuestion = clock()
+        //Clear out data from the last session
         timePerQuestion.removeAll()
         
+        //Randomize the questions the user awnsers
         lessonQuestions.ShuffleQuestions()
         
+        //Populate the questionText label
         self.emoteLable.text = lessonQuestions.getQuestionText()
         
         // Set ViewController as ARSCNView's delegate
@@ -56,6 +60,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+        //Get the mask the user is using, it is used to load scenes
         selectedScene = student!.lastUsedMask!
         
         //Establish which scene will be used
@@ -67,18 +72,17 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         // Access scene's rootNode
         contentNode = scene.rootNode
         
+        //Set up the array of SCNodes
         var childNodes: [SCNNode]?
         
+        //Populate sceneNodes
         childNodes = self.contentNode?.childNodes
         
+        //Unify normals of each node to make the mesh smooth
         for child in childNodes!{
             child.morpher?.unifiesNormals = true
         }
         
-    }
-    
-    func isKeyPresentInDefaults(key: String) -> Bool {
-        return UserDefaults.standard.object(forKey: key) != nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +103,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         resetTracking()
     }
     
+    //Reset the face tracking on the user
     func resetTracking() {
         guard ARFaceTrackingConfiguration.isSupported else { return }
         let configuration = ARFaceTrackingConfiguration()
@@ -123,6 +128,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         return contentNode
     }
     
+    //This method is used to check to see what the current expression the user is making for each frame
     func expression(anchor: ARFaceAnchor){
         let smileLeft = anchor.blendShapes[.mouthSmileLeft]
         let smileRight = anchor.blendShapes[.mouthSmileRight]
@@ -177,14 +183,16 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    
+    //This method is called each frame while the scene is being rendered
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         
         guard let faceAnchor = anchor as? ARFaceAnchor
         else { return }
         
+        //Get the players current expression
         expression(anchor: faceAnchor)
         
+        //If the user is making the face that the prompt asks for, then add to the array for the average time of responce, add points, go to the next question, and provide audio/haptic feedback
         if(lessonQuestions.checkAnswer(userAnswer: analysis, studentData: student!)){
             totalQuestions += 1
             let timeForResponse = Double(clock() - beginTimePerQuestion) / Double(CLOCKS_PER_SEC)
@@ -201,12 +209,14 @@ class ARVC: UIViewController, ARSCNViewDelegate {
             let blendShapes = faceAnchor.blendShapes
             
             // This will only work correctly if the shape keys are given the exact same name as the blendshape names
+            //Changes the mesh based on the blendshapes the user is producing
             for (key, value) in blendShapes {
                 if let fValue = value as? Float{
                     var childNodes: [SCNNode]?
                     
                     childNodes = self.contentNode?.childNodes
                     
+                    //This updates each node in the scene when the face is split up into multiple objects
                     for child in childNodes!{
                        // print(child.morpher?.weight(forTargetNamed: key.rawValue))
                       //  print(key.rawValue)
@@ -217,6 +227,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    //When the user leaves the scene, then see if has answered a question. If the user hasn't, dont save the session
     @IBAction func backBtn(){
         if(totalQuestions != 0){
             saveSessionData()
@@ -225,11 +236,13 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         baseFunc.Feedback()
     }
     
+    //If the user pressed the screenshot button, call a screenshot method in another script
     @IBAction func cameraPress(sender: UIButton){
         baseFunc.Feedback()
         baseFunc.screenShot(sceneView: sceneView)
     }
     
+    //Save the data you produced in this session
     func saveSessionData(){
         let newEntry = LessonData(context: self.context)
         

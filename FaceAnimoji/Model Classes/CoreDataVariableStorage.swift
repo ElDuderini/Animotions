@@ -13,7 +13,6 @@ import CoreData
 class CoreDataVariableStorage{
     
     var students:[StudentData] = []
-   // var teachers:[TeacherData] = []
     var currentTeacher:TeacherData?
     
     let defaults = UserDefaults.standard

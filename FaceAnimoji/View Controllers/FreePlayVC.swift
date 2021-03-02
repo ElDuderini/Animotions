@@ -38,6 +38,7 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     
     var student:StudentData? = nil
     
+    //A lot of the code in here is used in ARVC.swift. Unique code will be commented in here, otherwise refer to ARVC.
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -207,6 +208,7 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         baseFunc.Feedback()
     }
     
+    //Check to see if the current expression the user makes is matching up with the button they pressed. If it matches, give the user points and provide feedback
     @IBAction func awnserButton(sender: UIButton){
         totalQuestions += 1
         if analysis == sender.title(for: .normal){

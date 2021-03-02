@@ -22,20 +22,23 @@ class OptionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Add the background to the view
         baseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
         
+        //Change the value of the toggles based on the values saved on the device
         hapticToggle.isOn = defaults.bool(forKey: "hapticOn")
         
         audioToggle.isOn = defaults.bool(forKey: "audioOn")
 
-        // Do any additional setup after loading the view.
     }
     
+    //Toggle the ability for the application to use audio
     @IBAction func ToggleAudio(){
         defaults.set(audioToggle.isOn, forKey: "audioOn")
         baseFunc.Feedback()
     }
     
+    //Toggle the ability for the application to have haptics
     @IBAction func ToggleHaptic(){
         defaults.set(hapticToggle.isOn, forKey: "hapticOn")
         baseFunc.Feedback()

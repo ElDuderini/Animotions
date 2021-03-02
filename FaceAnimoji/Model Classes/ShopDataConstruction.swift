@@ -26,10 +26,12 @@ class ShopDataConstruction{
     
     var priceIncrement = 50
     
+    //This function is used to look into the files that were added as scenes and then add them to coreData
     func populateData(studentData:StudentData) {
         
         priceIncrese = 50
         
+        //Populate array with the files in the directory
         do{
             let files = try fm.contentsOfDirectory(atPath: path)
             sceneArray = files
@@ -38,18 +40,23 @@ class ShopDataConstruction{
             print(error.localizedDescription)
         }
         
+        //Filter the array to only inculde files that have the .scn extension
         sceneArray = sceneArray.filter{
             word in return word.contains(".scn")
         }
         
+        //For each element in the new array, remove the .scn portion of the file name with an empty value
         for index in 0...sceneArray.count - 1{
             sceneArray[index] = sceneArray[index].replacingOccurrences(of: ".scn", with: "")
         }
         
+        //Sort the array alpabetically
         sceneArray.sort()
         
+        //Set up a for loop that looks though the array
         for index in 0...sceneArray.count - 1{
             
+            //Set up a fetch request for the currently selected student and name of the mask
             let request = ShopData.fetchRequest() as NSFetchRequest<ShopData>
             
             let predString = "name == '" + sceneArray[index] + "' && student == %@"
@@ -64,19 +71,23 @@ class ShopDataConstruction{
                 print("Unable to retrive data")
             }
             
+            //If the fetch returns nothing, then create a new entry for the mask in shopData
             if(items.isEmpty){
                 save(name: sceneArray[index], cost: Int64(Int32(priceIncrese)), studentData: studentData)
                 print("New entry created for " + sceneArray[index])
             }
+            //If there is data, then do nothing. This prevents duplicate masks being added to the shop
             else{
                 print("Dupe prevented for " + sceneArray[index])
             }
             
+            //Increase the price by 50 for each new mask
             priceIncrese += priceIncrement;
         }
         
     }
     
+    //Save the new face information with default values
     func save(name: String, cost: Int64, studentData: StudentData) {
         
         let newFace = ShopData(context: self.context)
@@ -94,6 +105,7 @@ class ShopDataConstruction{
         }
     }
     
+    //This function was used for testing, deletes data from the array of shopdata without having to delete the app
     func deleteData(){
         let fetchRequest : NSFetchRequest<NSFetchRequestResult> = ShopData.fetchRequest()
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)

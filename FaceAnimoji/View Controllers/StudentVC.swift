@@ -32,13 +32,17 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     var studentSearchArray:[StudentData] = []
     
+    //Need to set up checks for duplicate students in a future patch
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Populate the table
         updateTable()
         // Do any additional setup after loading the view.
     }
     
+    //When the user pressed the "Add Student" button, then create a alert that allows the user to add a new student
     @IBAction func addStudent(_ sender:UIButton){
         BaseFunc.Feedback()
         
@@ -76,6 +80,7 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         
     }
     
+    //If the user adds a new student, then create a new studentEntry in studentData
     func createStudent(fullName: String){
         
         let newStudent = StudentData(context: self.context)
@@ -85,12 +90,15 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         newStudent.setValue("white", forKey: "lastUsedMask")
         newStudent.setValue(teacher!, forKey: "teacher");
         
+        //Set up the current teacher with a currentlySelected student based on this most recently made student
         updateTeacher(student: newStudent)
+        //Save coreData
         saveContex()
-        
+        //Refesh table data
         updateTable()
     }
     
+    //Method used to save coreData when setting, deleting and adding values
     func saveContex() {
         do {
             try self.context.save()
@@ -99,10 +107,12 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         }
     }
     
+    //Method used when updating the current student for the current teacher
     func updateTeacher(student: StudentData){
         teacher!.setValue(student.fullName!, forKey: "selectedStudent")
     }
     
+    //Refresh data for the table, using a fetch request for all students the teacher has
     func updateTable(){
         
         print("Updating table")
@@ -125,17 +135,26 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         }
     }
     
+    //Load the student information when returning to the mainMenu
     @IBAction func backBtn(_ sender:UIButton){
         BaseFunc.Feedback()
         mainMenu!.loadStudentName()
         self.dismiss(animated: true, completion: nil)
     }
     
+    //When touching a cell in the tableview, then update the currentStudent
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        let student = studentArray[indexPath.row]
-        updateTeacher(student: student)
+//        if(searching){
+//            let student = studentSearchArray[indexPath.row]
+//            updateTeacher(student: student)
+//        }
+//        else{
+            let student = studentArray[indexPath.row]
+            updateTeacher(student: student)
+        //}
     }
     
+    //Set up the total number of rows in the table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching{
             print("Searching")
@@ -144,6 +163,7 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         return studentArray.count
     }
     
+    //When selecting the table, then set up what the current student is based on that
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         var student = studentArray[indexPath.row]
@@ -156,11 +176,15 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         return cell!
     }
     
+    //Set up the ability to edit a row in the table
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
+    //Set up edit actions for the teacher to use
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        //Set up edit function that pops up a alert to change the students name
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
             let alert = UIAlertController(title: "", message: "Change student name", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textField) in
@@ -181,13 +205,15 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
                     self.updateTeacher(student: self.studentArray[indexPath.row])
                 }
                 
+                //Save the coreData
                 self.saveContex()
                 self.studentList.reloadData()
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alert, animated: false)
         })
-
+        
+        //Set up action for deletion of a student. Putting up a alert for confirmation
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { [self] (action, indexPath) in
             var studentName:String
             if(searching){
@@ -215,6 +241,7 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
                     context.delete(self.studentArray[indexPath.row])
                 }
                 
+                //Save the change to coreData
                 self.saveContex()
                 self.studentList.reloadData()
             }))
@@ -225,6 +252,7 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         return [deleteAction, editAction]
     }
     
+    //When the user is using the search bar, change the table and toggle set the searching bool to true
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         studentSearchArray = studentArray.filter({$0.fullName!.prefix(searchText.count) == searchText})
         searching = true

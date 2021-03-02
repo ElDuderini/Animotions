@@ -42,15 +42,20 @@ class StatsViewController: UIViewController {
     
     var student:StudentData? = nil
     
+    //This script utilizes a charts API, more documentation for it can be found here https://github.com/danielgindi/Charts
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Clear arrays for repopulation later on
         lessonItems.removeAll()
         freeplayItems.removeAll()
         
+        //Set up the charts for future use
         generateChart(chart: lessonChart)
         generateChart(chart: freeplayChart)
         
+        //Fetch request for lessonData to populate in a array
         let requestLesson = LessonData.fetchRequest() as NSFetchRequest<LessonData>
         
         let predString = "student == %@"
@@ -65,10 +70,12 @@ class StatsViewController: UIViewController {
             print("Unable to retrive data")
         }
         
+        //Check to see if the array is empty from the fetch request. If so, then let the user know that no data exists yet
         if(lessonItems.isEmpty){
             avgResponseLabel.text = avgResponseText + "NA"
             lessonQuestionsLabel.text = lessonQuestionText + "NA"
         }
+        //If the array is not empty, then provide the user with information
         else{
             var lessonResponseTime : Float = 0
             var totalQuestions = 0
@@ -84,13 +91,14 @@ class StatsViewController: UIViewController {
             avgResponseLabel.text = avgResponseText + String(lessonResponseTime) + " seconds"
             lessonQuestionsLabel.text = lessonQuestionText + String(totalQuestions)
             
+            //As long as the data has more than one entry, then populate the chart
             if(lessonItems.count != 1){
                 setData(chart: lessonChart)
             }
             
         }
         
-        
+        //This section is almost the same as the last fetch, refer to that example
         let requestFreeplay = FreeplayData.fetchRequest() as NSFetchRequest<FreeplayData>
         
         requestFreeplay.predicate = pred
@@ -124,9 +132,9 @@ class StatsViewController: UIViewController {
                 setData(chart: freeplayChart)
             }
         }
-        // Do any additional setup after loading the view.
     }
     
+    //Set the chart styling
     func generateChart(chart:LineChartView){
         
         chart.rightAxis.enabled = false
@@ -148,12 +156,13 @@ class StatsViewController: UIViewController {
         
     }
     
-    
+    //Set the data for the charts
     func setData(chart:LineChartView){
         
         var entries = [ChartDataEntry]()
         var index = 1
-
+        
+        //if the chart is for freeplay, then set up entries unique to that chart
         if(chart == freeplayChart){
             
             for data in freeplayItems{
@@ -185,6 +194,7 @@ class StatsViewController: UIViewController {
             freeplayChart.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: percentFormat )
 
         }
+        //if the chart is for lesson, then set up entries unique to that chart
         else if(chart == lessonChart){
             
             for data in lessonItems{
@@ -216,25 +226,31 @@ class StatsViewController: UIViewController {
         baseFunc.Feedback()
     }
     
+    //Call this method to export lesson and freeplay data for the student associated with a particular teacher
     @IBAction func exportData(_ sender: Any){
         baseFunc.Feedback()
         
+        //Set up the date format for when the user did their session
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd hh:mm:ss"
         
+        //Set up the filename and destination for where the CSV doc will be saved
         var file_name = (student?.teacher?.username)! + " " + (student?.fullName)! + " lessonData.csv"
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         var fileURL = path.appendingPathComponent(file_name)
         
+        //Set up the column titles for the spreadsheet
         var csvLesson = "Session Number,Session Date,Questions Answered,Session Length,Average Response Time\n"
         
         var num = 0
         
+        //Populate the rows of the table
         for lesson in lessonItems{
             num += 1
             csvLesson.append("\(num),\(df.string(from: lesson.sessionDate ?? Date())),\(lesson.questionsAnswered),\(lesson.timeSpent),\(lesson.avgTimeForResponse)\n")
         }
         
+        //Try to export data for CSV
         do{
             try csvLesson.write(to: fileURL, atomically: true, encoding: .utf8)
             print("Exported Lessons")
@@ -243,6 +259,7 @@ class StatsViewController: UIViewController {
             print("Unable to export lesson data")
         }
         
+        //This is pratically the same for the lessonData CSV, refer to the prior example for an explaination
         file_name = (student?.teacher?.username)! + " " + (student?.fullName)! + " freePlayData.csv"
         fileURL = path.appendingPathComponent(file_name)
         

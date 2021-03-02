@@ -32,9 +32,18 @@ class LandingPageVC: UIViewController {
         
         baseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
         
-        // Do any additional setup after loading the view.
+        //If the defaults for the user are null, then give them a default value
+        if(!isKeyPresentInDefaults(key: "audioOn")){
+            defaults.set(true, forKey: "audioOn")
+        }
+        
+        if(!isKeyPresentInDefaults(key: "hapticOn")){
+            defaults.set(true, forKey: "hapticOn")
+        }
+
     }
     
+    //Check to see if a teacher exists or not
     func searchTeacher() -> Bool{
         let request = TeacherData.fetchRequest() as NSFetchRequest<TeacherData>
         
@@ -60,6 +69,7 @@ class LandingPageVC: UIViewController {
         }
     }
     
+    //Add a new teacher to coreData
     func newTeacher() {
         
         let newTeach = TeacherData(context: self.context)
@@ -77,6 +87,7 @@ class LandingPageVC: UIViewController {
         teachers[0] = newTeach
     }
     
+    //Let the user know what they need to do to log in
     func warningMessage(message: String){
         usernameField.text = nil
         passwordField.text = nil
@@ -85,15 +96,18 @@ class LandingPageVC: UIViewController {
         passwordField.placeholder = message
     }
     
+    //When the user tries to log in, perform various checks
     @IBAction func enterBtn(_ sender: UIButton) {
         baseFunc.Feedback()
         
+        //Check to see if the user is logging in or registering a new teacher
+        //If you are logging in
         if(entryTypeToggle.selectedSegmentIndex == 0){
-            
+            //Check to see if the text is empty for both text feilds
             if(usernameField.text != "" && passwordField.text != ""){
-                
+                //If the teacher is found, then contine
                 if(searchTeacher() == true){
-                    
+                    //Check to see if the password is correct. Login if matches
                     if(teachers[0].password == passwordField.text!){
                         performSegue(withIdentifier: "destinationVC", sender: self)
                     }
@@ -109,12 +123,13 @@ class LandingPageVC: UIViewController {
                 warningMessage(message: "Make sure text boxes aren't empty")
             }
         }
-        
+        //Similar the the prior check. This is for registering a new teacher
         else if(entryTypeToggle.selectedSegmentIndex == 1){
             print("Register")
             
             if(usernameField.text != "" && passwordField.text != ""){
                 
+                //If a teacher doesn't exist, then create a new teacher and login
                 if(searchTeacher() == false){
                     newTeacher()
                     performSegue(withIdentifier: "destinationVC", sender: self)
@@ -130,6 +145,12 @@ class LandingPageVC: UIViewController {
         
     }
     
+    //Check to see if a userDefault object exists
+    func isKeyPresentInDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
+    }
+    
+    //Send teacher data to mainMenu
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "destinationVC"){
             let destinationVC:MainMenuVC = segue.destination as! MainMenuVC

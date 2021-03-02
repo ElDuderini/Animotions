@@ -10,10 +10,10 @@ import Foundation
 
 struct LessonBrain {
     
+    //This struct is used to set up all the questions the students can answer
+    
     var questionNumber = 0
     var score = 0
-    
-   // let defaults = UserDefaults.standard
     
     var quiz = [
         Question(a: "Happy", q: "How do you feel when you play with your friends?"),
@@ -32,9 +32,6 @@ struct LessonBrain {
         Question(a: "Surprize", q: "How do you feel when you get a gift you weren't expecting?"),
         Question(a: "Surprize", q: "How do you feel when you get a good grade on an assingment you thought you failed?"),
         Question(a: "Surprize", q: "How do you feel when a friend comes over that you weren't expecting?"),
-        
-        //scrap joy for now
-        //Question(a: "Joy", q: "How do you feel when you get a gift you really wanted for your birthday?"),
         
         Question(a: "Disgust", q: "How do you feel when you smell something bad?"),
         Question(a: "Disgust", q: "How do you feel when something tastes bad?"),
@@ -60,15 +57,15 @@ struct LessonBrain {
         Question(a: "Anxious", q: "How do you feel when you are at the dentist?"),
         Question(a: "Anxious", q: "How do you feel when you are on a airplane?"),
         Question(a: "Anxious", q: "How do you feel when you are at the doctor?"),
-        Question(a: "Anxious", q: "How do you feel when you try something different?"),
-        
-        //Add Anxious
+        Question(a: "Anxious", q: "How do you feel when you try something different?")
     ]
     
+    //Shuffle the questions in the array of questions
     mutating func ShuffleQuestions() {
         quiz.shuffle()
     }
     
+    //Get the text of the current question in the array
     func getQuestionText() -> String {
         return quiz[questionNumber].text
     }
@@ -77,7 +74,8 @@ struct LessonBrain {
         return Float(questionNumber) / Float(quiz.count)
     }
     
-     mutating func nextQuestion() {
+    //Method used to progress to the next question. If all of the questions have been gone through, shuffel the array and reset the number used to progress through the array
+    mutating func nextQuestion() {
         
         if questionNumber + 1 < quiz.count {
             questionNumber += 1
@@ -87,12 +85,12 @@ struct LessonBrain {
         }
     }
     
+    //Use this method to check to see if the user is responding to the question correctly. If so, then add to the users score
     mutating func checkAnswer(userAnswer: String, studentData: StudentData) -> Bool {
         if userAnswer == quiz[questionNumber].answer {
             score += 10
             let addedPoints = studentData.points + 10
             studentData.setValue(addedPoints, forKey: "points")
-            //defaults.setValue(defaults.integer(forKey: "points") + 10, forKey: "points")
             return true
         } else {
             return false

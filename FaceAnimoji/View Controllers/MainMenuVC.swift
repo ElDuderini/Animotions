@@ -35,24 +35,15 @@ class MainMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Set up the background
         BaseFunc.setUpBackground(view: self.view, imageName: "BackgroundGreen")
-        
-        if(!isKeyPresentInDefaults(key: "audioOn")){
-            defaults.set(true, forKey: "audioOn")
-        }
-        
-        if(!isKeyPresentInDefaults(key: "hapticOn")){
-            defaults.set(true, forKey: "hapticOn")
-        }
-        
-        if(!isKeyPresentInDefaults(key: "points")){
-            defaults.set(0, forKey:"points")
-        }
         
         loadStudentName()
     }
     
+    //This function is used to check to see what the currently selected student for the current teacher
     func loadStudentName(){
+        //If the student is not null, then enable all the buttons that require a student to be selected and populate the shopData for the student
         if(teacher!.selectedStudent != nil && teacher!.selectedStudent != ""){
             currentStudentLabel.text = teacher!.selectedStudent
             for button in mainMenuButtonArray{
@@ -61,6 +52,7 @@ class MainMenuVC: UIViewController {
             getCurrentStudent()
             shopData.populateData(studentData: student!)
         }
+        //If the value of the student is null, then let the teacher know they need to select/add a student. Disable the buttons that require a student
         else{
             currentStudentLabel.text = "Please create a student before playing"
             
@@ -70,6 +62,7 @@ class MainMenuVC: UIViewController {
         }
     }
     
+    //If the selected student not null, then populate the student variable with studentData based on the currentTeacher and the selectedStudent of that teacher
     func getCurrentStudent(){
         print("Updating table")
         
@@ -91,6 +84,7 @@ class MainMenuVC: UIViewController {
         student = students[0]
     }
     
+    //When changing scenes, transfer the student variable to the destination page
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "studentVC" :
@@ -124,14 +118,13 @@ class MainMenuVC: UIViewController {
         }
     }
     
+    
+    //If any button is pressed, play the feedback to the user
     @IBAction func ButtonPress(){
         BaseFunc.Feedback()
     }
     
-    func isKeyPresentInDefaults(key: String) -> Bool {
-        return UserDefaults.standard.object(forKey: key) != nil
-    }
-    
+    //Log out of the current teacher
     @IBAction func logOutBtn(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
         BaseFunc.Feedback()

@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+//Structure used for the lesson questions and answers
 struct Question {
     let text: String
     let answer: String

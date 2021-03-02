@@ -14,12 +14,15 @@ import SceneKit
 
 class BaseFunctions {
     
+    //This is a class that has various functions that can be utilized in various view controllers
+    
     let defaults = UserDefaults.standard
     
     let hapticFeedback = UIImpactFeedbackGenerator(style: .medium)
     
     var player : AVAudioPlayer?
     
+    //Function called that checks userDefaults to play a sound and haptic feedback
     func Feedback(){
         if(defaults.bool(forKey: "audioOn")){
             playSound()
@@ -29,6 +32,7 @@ class BaseFunctions {
         }
     }
     
+    //Play the sound that is retrived from resources
     func playSound() {
         guard let url = Bundle.main.url(forResource: "confirmSound", withExtension: ".wav") else {return}
         
@@ -47,6 +51,7 @@ class BaseFunctions {
         }
     }
     
+    //Function to allow the user to screenshot the ARSCN the user is currently seeing so that the UI doesn't show up in the screenshot. It returns an image just in the case for a new feature that could be developed on
     open func screenShot(sceneView:ARSCNView) -> UIImage?{
         
         let screenshotImage : UIImage? = sceneView.snapshot()
@@ -58,6 +63,7 @@ class BaseFunctions {
         return screenshotImage
     }
     
+    //Set up the background of a viewController by using a UIview and name of the image
     func setUpBackground(view: UIView, imageName:String){
         
         let background = UIImage(named: imageName)
