@@ -18,6 +18,8 @@
 		616CBBCD25E46C200039022B /* CoreDataVariableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBCC25E46C200039022B /* CoreDataVariableStorage.swift */; };
 		616CBBD525F69D880039022B /* StatementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBD425F69D880039022B /* StatementVC.swift */; };
 		616CBBDB25F6A00D0039022B /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBDA25F6A00D0039022B /* ReviewVC.swift */; };
+		616CBBE125F824290039022B /* AlertImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBE025F824290039022B /* AlertImageExtension.swift */; };
+		616CBBE825F8304B0039022B /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBE725F8304B0039022B /* ImageExtension.swift */; };
 		6180EA7125BA7CE8003CAE40 /* OptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */; };
 		6180EA7725BF7754003CAE40 /* confirmSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6180EA7625BF7754003CAE40 /* confirmSound.wav */; };
 		6180EA8925BF9A84003CAE40 /* BaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180EA8825BF9A84003CAE40 /* BaseFunctions.swift */; };
@@ -76,6 +78,8 @@
 		616CBBCC25E46C200039022B /* CoreDataVariableStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataVariableStorage.swift; sourceTree = "<group>"; };
 		616CBBD425F69D880039022B /* StatementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementVC.swift; sourceTree = "<group>"; };
 		616CBBDA25F6A00D0039022B /* ReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
+		616CBBE025F824290039022B /* AlertImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertImageExtension.swift; sourceTree = "<group>"; };
+		616CBBE725F8304B0039022B /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsVC.swift; sourceTree = "<group>"; };
 		6180EA7625BF7754003CAE40 /* confirmSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = confirmSound.wav; sourceTree = "<group>"; };
 		6180EA8825BF9A84003CAE40 /* BaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFunctions.swift; sourceTree = "<group>"; };
@@ -145,6 +149,15 @@
 			path = "Model Classes";
 			sourceTree = "<group>";
 		};
+		616CBBE425F8269D0039022B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				616CBBE025F824290039022B /* AlertImageExtension.swift */,
+				616CBBE725F8304B0039022B /* ImageExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6180EA8D25BF9EA0003CAE40 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +199,7 @@
 		7942AA2A2342693100A133C0 /* FaceAnimoji */ = {
 			isa = PBXGroup;
 			children = (
+				616CBBE425F8269D0039022B /* Extensions */,
 				615DFF1725C0BE8700A268A1 /* Model Classes */,
 				6180EA8D25BF9EA0003CAE40 /* View Controllers */,
 				7942AA2B2342693100A133C0 /* AppDelegate.swift */,
@@ -361,6 +375,7 @@
 				6180EA7125BA7CE8003CAE40 /* OptionsVC.swift in Sources */,
 				61B4C5A925B7609A00B48D0F /* ARVC.swift in Sources */,
 				7942AA2C2342693100A133C0 /* AppDelegate.swift in Sources */,
+				616CBBE825F8304B0039022B /* ImageExtension.swift in Sources */,
 				61B4C5B625B76ADB00B48D0F /* ShopVC.swift in Sources */,
 				616CBBD525F69D880039022B /* StatementVC.swift in Sources */,
 				615DFF1925C0BF3E00A268A1 /* ShopDataConstruction.swift in Sources */,
@@ -373,6 +388,7 @@
 				6180EA8925BF9A84003CAE40 /* BaseFunctions.swift in Sources */,
 				6180EA8F25BF9EFD003CAE40 /* Question.swift in Sources */,
 				616CBBBB25D2FF9C0039022B /* ChartAxisFormatter.swift in Sources */,
+				616CBBE125F824290039022B /* AlertImageExtension.swift in Sources */,
 				61B4C5B125B7634800B48D0F /* MainMenuVC.swift in Sources */,
 				6138C37A25CA0FC9000CA925 /* StatsViewController.swift in Sources */,
 				6138C36C25C8AD44000CA925 /* FreePlayVC.swift in Sources */,

@@ -14,8 +14,6 @@ import SceneKit
 
 class BaseFunctions {
     
-    //Improve UI imagepopup
-    
     //This is a class that has various functions that can be utilized in various view controllers
     
     let defaults = UserDefaults.standard
@@ -69,9 +67,7 @@ class BaseFunctions {
         let alert = UIAlertController(title: "Screenshot saved", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         
-        let imgViewTitle = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 40))
-        imgViewTitle.image = image
-        alert.view.addSubview(imgViewTitle)
+        alert.addImage(image: image)
         
         alert.addAction(action)
         viewController.present(alert, animated: true, completion: nil)
