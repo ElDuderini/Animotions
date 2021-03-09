@@ -14,6 +14,8 @@ import SceneKit
 
 class BaseFunctions {
     
+    //Improve UI imagepopup
+    
     //This is a class that has various functions that can be utilized in various view controllers
     
     let defaults = UserDefaults.standard
@@ -61,6 +63,18 @@ class BaseFunctions {
         }
         
         return screenshotImage
+    }
+    
+    open func imageAlert(image:UIImage, viewController:UIViewController){
+        let alert = UIAlertController(title: "Screenshot saved", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        
+        let imgViewTitle = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 40))
+        imgViewTitle.image = image
+        alert.view.addSubview(imgViewTitle)
+        
+        alert.addAction(action)
+        viewController.present(alert, animated: true, completion: nil)
     }
     
     //Set up the background of a viewController by using a UIview and name of the image

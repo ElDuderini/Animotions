@@ -34,6 +34,8 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     var studentNameCheck:[StudentData] = []
     
+    //Fix bug where table view still has rows you can select
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +58,6 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
             
             if (full != ""){
                 self.createStudent(fullName: full!)
-                //self.updateTable()
             }
             else{
                 return
@@ -190,21 +191,20 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     //When touching a cell in the tableview, then update the currentStudent
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        //        if(searching){
-        //            let student = studentSearchArray[indexPath.row]
-        //            updateTeacher(student: student)
-        //        }
-        //        else{
-        let student = studentArray[indexPath.row]
-        updateTeacher(student: student)
-        saveContex()
-        //}
+        if(searching){
+            let student = studentSearchArray[indexPath.row]
+            updateTeacher(student: student)
+        }
+        else{
+            let student = studentArray[indexPath.row]
+            updateTeacher(student: student)
+            saveContex()
+        }
     }
     
     //Set up the total number of rows in the table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching{
-            //print("Searching")
             return studentSearchArray.count
         }
         return studentArray.count
@@ -285,6 +285,7 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
                     }
                     
                     context.delete(self.studentSearchArray[indexPath.row])
+                    studentSearchArray.remove(at: indexPath.row)
                 }
                 else{
                     
@@ -293,6 +294,7 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
                     }
                     
                     context.delete(self.studentArray[indexPath.row])
+                    studentArray.remove(at: indexPath.row)
                 }
                 
                 //Save the change to coreData
@@ -308,7 +310,7 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     //When the user is using the search bar, change the table and toggle set the searching bool to true
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-        studentSearchArray = studentArray.filter({$0.fullName!.prefix(searchText.count) == searchText})
+        studentSearchArray = studentArray.filter({$0.fullName?.prefix(searchText.count).uppercased() == searchText.uppercased()})
         searching = true
         studentList.reloadData()
     }

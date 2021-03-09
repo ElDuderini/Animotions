@@ -239,7 +239,8 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     //If the user pressed the screenshot button, call a screenshot method in another script
     @IBAction func cameraPress(sender: UIButton){
         baseFunc.Feedback()
-        baseFunc.screenShot(sceneView: sceneView)
+        let image = baseFunc.screenShot(sceneView: sceneView)!
+        baseFunc.imageAlert(image: image, viewController: self)
     }
     
     //Save the data you produced in this session

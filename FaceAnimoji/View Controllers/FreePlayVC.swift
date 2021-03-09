@@ -56,7 +56,6 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
 
         selectedScene = (student?.lastUsedMask)!
             
-        
         //Establish which scene will be used
         fullSceneName = "art.scnassets/" + selectedScene + ".scn"
         
@@ -245,6 +244,7 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     
     @IBAction func cameraPress(sender: UIButton){
         baseFunc.Feedback()
-        baseFunc.screenShot(sceneView: sceneView)
+        let image = baseFunc.screenShot(sceneView: sceneView)!
+        baseFunc.imageAlert(image: image, viewController: self)
     }
 }
