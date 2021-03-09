@@ -34,7 +34,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         //set up background picture in view
-        baseFunc.setUpBackground(view: self.view, imageName: "BackgroundPink")
+        baseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
         
         //Change the textbox showing the user how many points they currently have
         changePointsValue()

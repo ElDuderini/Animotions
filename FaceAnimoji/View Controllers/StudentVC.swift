@@ -34,14 +34,11 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     var studentNameCheck:[StudentData] = []
     
-    //Need to set up checks for duplicate students in a future patch
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Populate the table
         updateTable()
-        // Do any additional setup after loading the view.
     }
     
     //When the user pressed the "Add Student" button, then create a alert that allows the user to add a new student
@@ -138,6 +135,8 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         saveContex()
         //Refesh table data
         updateTable()
+        
+        
     }
     
     //Method used to save coreData when setting, deleting and adding values
@@ -170,7 +169,12 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         do{
             studentArray = try context.fetch(request)
             
-            print(studentArray)
+            if(searching){
+                studentSearch.text = ""
+                searching = false
+            }
+            
+            studentList.reloadData()
         }
         catch{
             print("Unable to retrive data")
@@ -193,13 +197,14 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         //        else{
         let student = studentArray[indexPath.row]
         updateTeacher(student: student)
+        saveContex()
         //}
     }
     
     //Set up the total number of rows in the table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching{
-            print("Searching")
+            //print("Searching")
             return studentSearchArray.count
         }
         return studentArray.count

@@ -23,7 +23,7 @@ class OptionsVC: UIViewController {
         super.viewDidLoad()
         
         //Add the background to the view
-        baseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
+        baseFunc.setUpBackground(view: self.view, imageName: "BackgroundPink")
         
         //Change the value of the toggles based on the values saved on the device
         hapticToggle.isOn = defaults.bool(forKey: "hapticOn")

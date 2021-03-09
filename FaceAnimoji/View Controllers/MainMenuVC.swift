@@ -113,6 +113,16 @@ class MainMenuVC: UIViewController {
             destinationVC.student = student
             break;
             
+        case "reviewVC":
+            //let destinationVC:ReviewVC = segue.destination as! ReviewVC
+            //destinationVC.student = student
+            break;
+            
+        case "statementVC":
+            //let destinationVC:StatementVC = segue.destination as! StatementVC
+            //destinationVC.student = student
+            break;
+            
         default:
             break;
         }

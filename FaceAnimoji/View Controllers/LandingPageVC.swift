@@ -30,7 +30,7 @@ class LandingPageVC: UIViewController {
         
         passwordField.isSecureTextEntry = true
         
-        baseFunc.setUpBackground(view: self.view, imageName: "LogInScreen")
+        baseFunc.setUpBackground(view: self.view, imageName: "Screen_Animotions")
         
         //If the defaults for the user are null, then give them a default value
         if(!isKeyPresentInDefaults(key: "audioOn")){
