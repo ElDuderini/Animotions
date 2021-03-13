@@ -72,16 +72,14 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             
             let button = UIButton();
             
-            let xCord = (view.frame.midX - 50) + (view.frame.width * CGFloat(index))
+            let xCord = (view.frame.midX - 125) + (view.frame.width * CGFloat(index))
             
             contentWidth += view.frame.width
             
-            button.frame = CGRect(x: xCord, y: view.frame.height/2, width: 100, height: 100)
+            button.frame = CGRect(x: xCord, y: view.frame.height/2, width: 250, height: 100)
             
             button.setTitle(myButtonArray[index].name, for: .normal)
-            button.backgroundColor = UIColor.systemOrange
-            button.layer.borderColor = UIColor.brown.cgColor
-            button.layer.borderWidth = 5
+            button.setBackgroundImage(UIImage(named: "PinkButton"), for: UIControl.State.normal)
             button.setTitleColor(UIColor.white, for: .normal)
             button.contentHorizontalAlignment = .center
             button.titleLabel?.font = UIFont(name: "Arial", size: 40)
@@ -100,9 +98,10 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
                 lable.text = "Buy: " + String(myButtonArray[index].price)
             }
             
-            lable.frame = CGRect(x: xCord - 100, y: view.frame.height/2 + 100, width: 300, height: 100)
+            lable.frame = CGRect(x: xCord - 25, y: view.frame.height/2 + 100, width: 300, height: 100)
             lable.font = UIFont(name: "Arial", size: 35)
             lable.textAlignment = NSTextAlignment.center
+            lable.textColor = UIColor.white
             
             scrollView.addSubview(lable)
             

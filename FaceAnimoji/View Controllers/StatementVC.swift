@@ -12,6 +12,8 @@ class StatementVC: UIViewController {
 
     var BaseFunc = BaseFunctions()
     
+    @IBOutlet weak var promptLabel: UILabel!
+    @IBOutlet weak var textBox: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         //Development is on hold for this feature till we get
