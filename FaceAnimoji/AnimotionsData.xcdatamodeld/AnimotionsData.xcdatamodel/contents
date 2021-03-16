@@ -29,6 +29,7 @@
         <relationship name="lessonSessions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LessonData" inverseName="student" inverseEntity="LessonData"/>
         <relationship name="shopData" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ShopData" inverseName="student" inverseEntity="ShopData"/>
         <relationship name="teacher" maxCount="1" deletionRule="Nullify" destinationEntity="TeacherData" inverseName="students" inverseEntity="TeacherData"/>
+        <relationship name="writingSessions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WritingData" inverseName="student" inverseEntity="WritingData"/>
     </entity>
     <entity name="TeacherData" representedClassName="TeacherData" syncable="YES" codeGenerationType="class">
         <attribute name="password" optional="YES" attributeType="String"/>
@@ -36,11 +37,19 @@
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudentData" inverseName="teacher" inverseEntity="StudentData"/>
     </entity>
+    <entity name="WritingData" representedClassName="WritingData" syncable="YES" codeGenerationType="class">
+        <attribute name="avgTimeForResponse" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="questionsAnswered" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sessionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="timeSpent" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentData" inverseName="writingSessions" inverseEntity="StudentData"/>
+    </entity>
     <elements>
         <element name="FreeplayData" positionX="41.45703125" positionY="95.06640625" width="128" height="118"/>
         <element name="LessonData" positionX="-212.0234375" positionY="-121.11328125" width="128" height="118"/>
         <element name="ShopData" positionX="-223.12890625" positionY="15.3828125" width="128" height="118"/>
-        <element name="StudentData" positionX="46.87890625" positionY="-109.13671875" width="128" height="148"/>
+        <element name="StudentData" positionX="46.87890625" positionY="-109.13671875" width="128" height="163"/>
         <element name="TeacherData" positionX="263.24609375" positionY="11.484375" width="128" height="103"/>
+        <element name="WritingData" positionX="0" positionY="45" width="128" height="118"/>
     </elements>
 </model>
