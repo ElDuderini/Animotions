@@ -28,10 +28,10 @@ struct LessonBrain {
         Question(a: "Sad", q: "How do you feel when you miss being with someone?"),
         Question(a: "Sad", q: "How do you feel when you have to leave a place you like?"),
         
-        Question(a: "Surprize", q: "How do you feel when someone suddenly jumps in front of you?"),
-        Question(a: "Surprize", q: "How do you feel when you get a gift you weren't expecting?"),
-        Question(a: "Surprize", q: "How do you feel when you get a good grade on an assingment you thought you failed?"),
-        Question(a: "Surprize", q: "How do you feel when a friend comes over that you weren't expecting?"),
+        Question(a: "Surprise", q: "How do you feel when someone suddenly jumps in front of you?"),
+        Question(a: "Surprise", q: "How do you feel when you get a gift you weren't expecting?"),
+        Question(a: "Surprise", q: "How do you feel when you get a good grade on an assingment you thought you failed?"),
+        Question(a: "Surprise", q: "How do you feel when a friend comes over that you weren't expecting?"),
         
         Question(a: "Disgust", q: "How do you feel when you smell something bad?"),
         Question(a: "Disgust", q: "How do you feel when something tastes bad?"),

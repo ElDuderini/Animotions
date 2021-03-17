@@ -13,17 +13,23 @@ import Charts
 class StatsViewController: UIViewController {
 
     
-    @IBOutlet weak var avgResponseLabel: UILabel!
+    @IBOutlet weak var avgResponseLessonLabel: UILabel!
     
     @IBOutlet weak var lessonQuestionsLabel: UILabel!
     
-    @IBOutlet weak var accuracyLabel: UILabel!
+    @IBOutlet weak var accuracyFreeplayLabel: UILabel!
     
     @IBOutlet weak var freeplayQuestionsLabel: UILabel!
+    
+    @IBOutlet weak var accuracyWritingLabel: UILabel!
+    
+    @IBOutlet weak var writingQuestionsLabel: UILabel!
     
     @IBOutlet weak var lessonChart: LineChartView!
     
     @IBOutlet weak var freeplayChart: LineChartView!
+    
+    @IBOutlet weak var writingChart:LineChartView!
     
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -33,12 +39,11 @@ class StatsViewController: UIViewController {
     
     var lessonItems = [LessonData]()
     var freeplayItems = [FreeplayData]()
+    var writingItems = [WritingData]()
     
     let avgResponseText = "Avg Response Time: "
-    let lessonQuestionText = "Questions awnsered: "
-    
+    let questionText = "Questions awnsered: "
     let accuracyText = "Response Accuracy: "
-    let freeplayQuestionText = "Questions awnsered: "
     
     var student:StudentData? = nil
     
@@ -50,10 +55,12 @@ class StatsViewController: UIViewController {
         //Clear arrays for repopulation later on
         lessonItems.removeAll()
         freeplayItems.removeAll()
+        writingItems.removeAll()
         
         //Set up the charts for future use
         generateChart(chart: lessonChart)
         generateChart(chart: freeplayChart)
+        generateChart(chart: writingChart)
         
         //Fetch request for lessonData to populate in a array
         let requestLesson = LessonData.fetchRequest() as NSFetchRequest<LessonData>
@@ -72,8 +79,8 @@ class StatsViewController: UIViewController {
         
         //Check to see if the array is empty from the fetch request. If so, then let the user know that no data exists yet
         if(lessonItems.isEmpty){
-            avgResponseLabel.text = avgResponseText + "NA"
-            lessonQuestionsLabel.text = lessonQuestionText + "NA"
+            avgResponseLessonLabel.text = avgResponseText + "NA"
+            lessonQuestionsLabel.text = questionText + "NA"
         }
         //If the array is not empty, then provide the user with information
         else{
@@ -88,8 +95,8 @@ class StatsViewController: UIViewController {
             lessonResponseTime = lessonResponseTime/Float(lessonItems.count)
             lessonResponseTime = Float(round(1000 * lessonResponseTime)/1000)
             
-            avgResponseLabel.text = avgResponseText + String(lessonResponseTime) + " seconds"
-            lessonQuestionsLabel.text = lessonQuestionText + String(totalQuestions)
+            avgResponseLessonLabel.text = avgResponseText + String(lessonResponseTime) + " seconds"
+            lessonQuestionsLabel.text = questionText + String(totalQuestions)
             
             //As long as the data has more than one entry, then populate the chart
             if(lessonItems.count != 1){
@@ -111,8 +118,8 @@ class StatsViewController: UIViewController {
         }
         
         if(freeplayItems.isEmpty){
-            accuracyLabel.text = accuracyText + "NA"
-            freeplayQuestionsLabel.text = freeplayQuestionText + "NA"
+            accuracyFreeplayLabel.text = accuracyText + "NA"
+            freeplayQuestionsLabel.text = questionText + "NA"
         }
         else{
             var sucessRate : Double = 0
@@ -125,11 +132,47 @@ class StatsViewController: UIViewController {
             
             sucessRate = sucessRate/Double(freeplayItems.count)
             
-            accuracyLabel.text = accuracyText + String(sucessRate) + "%"
-            freeplayQuestionsLabel.text = freeplayQuestionText + String(totalQuestions)
+            accuracyFreeplayLabel.text = accuracyText + String(sucessRate) + "%"
+            freeplayQuestionsLabel.text = questionText + String(totalQuestions)
             
             if(freeplayItems.count != 1){
                 setData(chart: freeplayChart)
+            }
+        }
+        
+        
+        //This section is almost the same as the last fetch, refer to that example
+        let requestWriting = WritingData.fetchRequest() as NSFetchRequest<WritingData>
+        
+        requestFreeplay.predicate = pred
+        
+        do{
+            writingItems = try context.fetch(requestWriting)
+        }
+        catch{
+            print("Unable to retrive data")
+        }
+        
+        if(writingItems.isEmpty){
+            accuracyWritingLabel.text = accuracyText + "NA"
+            writingQuestionsLabel.text = questionText + "NA"
+        }
+        else{
+            var sucessRate : Double = 0
+            var totalQuestions = 0
+            
+            for writing in writingItems{
+                totalQuestions += Int(writing.questionsAnswered)
+                sucessRate += writing.sucessRate
+            }
+            
+            sucessRate = sucessRate/Double(writingItems.count)
+            
+            accuracyWritingLabel.text = accuracyText + String(sucessRate) + "%"
+            writingQuestionsLabel.text = questionText + String(totalQuestions)
+            
+            if(writingItems.count != 1){
+                setData(chart: writingChart)
             }
         }
     }
@@ -217,6 +260,37 @@ class StatsViewController: UIViewController {
 
             lessonChart.data = data
         }
+        else if(chart == writingChart){
+            
+            for data in writingItems{
+                let xAxis = index
+                index += 1
+                
+                let yAxis = Double(data.sucessRate)
+                let entry = ChartDataEntry(x: Double(xAxis), y: yAxis)
+                entries.append(entry)
+            }
+
+            let dataSet = LineChartDataSet(entries: entries, label: "Sucess rate %")
+            dataSet.mode = .linear
+            dataSet.drawCirclesEnabled = false
+            dataSet.lineWidth = 2.8
+            dataSet.drawFilledEnabled = true
+            dataSet.drawValuesEnabled = false
+            
+            
+
+            let data = LineChartData(dataSet: dataSet)
+
+            writingChart.data = data
+            
+            let percentFormat = NumberFormatter()
+            percentFormat.numberStyle = .percent
+            percentFormat.percentSymbol = "%"
+            
+            writingChart.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: percentFormat )
+
+        }
     }
     
     
@@ -278,6 +352,27 @@ class StatsViewController: UIViewController {
         }
         catch{
             print("Unable to export freeplay data")
+        }
+        
+        //This is pratically the same for the lessonData CSV, refer to the prior example for an explaination
+        file_name = (student?.teacher?.username)! + " " + (student?.fullName)! + " writingData.csv"
+        fileURL = path.appendingPathComponent(file_name)
+        
+        var csvWriting = "Session Number,Session Date,Questions Answered,Session Length,Sucess Rate\n"
+        
+        num = 0
+        
+        for writing in writingItems{
+            num += 1
+            csvWriting.append("\(num),\(df.string(from: writing.sessionDate ?? Date() )),\(writing.questionsAnswered),\(writing.timeSpent),\(writing.sucessRate)\n")
+        }
+        
+        do{
+            try csvWriting.write(to: fileURL, atomically: true, encoding: .utf8)
+            print("Exported writing")
+        }
+        catch{
+            print("Unable to export writing data")
         }
         
     }

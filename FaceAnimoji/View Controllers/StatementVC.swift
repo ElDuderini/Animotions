@@ -37,8 +37,19 @@ class StatementVC: UIViewController {
     
     var results:BaseResponse?
     
+    var student:StudentData?
+    
+    var correcntResponces = 0
+    
+    var totalQuestions = 0
+    
+    var beginTime = clock()
+    
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        beginTime = clock()
         getResponse(textValue: "test")
     }
     
@@ -85,6 +96,30 @@ class StatementVC: UIViewController {
         sem.wait()
     }
     
+    func saveSessionData(){
+        let newEntry = WritingData(context: self.context)
+        
+        newEntry.setValue(correcntResponces, forKeyPath: "questionsAnswered")
+        newEntry.setValue(Date(), forKey: "sessionDate")
+        
+        let timeInController = Double(clock() - beginTime) / Double(CLOCKS_PER_SEC)
+        newEntry.setValue(timeInController, forKey: "timeSpent")
+        
+        newEntry.setValue(student!, forKey: "student")
+        
+        let percentRight = (correcntResponces/totalQuestions) * 100
+        print(correcntResponces)
+        print(totalQuestions)
+        print(correcntResponces/totalQuestions)
+        newEntry.setValue(percentRight, forKey: "sucessRate")
+        
+        do {
+            try self.context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
     func generatePrompt(){
         
         let currentVal = emotions.randomElement()!
@@ -128,15 +163,20 @@ class StatementVC: UIViewController {
     @IBAction func backBtn(_ sender:UIButton){
         BaseFunc.Feedback()
         self.dismiss(animated: true, completion: nil)
+        if(totalQuestions != 0){
+            print("Content saved")
+            saveSessionData()
+        }
     }
     
     @IBAction func enterText(_ sender: UIButton) {
-        
+        totalQuestions += 1
         if(checkAwnser()){
             answerResponse.text = "Correct!"
             BaseFunc.Feedback()
             generatePrompt()
             textBox.text = ""
+            correcntResponces += 1
         }
         else{
             answerResponse.text = "Try again."

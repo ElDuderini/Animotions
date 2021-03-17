@@ -38,9 +38,9 @@
         <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudentData" inverseName="teacher" inverseEntity="StudentData"/>
     </entity>
     <entity name="WritingData" representedClassName="WritingData" syncable="YES" codeGenerationType="class">
-        <attribute name="avgTimeForResponse" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="questionsAnswered" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sessionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sucessRate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="timeSpent" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentData" inverseName="writingSessions" inverseEntity="StudentData"/>
     </entity>

@@ -153,7 +153,7 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
             self.analysis = "Poggers"
         }
         else if ((eyeWideLeft?.decimalValue ?? 0.0) + (eyeWideRight?.decimalValue ?? 0.0)) > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5 &&  mouthOpen?.decimalValue ?? 0.0 < 0.2{
-            self.analysis = "Surprize"
+            self.analysis = "Surprise"
         }
         else if ((eyeWideLeft?.decimalValue ?? 0.0) + (eyeWideRight?.decimalValue ?? 0.0)) > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5 && mouthOpen?.decimalValue ?? 0.0 > 0.5{
             self.analysis = "Fear"
