@@ -49,6 +49,9 @@ class StatementVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        BaseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
+        
         beginTime = clock()
         getResponse(textValue: "test")
     }

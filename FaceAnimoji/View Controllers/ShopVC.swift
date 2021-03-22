@@ -30,6 +30,10 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     
     var student : StudentData? = nil
     
+    var storeButtons: [UIButton] = []
+    
+    var storeLabels : [UILabel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,7 +90,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             button.layer.cornerRadius = 5
             button.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
             
-            
+            storeButtons.append(button)
             scrollView.addSubview(button)
             
             let lable = UILabel()
@@ -103,6 +107,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             lable.textAlignment = NSTextAlignment.center
             lable.textColor = UIColor.white
             
+            storeLabels.append(lable)
             scrollView.addSubview(lable)
             
         }
@@ -164,10 +169,8 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
                     
                     //Update the text box showing points
                     changePointsValue()
-                    //Remove the subviews so we can regenerate the UI easily
-                    removeSubviews()
-                    //Update store UI to include the new changes
-                    generateStore()
+                    //update the text of the store item you bought
+                    changeStoreText(button: sender)
                 }
             }
             
@@ -186,11 +189,9 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         pointsLabel.text = "Points earned: " + String(student!.points)
     }
     
-    //Remove all subviews from the scrollView
-    func removeSubviews(){
-        let subViews = self.scrollView.subviews
-        for subView in subViews{
-            subView.removeFromSuperview()
-        }
+    //Get the array value of the button you used to change the value of the text in the parallel array
+    func changeStoreText(button: UIButton) {
+        let index = storeButtons.firstIndex(of: button)
+        storeLabels[index!].text = "Purchased"
     }
 }
