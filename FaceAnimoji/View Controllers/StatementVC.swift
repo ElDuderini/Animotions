@@ -9,6 +9,7 @@
 import UIKit
 import Dispatch
 
+//Create the structs that will be used to parse the Jston string with
 struct BaseResponse : Decodable {
     let text: String
     let scores : [ScoreValues]
@@ -27,40 +28,56 @@ class StatementVC: UIViewController {
     @IBOutlet weak var textBox: UITextView!
     @IBOutlet weak var answerResponse: UILabel!
     
+    //This array is used to store information of the currently supported emotions/tones
     var emotions:[String] = []
     
+    //URL to access the VERN API
     let url = URL(string: "http://vern.stage.vernai.com/analyze")
     
+    //The starting prompt for the child to respond to
     let promptStart = "Create a sentance that has "
     
     var promptValue = ""
     
+    //A connection needed to parse the json string
     var results:BaseResponse?
     
+    //Connection to student data to record session data
     var student:StudentData?
     
+    //Values needed to record how many right and wrong anwnsers there were
     var correcntResponces = 0
-    
     var totalQuestions = 0
     
+    //Used to track how long the session lasts
     var beginTime = clock()
     
+    //Needed to connect to the database
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Set up the background image for this view
         BaseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
         
+        //Set up starting time for the clock
         beginTime = clock()
+        
+        //Send a message to the API to retrive info on what emotions are currenty supported
         getResponse(textValue: "test")
     }
     
+    //This method reaches out to the API to get information about the statement the student wrote or to populate the emotions supported
     func getResponse(textValue: String){
+        //This is required to make sure there is a delay till the download of information is complete
         let sem = DispatchSemaphore.init(value: 0)
+        
+        //populate the json string you want to send to the API
         let json:[String: Any] = ["text": textValue]
         let jsonData = (try? JSONSerialization.data(withJSONObject: json))!
         
+        //Establish a request to the API using the data above and from the documentation
         var request = URLRequest(url: url!)
         request.setValue("XXXXX", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -68,10 +85,13 @@ class StatementVC: UIViewController {
         request.httpMethod = "POST"
         request.httpBody = jsonData
         
+        //Starts the web request to get data from the API
         let task = URLSession.shared.dataTask(with: request) {(data ,response ,error) in
             
+            //Set up a signal to have the program delay to finish the download
             defer {sem.signal()}
             
+            //Populate data variable if no errors are encountered
             if let error = error{
                 print("Error took place")
                 print(error)
@@ -79,12 +99,15 @@ class StatementVC: UIViewController {
             }
             guard let data = data else {return}
 
+            //Using the information, populate the values you get from the text value sent to the API
             do{
                 let dataObject = try JSONDecoder().decode(BaseResponse.self, from: data)
                 
+                //If the emotions array is empty, then perform population of the values
                 if(self.emotions.isEmpty){
                     self.populateEmotions(response: dataObject)
                 }
+                //If that array is not empty, then return the full results
                 else{
                     self.results = dataObject
                 }
@@ -99,6 +122,8 @@ class StatementVC: UIViewController {
         sem.wait()
     }
     
+    //Save information about the session performance of the student
+    //See other examples for a full explination of how this works
     func saveSessionData(){
         let newEntry = WritingData(context: self.context)
         
@@ -123,24 +148,31 @@ class StatementVC: UIViewController {
         }
     }
     
+    //Method used to generate a question for the student to respond to
     func generatePrompt(){
         
         let currentVal = emotions.randomElement()!
         
+        //If selecting an element from the array randomly returns a privously used value or an undesired value, then call the method again and cancel the current instance of it
         if(currentVal == promptValue || currentVal == "humor"){
             generatePrompt()
             return;
         }
         
+        //Populate the prompt value
         promptValue = currentVal
         
+        //Populate the label text for the child to see
         promptLabel.text = promptStart + promptValue
     }
     
+    //Method used to check if the user made a satisfactory statement
     func checkAwnser() -> Bool{
         
+        //Get a response from the API based on the text the student wrote
         getResponse(textValue: textBox.text)
         
+        //Create a for loop that checks for the prompt value, then checks to see if that prompt value goes over 51 points based on the API response
         for item in results!.scores{
             if(item.name == promptValue){
                 print(item.value)
@@ -153,6 +185,7 @@ class StatementVC: UIViewController {
         return false;
     }
     
+    //Populate the emotions array using the response from the API
     func populateEmotions(response:BaseResponse){
         for item in response.scores{
             emotions.append(item.name)
@@ -163,6 +196,7 @@ class StatementVC: UIViewController {
         }
     }
     
+    //Return to main menu and save session data
     @IBAction func backBtn(_ sender:UIButton){
         BaseFunc.Feedback()
         self.dismiss(animated: true, completion: nil)
@@ -172,15 +206,20 @@ class StatementVC: UIViewController {
         }
     }
     
+    //Press the enter button to check if you got the right awnser
     @IBAction func enterText(_ sender: UIButton) {
         totalQuestions += 1
+        //If the student got the right awnser, clear the text box, provide feedback, generate a new prompt and add points
         if(checkAwnser()){
             answerResponse.text = "Correct!"
             BaseFunc.Feedback()
             generatePrompt()
             textBox.text = ""
             correcntResponces += 1
+            let addedPoints = student!.points + 30
+            student!.setValue(addedPoints, forKey: "points")
         }
+        //If the awnser is wrong, let the user know to try again
         else{
             answerResponse.text = "Try again."
         }
