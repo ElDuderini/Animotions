@@ -14,7 +14,7 @@ class ReviewVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        BaseFunc.setUpBackground(view: self.view, imageName: "BackgroundPink")
     }
     
     @IBAction func backBtn(_ sender:UIButton){

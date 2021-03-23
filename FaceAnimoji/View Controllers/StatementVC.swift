@@ -46,8 +46,8 @@ class StatementVC: UIViewController {
     var student:StudentData?
     
     //Values needed to record how many right and wrong anwnsers there were
-    var correcntResponces = 0
-    var totalQuestions = 0
+    var correcntResponces:Double = 0
+    var totalQuestions:Double = 0
     
     //Used to track how long the session lasts
     var beginTime = clock()
@@ -138,7 +138,7 @@ class StatementVC: UIViewController {
         let percentRight = (correcntResponces/totalQuestions) * 100
         print(correcntResponces)
         print(totalQuestions)
-        print(correcntResponces/totalQuestions)
+        print((correcntResponces/totalQuestions) * 100)
         newEntry.setValue(percentRight, forKey: "sucessRate")
         
         do {

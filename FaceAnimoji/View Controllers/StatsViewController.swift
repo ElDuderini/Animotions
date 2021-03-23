@@ -52,6 +52,8 @@ class StatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        baseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
+        
         //Clear arrays for repopulation later on
         lessonItems.removeAll()
         freeplayItems.removeAll()
