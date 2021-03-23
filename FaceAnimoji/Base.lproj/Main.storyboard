@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="width" constant="50" id="Ql6-Lo-kum"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <color key="tintColor" red="0.52700966599999999" green="0.65464013809999999" blue="0.81704306599999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="camera.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="cameraPressWithSender:" destination="BV1-FR-VrT" eventType="touchUpInside" id="epw-6e-Qjm"/>
@@ -916,7 +916,7 @@
                                     <constraint firstAttribute="width" constant="50" id="csp-Bc-iMd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <color key="tintColor" red="0.52700966599999999" green="0.65464013809999999" blue="0.81704306599999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="camera.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="cameraPressWithSender:" destination="93i-0F-c3Y" eventType="touchUpInside" id="oK9-6C-b4v"/>
