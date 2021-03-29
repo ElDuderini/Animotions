@@ -74,13 +74,27 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         //For each element in the array, generate a button, expand the scrollview and add labels to inform the user of prices/purchase status
         for index in 0...myButtonArray.count - 1{
             
-            let button = UIButton();
+            let imageView = UIImageView()
+            
+            var image = UIImage(named: myButtonArray[index].name!)
+            
+            if(image == nil){
+                image = UIImage(named: "Girl")
+            }
+            
+            let button = UIButton()
             
             let xCord = (view.frame.midX - 125) + (view.frame.width * CGFloat(index))
             
             contentWidth += view.frame.width
             
-            button.frame = CGRect(x: xCord, y: view.frame.height/2, width: 250, height: 100)
+            
+            imageView.image = image
+            imageView.frame = CGRect(x: xCord - 50, y: view.frame.height/2 - 150, width: 400, height: 400)
+            imageView.contentMode = UIView.ContentMode.scaleAspectFit
+            
+            
+            button.frame = CGRect(x: xCord, y: view.frame.height/2 + 300, width: 250, height: 100)
             
             button.setTitle(myButtonArray[index].name, for: .normal)
             button.setBackgroundImage(UIImage(named: "PinkButton"), for: UIControl.State.normal)
@@ -92,6 +106,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             
             storeButtons.append(button)
             scrollView.addSubview(button)
+            scrollView.addSubview(imageView)
             
             let lable = UILabel()
             
@@ -102,7 +117,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
                 lable.text = "Buy: " + String(myButtonArray[index].price)
             }
             
-            lable.frame = CGRect(x: xCord - 25, y: view.frame.height/2 + 100, width: 300, height: 100)
+            lable.frame = CGRect(x: xCord - 25, y: view.frame.height/2 + 400, width: 300, height: 100)
             lable.font = UIFont(name: "Arial", size: 35)
             lable.textAlignment = NSTextAlignment.center
             lable.textColor = UIColor.white
@@ -186,7 +201,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     
     //Update the points value in the string
     func changePointsValue(){
-        pointsLabel.text = "Points earned: " + String(student!.points)
+        pointsLabel.text = String(student!.points)
     }
     
     //Get the array value of the button you used to change the value of the text in the parallel array
