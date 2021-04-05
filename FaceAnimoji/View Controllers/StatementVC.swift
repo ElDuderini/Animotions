@@ -79,7 +79,7 @@ class StatementVC: UIViewController {
         
         //Establish a request to the API using the data above and from the documentation
         var request = URLRequest(url: url!)
-        request.setValue("XXXXX", forHTTPHeaderField: "Authorization")
+        request.setValue("4ZVOx63rWCo10XdervQdUhxzKNlft9FB:5PFmDN6jrR8KpI3wMrT1depx5pEZwCVqCslBZA2rcdnqALuUHKC54l4SIH9P0UTB", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = "POST"
@@ -154,7 +154,7 @@ class StatementVC: UIViewController {
         let currentVal = emotions.randomElement()!
         
         //If selecting an element from the array randomly returns a privously used value or an undesired value, then call the method again and cancel the current instance of it
-        if(currentVal == promptValue || currentVal == "humor"){
+        if(currentVal == promptValue || currentVal == "humor" || currentVal == "incongruity"){
             generatePrompt()
             return;
         }
