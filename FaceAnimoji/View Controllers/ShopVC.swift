@@ -84,23 +84,24 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             
             let button = UIButton()
             
-            let xCord = (view.frame.midX - 125) + (view.frame.width * CGFloat(index))
+            let xCord = (view.frame.midX) + (view.frame.width * CGFloat(index))
             
             contentWidth += view.frame.width
             
+            let yCord = (view.frame.midY) - view.frame.width/5
+            
             
             imageView.image = image
-            imageView.frame = CGRect(x: xCord - 50, y: view.frame.height/2 - 150, width: 400, height: 400)
+            imageView.frame = CGRect(x: xCord - view.frame.width/4, y: yCord, width: view.frame.width/2, height: view.frame.width/2)
             imageView.contentMode = UIView.ContentMode.scaleAspectFit
             
-            
-            button.frame = CGRect(x: xCord, y: view.frame.height/2 + 300, width: 250, height: 100)
+            button.frame = CGRect(x: xCord - view.frame.width/8, y: yCord + imageView.frame.height, width: view.frame.width/4, height: view.frame.width/5)
             
             button.setTitle(myButtonArray[index].name, for: .normal)
             button.setBackgroundImage(UIImage(named: "PinkButton"), for: UIControl.State.normal)
             button.setTitleColor(UIColor.white, for: .normal)
             button.contentHorizontalAlignment = .center
-            button.titleLabel?.font = UIFont(name: "Arial", size: 40)
+            button.titleLabel?.font = UIFont(name: "Arial", size: button.frame.height/4)
             button.layer.cornerRadius = 5
             button.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
             
@@ -117,8 +118,8 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
                 lable.text = "Buy: " + String(myButtonArray[index].price)
             }
             
-            lable.frame = CGRect(x: xCord - 25, y: view.frame.height/2 + 400, width: 300, height: 100)
-            lable.font = UIFont(name: "Arial", size: 35)
+            lable.frame = CGRect(x: xCord - view.frame.width/8, y: yCord + imageView.frame.height + (2 * button.frame.height/3), width: view.frame.width/4, height: view.frame.width/5)
+            lable.font = UIFont(name: "Arial", size: lable.frame.height/4)
             lable.textAlignment = NSTextAlignment.center
             lable.textColor = UIColor.white
             

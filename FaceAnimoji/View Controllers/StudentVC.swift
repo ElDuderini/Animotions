@@ -41,6 +41,8 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         
         //Populate the table
         updateTable()
+        
+        self.dismissKeyboard()
     }
     
     //When the user pressed the "Add Student" button, then create a alert that allows the user to add a new student
@@ -127,7 +129,7 @@ class StudentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         
         newStudent.setValue(fullName, forKeyPath: "fullName")
         newStudent.setValue(0, forKey: "points")
-        newStudent.setValue("white", forKey: "lastUsedMask")
+        newStudent.setValue("Girl", forKey: "lastUsedMask")
         newStudent.setValue(teacher!, forKey: "teacher");
         
         //Set up the current teacher with a currentlySelected student based on this most recently made student

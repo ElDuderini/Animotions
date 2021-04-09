@@ -28,6 +28,8 @@ class LandingPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.dismissKeyboard()
+        
         passwordField.isSecureTextEntry = true
         
         baseFunc.setUpBackground(view: self.view, imageName: "LogInScreen")
