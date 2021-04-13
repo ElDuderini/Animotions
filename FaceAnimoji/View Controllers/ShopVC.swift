@@ -45,6 +45,16 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         
         //Generate the store entries based on the information stored in coreData
         generateStore()
+        
+        //Method used for testing to figure out which font names are usable in code
+        //checkFontNames()
+    }
+    
+    func checkFontNames(){
+        for family in UIFont.familyNames.sorted(){
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
     }
     
     func generateStore(){
@@ -95,13 +105,13 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             imageView.frame = CGRect(x: xCord - view.frame.width/4, y: yCord, width: view.frame.width/2, height: view.frame.width/2)
             imageView.contentMode = UIView.ContentMode.scaleAspectFit
             
-            button.frame = CGRect(x: xCord - view.frame.width/8, y: yCord + imageView.frame.height, width: view.frame.width/4, height: view.frame.width/5)
+            button.frame = CGRect(x: xCord - view.frame.width/6, y: yCord + imageView.frame.height, width: view.frame.width/3, height: view.frame.width/5)
             
             button.setTitle(myButtonArray[index].name, for: .normal)
             button.setBackgroundImage(UIImage(named: "PinkButton"), for: UIControl.State.normal)
             button.setTitleColor(UIColor.white, for: .normal)
             button.contentHorizontalAlignment = .center
-            button.titleLabel?.font = UIFont(name: "Arial", size: button.frame.height/4)
+            button.titleLabel?.font = UIFont(name: "BerlinSansFBDemi-Bold", size: button.frame.height/3)
             button.layer.cornerRadius = 5
             button.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
             
@@ -119,7 +129,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             }
             
             lable.frame = CGRect(x: xCord - view.frame.width/8, y: yCord + imageView.frame.height + (2 * button.frame.height/3), width: view.frame.width/4, height: view.frame.width/5)
-            lable.font = UIFont(name: "Arial", size: lable.frame.height/4)
+            lable.font = UIFont(name: "BerlinSansFBDemi-Bold", size: lable.frame.height/4)
             lable.textAlignment = NSTextAlignment.center
             lable.textColor = UIColor.white
             

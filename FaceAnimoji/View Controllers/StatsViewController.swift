@@ -133,6 +133,7 @@ class StatsViewController: UIViewController {
             }
             
             sucessRate = sucessRate/Double(freeplayItems.count)
+            sucessRate = Double(round(1000 * sucessRate)/1000)
             
             accuracyFreeplayLabel.text = accuracyText + String(sucessRate) + "%"
             freeplayQuestionsLabel.text = questionText + String(totalQuestions)
@@ -169,6 +170,7 @@ class StatsViewController: UIViewController {
             }
             
             sucessRate = sucessRate/Double(writingItems.count)
+            sucessRate = Double(round(1000 * sucessRate)/1000)
             
             accuracyWritingLabel.text = accuracyText + String(sucessRate) + "%"
             writingQuestionsLabel.text = questionText + String(totalQuestions)

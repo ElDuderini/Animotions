@@ -58,7 +58,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        //sceneView.showsStatistics = true
         
         //Get the mask the user is using, it is used to load scenes
         selectedScene = student!.lastUsedMask!
