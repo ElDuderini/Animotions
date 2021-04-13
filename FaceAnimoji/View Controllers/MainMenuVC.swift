@@ -18,7 +18,7 @@ class MainMenuVC: UIViewController {
     
     @IBOutlet weak var currentStudentLabel: UILabel!
     
-    var BaseFunc = BaseFunctions()
+    var BaseFunc:BaseFunctions? = nil
     
     var shopData = ShopDataConstruction()
     
@@ -35,8 +35,11 @@ class MainMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //if(!BaseFunc!.musicPlayer!.isPlaying){
+            //BaseFunc!.StartMusic()
+        //}
         //Set up the background
-        BaseFunc.setUpBackground(view: self.view, imageName: "BackgroundGreen")
+        BaseFunc!.setUpBackground(view: self.view, imageName: "BackgroundGreen")
         
         loadStudentName()
     }
@@ -101,11 +104,13 @@ class MainMenuVC: UIViewController {
         case "freeplayVC":
             let destinationVC:FreePlayVC = segue.destination as! FreePlayVC
             destinationVC.student = student
+            destinationVC.baseFunc = BaseFunc
             break;
             
         case "lessonVC":
             let destinationVC:ARVC = segue.destination as! ARVC
             destinationVC.student = student
+            destinationVC.baseFunc = BaseFunc!
             break;
             
         case "shopVC":
@@ -113,7 +118,9 @@ class MainMenuVC: UIViewController {
             destinationVC.student = student
             break;
             
-        case "reviewVC":
+        case "optionsVC":
+            let destinationVC:OptionsVC = segue.destination as! OptionsVC
+            destinationVC.baseFunc = BaseFunc
             break;
             
         case "statementVC":
@@ -129,12 +136,12 @@ class MainMenuVC: UIViewController {
     
     //If any button is pressed, play the feedback to the user
     @IBAction func ButtonPress(){
-        BaseFunc.Feedback()
+        BaseFunc!.Feedback()
     }
     
     //Log out of the current teacher
     @IBAction func logOutBtn(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
-        BaseFunc.Feedback()
+        BaseFunc!.Feedback()
     }
 }

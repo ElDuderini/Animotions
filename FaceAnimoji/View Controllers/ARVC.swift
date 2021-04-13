@@ -27,7 +27,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var baseFunc = BaseFunctions()
+    var baseFunc:BaseFunctions? = nil
     var lessonQuestions = LessonBrain()
     var mainMenu = MainMenuVC()
     
@@ -41,6 +41,10 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if(baseFunc!.defaults.bool(forKey: "musicOn")){
+            baseFunc!.StopMusic()
+        }
         
         //Log the starting time when the user opens this screen, for both the session and per question
         beginTime = clock()
@@ -199,7 +203,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
             timePerQuestion.append(timeForResponse)
             beginTimePerQuestion = clock()
             lessonQuestions.nextQuestion()
-            baseFunc.Feedback()
+            baseFunc!.Feedback()
             OperationQueue.main.addOperation{
                 self.emoteLable.text = self.lessonQuestions.getQuestionText()
             }
@@ -233,14 +237,18 @@ class ARVC: UIViewController, ARSCNViewDelegate {
             saveSessionData()
         }
         self.dismiss(animated: true, completion: nil)
-        baseFunc.Feedback()
+        baseFunc!.Feedback()
+        
+        if(baseFunc!.defaults.bool(forKey: "musicOn")){
+            baseFunc!.StartMusic()
+        }
     }
     
     //If the user pressed the screenshot button, call a screenshot method in another script
     @IBAction func cameraPress(sender: UIButton){
-        baseFunc.Feedback()
-        let image = baseFunc.screenShot(sceneView: sceneView)!
-        baseFunc.imageAlert(image: image, viewController: self)
+        baseFunc!.Feedback()
+        let image = baseFunc!.screenShot(sceneView: sceneView)!
+        baseFunc!.imageAlert(image: image, viewController: self)
     }
     
     //Save the data you produced in this session

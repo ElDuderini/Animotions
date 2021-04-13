@@ -42,6 +42,14 @@ class LandingPageVC: UIViewController {
         if(!isKeyPresentInDefaults(key: "hapticOn")){
             defaults.set(true, forKey: "hapticOn")
         }
+        
+        if(!isKeyPresentInDefaults(key: "musicOn")){
+            defaults.set(true, forKey: "musicOn")
+        }
+        
+        if(defaults.bool(forKey: "musicOn")){
+            baseFunc.StartMusic()
+        }
 
     }
     
@@ -158,6 +166,7 @@ class LandingPageVC: UIViewController {
             let destinationVC:MainMenuVC = segue.destination as! MainMenuVC
             
             destinationVC.teacher = teachers[0]
+            destinationVC.BaseFunc = baseFunc
         }
     }
 }

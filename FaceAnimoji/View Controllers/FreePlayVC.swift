@@ -26,7 +26,7 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var baseFunc = BaseFunctions()
+    var baseFunc:BaseFunctions? = nil
     
     var mainMenu = MainMenuVC()
     
@@ -42,6 +42,10 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(baseFunc!.defaults.bool(forKey: "musicOn")){
+            baseFunc!.StopMusic()
+        }
         
         beginTime = clock()
         
@@ -204,7 +208,11 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
             saveSessionData()
         }
         self.dismiss(animated: true, completion: nil)
-        baseFunc.Feedback()
+        baseFunc!.Feedback()
+        
+        if(baseFunc!.defaults.bool(forKey: "musicOn")){
+            baseFunc!.StartMusic()
+        }
     }
     
     //Check to see if the current expression the user makes is matching up with the button they pressed. If it matches, give the user points and provide feedback
@@ -214,7 +222,7 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
             let addedPoints = student!.points + 10
             student?.setValue(addedPoints, forKey: "points")
             correcntResponces += 1
-            baseFunc.Feedback()
+            baseFunc!.Feedback()
         }
     }
     
@@ -243,8 +251,8 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func cameraPress(sender: UIButton){
-        baseFunc.Feedback()
-        let image = baseFunc.screenShot(sceneView: sceneView)!
-        baseFunc.imageAlert(image: image, viewController: self)
+        baseFunc!.Feedback()
+        let image = baseFunc!.screenShot(sceneView: sceneView)!
+        baseFunc!.imageAlert(image: image, viewController: self)
     }
 }

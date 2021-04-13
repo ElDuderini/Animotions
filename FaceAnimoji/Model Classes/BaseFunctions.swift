@@ -20,7 +20,9 @@ class BaseFunctions {
     
     let hapticFeedback = UIImpactFeedbackGenerator(style: .medium)
     
-    var player : AVAudioPlayer?
+    var soundPlayer : AVAudioPlayer?
+    
+    var musicPlayer : AVAudioPlayer?
     
     //Function called that checks userDefaults to play a sound and haptic feedback
     func Feedback(){
@@ -32,6 +34,33 @@ class BaseFunctions {
         }
     }
     
+    func StartMusic(){
+//        if(!defaults.bool(forKey: "musicOn")){
+//            return;
+//        }
+        
+        guard let url = Bundle.main.url(forResource: "BGMusic", withExtension: ".wav") else {return}
+        
+        do{
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            musicPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
+            
+            guard let player = musicPlayer else { return }
+            
+            player.play()
+            player.numberOfLoops = 999999999
+            
+        } catch let error{
+            print(error.localizedDescription)
+        }
+    }
+    
+    func StopMusic(){
+        musicPlayer?.stop()
+    }
+    
     //Play the sound that is retrived from resources
     func playSound() {
         guard let url = Bundle.main.url(forResource: "confirmSound", withExtension: ".wav") else {return}
@@ -40,9 +69,9 @@ class BaseFunctions {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
+            soundPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
             
-            guard let player = player else { return }
+            guard let player = soundPlayer else { return }
             
             player.play()
             

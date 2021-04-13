@@ -82,7 +82,7 @@ class ShopDataConstruction{
             }
             
             //Increase the price by 50 for each new mask
-            priceIncrese += priceIncrement;
+            priceIncrese += priceIncrement
         }
         
     }
@@ -93,7 +93,14 @@ class ShopDataConstruction{
         let newFace = ShopData(context: self.context)
         
         newFace.setValue(name, forKeyPath: "name")
-        newFace.setValue(false, forKey: "purchased")
+        
+        if(name == "Girl" || name == "Boy"){
+            newFace.setValue(true, forKey: "purchased")
+            priceIncrese -= priceIncrement
+        }
+        else{
+            newFace.setValue(false, forKey: "purchased")
+        }
         newFace.setValue(cost, forKey: "price")
         newFace.setValue(Date(), forKey: "dateCreated")
         newFace.setValue(studentData, forKey: "student")
