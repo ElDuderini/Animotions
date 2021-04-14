@@ -1,45 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sg8-2K-wuq">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="BRLNSDB.TTF">
+            <string>BerlinSansFBDemi-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--ARVC-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BV1-FR-VrT" customClass="ARVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </arscnView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EmoteLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oa4-9m-Kbf">
-                                <rect key="frame" x="0.0" y="763" width="414" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxU-ci-TTw">
+                                <rect key="frame" x="5" y="35" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Jk3-ug-auh"/>
+                                    <constraint firstAttribute="height" constant="50" id="f57-OP-NLY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Back" backgroundImage="BlueButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn" destination="BV1-FR-VrT" eventType="touchUpInside" id="gV9-7h-RyL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EmoteLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oa4-9m-Kbf">
+                                <rect key="frame" x="0.0" y="358.33333333333331" width="414" height="19.333333333333314"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xj3-Er-ZU4">
+                                <rect key="frame" x="344" y="26" width="50" height="48.666666666666671"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="CXp-kn-bTB"/>
+                                    <constraint firstAttribute="width" constant="50" id="Ql6-Lo-kum"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" red="0.52700966599999999" green="0.65464013809999999" blue="0.81704306599999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="camera.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="cameraPressWithSender:" destination="BV1-FR-VrT" eventType="touchUpInside" id="epw-6e-Qjm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="oa4-9m-Kbf" firstAttribute="trailing" secondItem="BrB-h1-WRS" secondAttribute="trailing" id="01L-t2-4Hi"/>
                             <constraint firstItem="oa4-9m-Kbf" firstAttribute="leading" secondItem="BrB-h1-WRS" secondAttribute="leading" id="32f-fJ-nGo"/>
-                            <constraint firstItem="oa4-9m-Kbf" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="719" id="6WR-OF-6Iw"/>
+                            <constraint firstItem="oa4-9m-Kbf" firstAttribute="centerY" secondItem="U0K-SW-4ec" secondAttribute="centerY" id="7Dl-4J-AEA"/>
+                            <constraint firstItem="PxU-ci-TTw" firstAttribute="leading" secondItem="U0K-SW-4ec" secondAttribute="leading" constant="35" id="B9T-53-z1F">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
+                            <constraint firstItem="PxU-ci-TTw" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="topMargin" constant="35" id="KrB-tL-HsB"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
+                            <constraint firstItem="oa4-9m-Kbf" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" id="pE7-3X-hbI"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="Xj3-Er-ZU4" secondAttribute="trailing" constant="20" id="weu-DD-e4g"/>
+                            <constraint firstItem="Xj3-Er-ZU4" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="25" id="x0n-Oj-OFQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="oZU-Nf-Wrf"/>
                     <connections>
                         <outlet property="emoteLable" destination="oa4-9m-Kbf" id="0nW-bB-yq4"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
@@ -49,10 +91,1503 @@
             </objects>
             <point key="canvasLocation" x="528.98550724637687" y="77.678571428571431"/>
         </scene>
+        <!--ReviewVC-->
+        <scene sceneID="y6c-xQ-KAd">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="iLm-LZ-ury" customClass="ReviewVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="esa-HS-iYx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="4000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaR-C3-5Ip">
+                                <rect key="frame" x="5" y="35" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ofv-7e-f4i"/>
+                                    <constraint firstAttribute="width" constant="150" id="clR-4h-BDd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Back" backgroundImage="BlueButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn:" destination="iLm-LZ-ury" eventType="touchUpInside" id="K2N-Zs-H2t"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Hm-zg-NCA">
+                                <rect key="frame" x="0.0" y="85" width="414" height="3915"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIT-Ji-pbh">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="3012.3333333333335"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gR9-VX-Ddu">
+                                                <rect key="frame" x="99.333333333333329" y="50" width="215.33333333333337" height="34"/>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zy0-eE-RKN">
+                                                <rect key="frame" x="176.33333333333334" y="134" width="61.666666666666657" height="22.666666666666657"/>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Happy" translatesAutoresizingMaskIntoConstraints="NO" id="eUO-OX-lly">
+                                                <rect key="frame" x="132" y="176.66666666666669" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="VLq-TC-GVX"/>
+                                                    <constraint firstAttribute="height" constant="150" id="ZEA-9d-JQ8"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6O-wB-WPn">
+                                                <rect key="frame" x="50" y="366.66666666666669" width="314" height="77"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="S0a-Tx-fRT"/>
+                                                </constraints>
+                                                <string key="text">Happy is a possitive emotion that you feel when you feel good. You often feel happy when you are having fun and spending time with friends.</string>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idb-eK-aqA">
+                                                <rect key="frame" x="191" y="493.66666666666663" width="32" height="22.666666666666629"/>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sad" translatesAutoresizingMaskIntoConstraints="NO" id="Jjb-6o-7Zh">
+                                                <rect key="frame" x="132" y="536.33333333333337" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="2EM-jv-9A0"/>
+                                                    <constraint firstAttribute="width" constant="150" id="8A4-aJ-epb"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sad is a negative emotion that is felt when you feel bad. You often feel lost, alone or ignored when you feel sad." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgn-a0-k5J">
+                                                <rect key="frame" x="50" y="726.33333333333337" width="314" height="57.666666666666629"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="iyI-W9-SAI"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Angry" translatesAutoresizingMaskIntoConstraints="NO" id="rJF-XU-qcn">
+                                                <rect key="frame" x="132" y="876.66666666666663" width="150" height="149.99999999999989"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="7Dv-HO-jtl"/>
+                                                    <constraint firstAttribute="width" constant="150" id="XQj-Q4-T7U"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lX-ee-39X">
+                                                <rect key="frame" x="50" y="1066.6666666666667" width="314" height="96"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="mdk-Pl-q6b"/>
+                                                </constraints>
+                                                <string key="text">Anger is a negative emotion that that is felt when you are upset with yourself or with others. It is often felt when arguements arrise or have something taken away from you.</string>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5J-qz-jVO">
+                                                <rect key="frame" x="179.33333333333334" y="834" width="55.333333333333343" height="22.666666666666629"/>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Surprised" translatesAutoresizingMaskIntoConstraints="NO" id="xWV-I9-6UM">
+                                                <rect key="frame" x="132" y="1255.3333333333333" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="gKO-Z2-peq"/>
+                                                    <constraint firstAttribute="width" constant="150" id="i0X-qe-m0H"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fearful" translatesAutoresizingMaskIntoConstraints="NO" id="IXr-v0-sUt">
+                                                <rect key="frame" x="132" y="1635.6666666666667" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="hcQ-MO-Fnh"/>
+                                                    <constraint firstAttribute="width" constant="150" id="v1b-0L-yq3"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igu-tN-sCz">
+                                                <rect key="frame" x="50" y="1825.6666666666667" width="314" height="77"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="goM-5m-e4c"/>
+                                                </constraints>
+                                                <string key="text">Fear is a negative emotion felt when something scares you. It is often felt when you are doing something new or are in a unfamiliar place.</string>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fear" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8n-MQ-hqo">
+                                                <rect key="frame" x="186.66666666666666" y="1593" width="40.666666666666657" height="22.666666666666742"/>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Anxious" translatesAutoresizingMaskIntoConstraints="NO" id="zyu-ZW-sHD">
+                                                <rect key="frame" x="132" y="1995.3333333333335" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="3Tu-pN-CzP"/>
+                                                    <constraint firstAttribute="width" constant="150" id="ybq-SM-8qk"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anxious is a negative emotion similar to fear, but is milder. It is often felt when doing tests at school." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0f-zM-7hv">
+                                                <rect key="frame" x="50" y="2185.3333333333335" width="314" height="57.666666666666515"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="tPQ-m2-5HD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anxious" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djz-mF-1u8">
+                                                <rect key="frame" x="172" y="1952.6666666666667" width="70" height="22.666666666666742"/>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surprise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwf-IL-gY6">
+                                                <rect key="frame" x="172" y="1212.6666666666667" width="70" height="22.666666666666742"/>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1g1-iQ-pqg">
+                                                <rect key="frame" x="50" y="1445.3333333333333" width="314" height="96"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="0HM-2E-AtN"/>
+                                                </constraints>
+                                                <string key="text">Surprize is a emotion that can either be negative or possitive. It can be felt durring a unexpected event like a surprize party or having someone jump infront of you.</string>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Disgusted" translatesAutoresizingMaskIntoConstraints="NO" id="JVt-hL-xaY">
+                                                <rect key="frame" x="132" y="2335.6666666666665" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="kue-gA-AXw"/>
+                                                    <constraint firstAttribute="height" constant="150" id="tsG-Bh-c7G"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSo-Va-lck">
+                                                <rect key="frame" x="50" y="2525.6666666666665" width="314" height="77"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="8ac-z4-hZ3"/>
+                                                </constraints>
+                                                <string key="text">Disgust is a negative emotion felt when you experiance something gross. It is often felt when smelling or tasting something bad,.</string>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disgust" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5h7-v6-7Sj">
+                                                <rect key="frame" x="174.66666666666666" y="2293" width="64.666666666666657" height="22.666666666666515"/>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Neutral" translatesAutoresizingMaskIntoConstraints="NO" id="6O4-eZ-Vv7">
+                                                <rect key="frame" x="132" y="2695.3333333333335" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="P0v-rx-wao"/>
+                                                    <constraint firstAttribute="width" constant="150" id="vom-MQ-zRg"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPF-sP-1xg">
+                                                <rect key="frame" x="50" y="2885.3333333333335" width="314" height="77"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="jkv-he-tfo"/>
+                                                </constraints>
+                                                <string key="text">Neutral is a emotion that is not negative or positive. It is experiance when nothing is happening or you are waiting for something.</string>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neutral" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yy-3W-BZ3">
+                                                <rect key="frame" x="172.66666666666666" y="2652.6666666666665" width="69" height="22.666666666666515"/>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="1g1-iQ-pqg" secondAttribute="trailing" constant="50" id="0Ct-NM-VRW"/>
+                                            <constraint firstItem="6O4-eZ-Vv7" firstAttribute="top" secondItem="8yy-3W-BZ3" secondAttribute="bottom" constant="20" id="0jr-nh-J6F"/>
+                                            <constraint firstItem="H0f-zM-7hv" firstAttribute="top" secondItem="zyu-ZW-sHD" secondAttribute="bottom" constant="40" id="1pt-xe-yML"/>
+                                            <constraint firstItem="Jjb-6o-7Zh" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="2s4-X5-8QE"/>
+                                            <constraint firstItem="zyu-ZW-sHD" firstAttribute="top" secondItem="Djz-mF-1u8" secondAttribute="bottom" constant="20" id="34q-bH-Irg"/>
+                                            <constraint firstItem="gR9-VX-Ddu" firstAttribute="top" secondItem="yIT-Ji-pbh" secondAttribute="top" constant="50" id="4tt-rO-6ym"/>
+                                            <constraint firstItem="hwf-IL-gY6" firstAttribute="top" secondItem="5lX-ee-39X" secondAttribute="bottom" constant="50" id="614-xo-bG5"/>
+                                            <constraint firstItem="5h7-v6-7Sj" firstAttribute="top" secondItem="H0f-zM-7hv" secondAttribute="bottom" constant="50" id="6Gv-A9-JZf"/>
+                                            <constraint firstItem="1g1-iQ-pqg" firstAttribute="top" secondItem="xWV-I9-6UM" secondAttribute="bottom" constant="40" id="7Qm-78-Cth"/>
+                                            <constraint firstAttribute="trailing" secondItem="5lX-ee-39X" secondAttribute="trailing" constant="50" id="9bI-Ee-eeH"/>
+                                            <constraint firstItem="hwf-IL-gY6" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="DVo-c1-bU8"/>
+                                            <constraint firstItem="Vgn-a0-k5J" firstAttribute="leading" secondItem="yIT-Ji-pbh" secondAttribute="leading" constant="50" id="G6t-fL-zEN"/>
+                                            <constraint firstItem="Idb-eK-aqA" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="GFq-eG-XSE"/>
+                                            <constraint firstItem="8yy-3W-BZ3" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="GG9-iG-A17"/>
+                                            <constraint firstItem="1g1-iQ-pqg" firstAttribute="leading" secondItem="yIT-Ji-pbh" secondAttribute="leading" constant="50" id="Hrv-kV-Xku"/>
+                                            <constraint firstItem="IXr-v0-sUt" firstAttribute="top" secondItem="Y8n-MQ-hqo" secondAttribute="bottom" constant="20" id="IBq-zZ-U8n"/>
+                                            <constraint firstItem="5h7-v6-7Sj" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="JdO-bB-BLp"/>
+                                            <constraint firstItem="s6O-wB-WPn" firstAttribute="top" secondItem="eUO-OX-lly" secondAttribute="bottom" constant="40" id="Kag-bK-rRt"/>
+                                            <constraint firstItem="5lX-ee-39X" firstAttribute="leading" secondItem="yIT-Ji-pbh" secondAttribute="leading" constant="50" id="MBn-FP-Iqt"/>
+                                            <constraint firstItem="xWV-I9-6UM" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="MCb-4J-MZX"/>
+                                            <constraint firstItem="Vgn-a0-k5J" firstAttribute="top" secondItem="Jjb-6o-7Zh" secondAttribute="bottom" constant="40" id="Mi8-Yl-VqF"/>
+                                            <constraint firstItem="eUO-OX-lly" firstAttribute="top" secondItem="Zy0-eE-RKN" secondAttribute="bottom" constant="20" id="NCt-eA-9rH"/>
+                                            <constraint firstItem="s6O-wB-WPn" firstAttribute="leading" secondItem="yIT-Ji-pbh" secondAttribute="leading" constant="50" id="Nsp-Sh-ZVK"/>
+                                            <constraint firstItem="Y8n-MQ-hqo" firstAttribute="top" secondItem="1g1-iQ-pqg" secondAttribute="bottom" constant="51.5" id="OEQ-By-FFO"/>
+                                            <constraint firstItem="ZPF-sP-1xg" firstAttribute="leading" secondItem="yIT-Ji-pbh" secondAttribute="leading" constant="50" id="OPs-sZ-qLR"/>
+                                            <constraint firstItem="xWV-I9-6UM" firstAttribute="top" secondItem="hwf-IL-gY6" secondAttribute="bottom" constant="20" id="OX6-Mw-unZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Vgn-a0-k5J" secondAttribute="trailing" constant="50" id="QXk-s7-odF"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZPF-sP-1xg" secondAttribute="bottom" constant="50" id="TgZ-qU-e9c"/>
+                                            <constraint firstItem="Djz-mF-1u8" firstAttribute="top" secondItem="igu-tN-sCz" secondAttribute="bottom" constant="50" id="UK1-FA-2c7"/>
+                                            <constraint firstItem="JVt-hL-xaY" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="UQi-vT-Rrg"/>
+                                            <constraint firstItem="igu-tN-sCz" firstAttribute="top" secondItem="IXr-v0-sUt" secondAttribute="bottom" constant="40" id="UlD-k8-Gog"/>
+                                            <constraint firstAttribute="trailing" secondItem="H0f-zM-7hv" secondAttribute="trailing" constant="50" id="Wge-vU-lHH"/>
+                                            <constraint firstItem="rJF-XU-qcn" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="XBe-ij-j3E"/>
+                                            <constraint firstAttribute="trailing" secondItem="igu-tN-sCz" secondAttribute="trailing" constant="50" id="Yct-Sq-lxu"/>
+                                            <constraint firstItem="fSo-Va-lck" firstAttribute="leading" secondItem="yIT-Ji-pbh" secondAttribute="leading" constant="50" id="ZwW-a6-c6N"/>
+                                            <constraint firstItem="JVt-hL-xaY" firstAttribute="top" secondItem="5h7-v6-7Sj" secondAttribute="bottom" constant="20" id="cQJ-XY-KfG"/>
+                                            <constraint firstItem="H0f-zM-7hv" firstAttribute="leading" secondItem="yIT-Ji-pbh" secondAttribute="leading" constant="50" id="ci9-yO-xtn"/>
+                                            <constraint firstItem="5lX-ee-39X" firstAttribute="top" secondItem="rJF-XU-qcn" secondAttribute="bottom" constant="40" id="crr-Ed-smR"/>
+                                            <constraint firstItem="n5J-qz-jVO" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="fiu-Hq-1ZR"/>
+                                            <constraint firstItem="rJF-XU-qcn" firstAttribute="top" secondItem="n5J-qz-jVO" secondAttribute="bottom" constant="20" id="hHm-HX-4Kr"/>
+                                            <constraint firstItem="zyu-ZW-sHD" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="i2G-U3-nFC"/>
+                                            <constraint firstItem="Idb-eK-aqA" firstAttribute="top" secondItem="s6O-wB-WPn" secondAttribute="bottom" constant="50" id="iMp-Qd-2JX"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZPF-sP-1xg" secondAttribute="trailing" constant="50" id="io8-Pp-WV1"/>
+                                            <constraint firstItem="ZPF-sP-1xg" firstAttribute="top" secondItem="6O4-eZ-Vv7" secondAttribute="bottom" constant="40" id="ixd-nY-Cr0"/>
+                                            <constraint firstItem="gR9-VX-Ddu" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="jCc-ZI-vOY"/>
+                                            <constraint firstItem="Zy0-eE-RKN" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="jfX-MZ-vtC"/>
+                                            <constraint firstItem="8yy-3W-BZ3" firstAttribute="top" secondItem="fSo-Va-lck" secondAttribute="bottom" constant="50" id="jme-7B-vp8"/>
+                                            <constraint firstItem="igu-tN-sCz" firstAttribute="leading" secondItem="yIT-Ji-pbh" secondAttribute="leading" constant="50" id="k9u-Gp-dGy"/>
+                                            <constraint firstItem="n5J-qz-jVO" firstAttribute="top" secondItem="Vgn-a0-k5J" secondAttribute="bottom" constant="50" id="mGl-SE-7mO"/>
+                                            <constraint firstItem="eUO-OX-lly" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="n9J-9d-KXr"/>
+                                            <constraint firstItem="s6O-wB-WPn" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="oWq-mU-G0f"/>
+                                            <constraint firstItem="Djz-mF-1u8" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="qTI-Oj-8Yy"/>
+                                            <constraint firstAttribute="trailing" secondItem="fSo-Va-lck" secondAttribute="trailing" constant="50" id="sGA-JS-jdt"/>
+                                            <constraint firstItem="fSo-Va-lck" firstAttribute="top" secondItem="JVt-hL-xaY" secondAttribute="bottom" constant="40" id="uQ3-VO-R4P"/>
+                                            <constraint firstItem="Y8n-MQ-hqo" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="vAk-dn-XXz"/>
+                                            <constraint firstItem="Zy0-eE-RKN" firstAttribute="top" secondItem="gR9-VX-Ddu" secondAttribute="bottom" constant="50" id="vLu-uh-MhX"/>
+                                            <constraint firstAttribute="trailing" secondItem="s6O-wB-WPn" secondAttribute="trailing" constant="50" id="vit-Vn-0WX"/>
+                                            <constraint firstItem="IXr-v0-sUt" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="xxJ-rA-Zzs"/>
+                                            <constraint firstItem="Jjb-6o-7Zh" firstAttribute="top" secondItem="Idb-eK-aqA" secondAttribute="bottom" constant="20" id="yEQ-Aw-gDL"/>
+                                            <constraint firstItem="6O4-eZ-Vv7" firstAttribute="centerX" secondItem="yIT-Ji-pbh" secondAttribute="centerX" id="yNN-bp-PYN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="NM2-gA-oBL" firstAttribute="leading" secondItem="yIT-Ji-pbh" secondAttribute="leading" id="BLl-nu-Hjs"/>
+                                    <constraint firstItem="yIT-Ji-pbh" firstAttribute="bottom" secondItem="NM2-gA-oBL" secondAttribute="bottom" id="HZ4-0e-772"/>
+                                    <constraint firstItem="yIT-Ji-pbh" firstAttribute="width" secondItem="PP4-8T-zD3" secondAttribute="width" id="RDC-nF-Hbm"/>
+                                    <constraint firstItem="yIT-Ji-pbh" firstAttribute="trailing" secondItem="NM2-gA-oBL" secondAttribute="trailing" id="m6D-XL-4Zu"/>
+                                    <constraint firstItem="yIT-Ji-pbh" firstAttribute="top" secondItem="NM2-gA-oBL" secondAttribute="top" id="zch-Nz-3lr"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="NM2-gA-oBL"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="PP4-8T-zD3"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Exv-OZ-4ao"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Exv-OZ-4ao" firstAttribute="bottom" secondItem="3Hm-zg-NCA" secondAttribute="bottom" id="4Xw-MN-4Vx"/>
+                            <constraint firstItem="qaR-C3-5Ip" firstAttribute="leading" secondItem="Exv-OZ-4ao" secondAttribute="leading" constant="35" id="X8E-jU-CUZ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="3Hm-zg-NCA" firstAttribute="leading" secondItem="Exv-OZ-4ao" secondAttribute="leading" id="XMT-1D-Cdd"/>
+                            <constraint firstItem="qaR-C3-5Ip" firstAttribute="top" secondItem="Exv-OZ-4ao" secondAttribute="top" constant="35" id="mDh-CU-k7k"/>
+                            <constraint firstItem="Exv-OZ-4ao" firstAttribute="trailing" secondItem="3Hm-zg-NCA" secondAttribute="trailing" id="xWP-9O-jIK"/>
+                            <constraint firstItem="3Hm-zg-NCA" firstAttribute="top" secondItem="qaR-C3-5Ip" secondAttribute="bottom" id="zR2-q8-KZi"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="414" height="4000"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sOz-jd-twd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1517" y="1116"/>
+        </scene>
+        <!--Main MenuVC-->
+        <scene sceneID="jV4-Wp-6Yj">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LxE-eU-dFN" customClass="MainMenuVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qqK-oj-4b7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Hb-Ex-p57">
+                                <rect key="frame" x="82" y="193" width="250" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="9Ki-bQ-DhF"/>
+                                    <constraint firstAttribute="width" constant="250" id="wJV-zV-4rr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="40"/>
+                                <state key="normal" title="Lesson" backgroundImage="PinkButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="ButtonPress" destination="LxE-eU-dFN" eventType="touchUpInside" id="K9H-EI-oaR"/>
+                                    <segue destination="BV1-FR-VrT" kind="showDetail" identifier="lessonVC" id="Y1V-gZ-8sw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uf3-vY-r06">
+                                <rect key="frame" x="5" y="676" width="125" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Goi-MJ-ngl">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="125"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="50" id="tL6-Hr-FyI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Shop" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="cart" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="19"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonPress" destination="LxE-eU-dFN" eventType="touchUpInside" id="vly-Y7-nKr"/>
+                                    <segue destination="SfY-zE-T6s" kind="show" identifier="shopVC" id="Gpl-TP-BDZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIg-xs-hfY">
+                                <rect key="frame" x="284" y="676" width="125" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="1Ax-jA-XIi">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="125"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="50" id="42r-Il-js3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Settings" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="15"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonPress" destination="LxE-eU-dFN" eventType="touchUpInside" id="vPo-Tp-Gtz"/>
+                                    <segue destination="68B-iC-ajA" kind="show" identifier="optionsVC" id="erc-An-cxW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gfx-5h-eHF">
+                                <rect key="frame" x="82" y="318" width="250" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="5Yh-6D-bLn"/>
+                                    <constraint firstAttribute="height" constant="100" id="HSl-lm-MGV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="37"/>
+                                <state key="normal" title="Free Play" backgroundImage="PinkButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="ButtonPress" destination="LxE-eU-dFN" eventType="touchUpInside" id="TvT-NG-iGi"/>
+                                    <segue destination="93i-0F-c3Y" kind="showDetail" identifier="freeplayVC" id="LKR-eC-c9v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VzI-Lh-JYG">
+                                <rect key="frame" x="82" y="443" width="250" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="hyu-TP-Cjs"/>
+                                    <constraint firstAttribute="height" constant="100" id="sy0-3y-Lua"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="40"/>
+                                <state key="normal" title="Writing" backgroundImage="PinkButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="ButtonPress" destination="LxE-eU-dFN" eventType="touchUpInside" id="NJG-X2-6Fs"/>
+                                    <segue destination="NOy-bM-ubp" kind="showDetail" identifier="statementVC" id="ohz-Zy-GLH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M19-vh-Sc8">
+                                <rect key="frame" x="144.66666666666666" y="676" width="124.99999999999997" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="VYy-U0-qFF">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="125"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="50" id="ev3-AZ-IMs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Stats" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="chart.bar.xaxis" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="19"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonPress" destination="LxE-eU-dFN" eventType="touchUpInside" id="7zI-j8-d22"/>
+                                    <segue destination="0jj-0M-Mhf" kind="showDetail" identifier="statsVC" id="iYb-1n-EOI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHj-9x-zp7">
+                                <rect key="frame" x="259" y="35" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="WE4-q5-XY5"/>
+                                    <constraint firstAttribute="width" constant="150" id="pCd-Xn-SBK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <state key="normal" title="Log Out" backgroundImage="BlueButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOutBtn:" destination="LxE-eU-dFN" eventType="touchUpInside" id="rU5-hV-dix"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNx-Le-zqb">
+                                <rect key="frame" x="5" y="35" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="6Z7-Kj-0P4"/>
+                                    <constraint firstAttribute="height" constant="50" id="AFf-Ua-2Df"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="24"/>
+                                <state key="normal" title="Students" backgroundImage="BlueButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="ButtonPress" destination="LxE-eU-dFN" eventType="touchUpInside" id="Jni-JY-ENu"/>
+                                    <segue destination="8Mz-Bv-0h7" kind="showDetail" identifier="studentVC" id="jUL-EN-sf0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Student" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGa-zl-6tS">
+                                <rect key="frame" x="118.66666666666669" y="103" width="177" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Xls-PQ-H2N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Justin Peters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2np-Ev-9tU">
+                                <rect key="frame" x="0.0" y="153" width="414" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IZ7-p3-hqG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aa9-Z0-CPv">
+                                <rect key="frame" x="82" y="568" width="250" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="nGs-tV-s1L"/>
+                                    <constraint firstAttribute="width" constant="250" id="vby-CU-xEz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="40"/>
+                                <state key="normal" title="Review" backgroundImage="PinkButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="ButtonPress" destination="LxE-eU-dFN" eventType="touchUpInside" id="oIO-Dv-YLs"/>
+                                    <segue destination="iLm-LZ-ury" kind="showDetail" identifier="reviewVC" id="Yus-bw-JgT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Hza-pn-1kO"/>
+                        <constraints>
+                            <constraint firstItem="Hza-pn-1kO" firstAttribute="bottom" secondItem="Uf3-vY-r06" secondAttribute="bottom" constant="10" id="0gU-yu-5Ex"/>
+                            <constraint firstItem="RNx-Le-zqb" firstAttribute="top" secondItem="Hza-pn-1kO" secondAttribute="top" constant="35" id="1YG-aw-XSx"/>
+                            <constraint firstItem="2np-Ev-9tU" firstAttribute="leading" secondItem="Hza-pn-1kO" secondAttribute="leading" id="6z8-AU-Vzt"/>
+                            <constraint firstItem="Uf3-vY-r06" firstAttribute="leading" secondItem="Hza-pn-1kO" secondAttribute="leading" constant="10" id="A5M-tq-ktI">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="VzI-Lh-JYG" firstAttribute="top" secondItem="Gfx-5h-eHF" secondAttribute="bottom" constant="25" id="Cyt-AD-8FV"/>
+                            <constraint firstItem="bHj-9x-zp7" firstAttribute="top" secondItem="Hza-pn-1kO" secondAttribute="top" constant="35" id="D5r-yt-Dr5"/>
+                            <constraint firstItem="RNx-Le-zqb" firstAttribute="leading" secondItem="Hza-pn-1kO" secondAttribute="leading" constant="35" id="EiC-V3-FEX">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="qGa-zl-6tS" firstAttribute="centerX" secondItem="qqK-oj-4b7" secondAttribute="centerX" id="Ip1-ng-74T"/>
+                            <constraint firstItem="Hza-pn-1kO" firstAttribute="trailing" secondItem="2np-Ev-9tU" secondAttribute="trailing" id="RBs-Kf-X0c"/>
+                            <constraint firstItem="Gfx-5h-eHF" firstAttribute="centerY" secondItem="qqK-oj-4b7" secondAttribute="centerY" id="S71-In-mIV"/>
+                            <constraint firstItem="M19-vh-Sc8" firstAttribute="centerX" secondItem="qqK-oj-4b7" secondAttribute="centerX" id="XP3-qC-1FO"/>
+                            <constraint firstItem="VzI-Lh-JYG" firstAttribute="centerX" secondItem="qqK-oj-4b7" secondAttribute="centerX" id="ZNa-Us-aLT"/>
+                            <constraint firstItem="4Hb-Ex-p57" firstAttribute="top" secondItem="2np-Ev-9tU" secondAttribute="bottom" constant="50" id="c25-7Z-XBH">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="Gfx-5h-eHF" firstAttribute="top" secondItem="4Hb-Ex-p57" secondAttribute="bottom" constant="25" id="dUk-rM-nGA"/>
+                            <constraint firstItem="Hza-pn-1kO" firstAttribute="trailing" secondItem="sIg-xs-hfY" secondAttribute="trailing" constant="10" id="kFg-6S-awZ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstAttribute="bottomMargin" secondItem="M19-vh-Sc8" secondAttribute="bottom" constant="10" id="nyb-8S-LSf"/>
+                            <constraint firstItem="Gfx-5h-eHF" firstAttribute="centerX" secondItem="qqK-oj-4b7" secondAttribute="centerX" id="ois-V4-745"/>
+                            <constraint firstItem="2np-Ev-9tU" firstAttribute="top" secondItem="qGa-zl-6tS" secondAttribute="bottom" constant="20" id="rNp-xc-8zu"/>
+                            <constraint firstItem="4Hb-Ex-p57" firstAttribute="centerX" secondItem="qqK-oj-4b7" secondAttribute="centerX" id="rVD-vJ-OFd"/>
+                            <constraint firstItem="Aa9-Z0-CPv" firstAttribute="centerX" secondItem="qqK-oj-4b7" secondAttribute="centerX" id="twv-H5-OWA"/>
+                            <constraint firstItem="Hza-pn-1kO" firstAttribute="trailing" secondItem="bHj-9x-zp7" secondAttribute="trailing" constant="35" id="yES-Ar-6WJ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="Hza-pn-1kO" firstAttribute="bottom" secondItem="sIg-xs-hfY" secondAttribute="bottom" constant="10" id="yej-5y-fNq"/>
+                            <constraint firstItem="Aa9-Z0-CPv" firstAttribute="top" secondItem="VzI-Lh-JYG" secondAttribute="bottom" constant="25" id="zv3-1D-5xn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="currentStudentLabel" destination="2np-Ev-9tU" id="H36-TI-JK1"/>
+                        <outletCollection property="mainMenuButtonArray" destination="4Hb-Ex-p57" collectionClass="NSMutableArray" id="v7g-uv-mYY"/>
+                        <outletCollection property="mainMenuButtonArray" destination="Gfx-5h-eHF" collectionClass="NSMutableArray" id="AUC-BU-RHP"/>
+                        <outletCollection property="mainMenuButtonArray" destination="Uf3-vY-r06" collectionClass="NSMutableArray" id="ozL-0v-zBW"/>
+                        <outletCollection property="mainMenuButtonArray" destination="M19-vh-Sc8" collectionClass="NSMutableArray" id="XaB-AK-BKz"/>
+                        <outletCollection property="mainMenuButtonArray" destination="sIg-xs-hfY" collectionClass="NSMutableArray" id="57V-4h-3Og"/>
+                        <outletCollection property="mainMenuButtonArray" destination="VzI-Lh-JYG" collectionClass="NSMutableArray" id="rY9-Ve-1Bc"/>
+                        <outletCollection property="mainMenuButtonArray" destination="Aa9-Z0-CPv" collectionClass="NSMutableArray" id="KqF-eW-iRQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="faH-1N-bhq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-278.26086956521743" y="77.678571428571431"/>
+        </scene>
+        <!--ShopVC-->
+        <scene sceneID="7SM-xh-tFE">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="SfY-zE-T6s" customClass="ShopVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bVi-N0-Cei">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Coin" translatesAutoresizingMaskIntoConstraints="NO" id="mPy-Rc-pEe">
+                                <rect key="frame" x="212" y="245" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Ckj-DD-aIe"/>
+                                    <constraint firstAttribute="height" constant="50" id="TcL-hf-02S"/>
+                                </constraints>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrp-d0-MNc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5nh-gs-yyd">
+                                <rect key="frame" x="0.0" y="838" width="414" height="28"/>
+                            </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points earned:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUC-gI-aF2">
+                                <rect key="frame" x="10" y="253" width="197" height="34"/>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-WH-y0D">
+                                <rect key="frame" x="5" y="35" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="62J-Td-Axv"/>
+                                    <constraint firstAttribute="width" constant="150" id="f6f-sR-Tcp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Back" backgroundImage="BlueButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn:" destination="SfY-zE-T6s" eventType="touchUpInside" id="FT1-mW-jhW"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Title_Shop" translatesAutoresizingMaskIntoConstraints="NO" id="c2L-ig-4n6">
+                                <rect key="frame" x="87" y="93" width="240" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="sV1-gM-sBa"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZM6-vM-vYa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qrp-d0-MNc" firstAttribute="leading" secondItem="ZM6-vM-vYa" secondAttribute="leading" id="2Kr-Di-lg9"/>
+                            <constraint firstItem="qUC-gI-aF2" firstAttribute="leading" secondItem="ZM6-vM-vYa" secondAttribute="leading" constant="10" id="32g-oa-ehf"/>
+                            <constraint firstItem="mPy-Rc-pEe" firstAttribute="centerY" secondItem="qUC-gI-aF2" secondAttribute="centerY" id="9WU-Bj-hFb"/>
+                            <constraint firstItem="DC3-WH-y0D" firstAttribute="leading" secondItem="bVi-N0-Cei" secondAttribute="leading" constant="35" id="A1E-Go-zEx">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="c2L-ig-4n6" firstAttribute="leading" secondItem="ZM6-vM-vYa" secondAttribute="leading" constant="87" id="AQo-o2-Dwf"/>
+                            <constraint firstItem="DC3-WH-y0D" firstAttribute="top" secondItem="bVi-N0-Cei" secondAttribute="topMargin" constant="35" id="LHi-MD-Peo"/>
+                            <constraint firstItem="5nh-gs-yyd" firstAttribute="leading" secondItem="ZM6-vM-vYa" secondAttribute="leading" id="R6W-3b-UOr"/>
+                            <constraint firstItem="qrp-d0-MNc" firstAttribute="top" secondItem="ZM6-vM-vYa" secondAttribute="top" id="TIW-Be-A7D"/>
+                            <constraint firstItem="ZM6-vM-vYa" firstAttribute="trailing" secondItem="5nh-gs-yyd" secondAttribute="trailing" id="VGH-JX-JdJ"/>
+                            <constraint firstItem="c2L-ig-4n6" firstAttribute="top" secondItem="DC3-WH-y0D" secondAttribute="bottom" constant="8" symbolic="YES" id="XUr-fP-MNY"/>
+                            <constraint firstItem="qUC-gI-aF2" firstAttribute="top" secondItem="c2L-ig-4n6" secondAttribute="bottom" constant="70" id="Z8F-So-HMi">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="ZM6-vM-vYa" firstAttribute="bottom" secondItem="5nh-gs-yyd" secondAttribute="bottom" constant="30" id="bLd-hP-p6B"/>
+                            <constraint firstItem="ZM6-vM-vYa" firstAttribute="bottom" secondItem="qrp-d0-MNc" secondAttribute="bottom" id="fue-G7-mQg"/>
+                            <constraint firstItem="ZM6-vM-vYa" firstAttribute="trailing" secondItem="c2L-ig-4n6" secondAttribute="trailing" constant="87" id="juh-rj-ShJ"/>
+                            <constraint firstItem="qrp-d0-MNc" firstAttribute="trailing" secondItem="ZM6-vM-vYa" secondAttribute="trailing" id="oAd-aw-n5l"/>
+                            <constraint firstItem="mPy-Rc-pEe" firstAttribute="leading" secondItem="qUC-gI-aF2" secondAttribute="trailing" constant="5" id="tL2-kS-rW0"/>
+                            <constraint firstItem="qUC-gI-aF2" firstAttribute="trailing" secondItem="bVi-N0-Cei" secondAttribute="centerX" id="yfZ-Jm-wVD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="84v-ei-ZZS"/>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="pgControll" destination="5nh-gs-yyd" id="4n5-Jx-lLE"/>
+                        <outlet property="pointsLabel" destination="qUC-gI-aF2" id="2eR-eC-Xpr"/>
+                        <outlet property="scrollView" destination="qrp-d0-MNc" id="GIL-c2-rQa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="REr-xx-4l0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="529" y="810"/>
+        </scene>
+        <!--OptionsVC-->
+        <scene sceneID="5cl-mO-7px">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="68B-iC-ajA" customClass="OptionsVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zBk-og-daN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMg-jW-F56">
+                                <rect key="frame" x="340" y="318" width="51" height="31"/>
+                                <connections>
+                                    <action selector="ToggleHaptic" destination="68B-iC-ajA" eventType="valueChanged" id="hJX-el-C5X"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1l-Ab-63X">
+                                <rect key="frame" x="340" y="389" width="51" height="31"/>
+                                <connections>
+                                    <action selector="ToggleAudio" destination="68B-iC-ajA" eventType="valueChanged" id="gMU-I2-us7"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haptic Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDD-SC-gUl">
+                                <rect key="frame" x="25.000000000000014" y="314.66666666666669" width="228.33333333333337" height="38"/>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szp-Ih-omT">
+                                <rect key="frame" x="25.000000000000014" y="387.66666666666669" width="218.33333333333337" height="34"/>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK9-Xd-Q37">
+                                <rect key="frame" x="5" y="35" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GkM-aL-gV8"/>
+                                    <constraint firstAttribute="width" constant="150" id="Yhh-Go-RNH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Back" backgroundImage="BlueButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="Back" destination="68B-iC-ajA" eventType="touchUpInside" id="P1h-Uz-Ye3"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Title_Options" translatesAutoresizingMaskIntoConstraints="NO" id="bfz-ID-f24">
+                                <rect key="frame" x="87" y="103" width="240" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="X5d-Dv-Zij"/>
+                                </constraints>
+                            </imageView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uaq-aN-5Tf">
+                                <rect key="frame" x="340" y="458" width="51" height="31"/>
+                                <connections>
+                                    <action selector="ToggleMusic" destination="68B-iC-ajA" eventType="valueChanged" id="CbC-Oo-oUK"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyx-BI-Bfh">
+                                <rect key="frame" x="25.000000000000014" y="456.66666666666669" width="218.33333333333337" height="34"/>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ujj-fl-eMH"/>
+                        <constraints>
+                            <constraint firstItem="hyx-BI-Bfh" firstAttribute="centerX" secondItem="Szp-Ih-omT" secondAttribute="centerX" id="0O8-Nz-qZv"/>
+                            <constraint firstItem="Ujj-fl-eMH" firstAttribute="trailing" secondItem="v1l-Ab-63X" secondAttribute="trailing" constant="50" id="43K-tZ-Sgu">
+                                <variation key="heightClass=regular-widthClass=compact" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="qMg-jW-F56" firstAttribute="top" secondItem="bfz-ID-f24" secondAttribute="bottom" constant="65" id="BGB-uq-DWU"/>
+                            <constraint firstItem="TDD-SC-gUl" firstAttribute="top" secondItem="bfz-ID-f24" secondAttribute="bottom" constant="61.5" id="Brx-79-JQ8"/>
+                            <constraint firstItem="qMg-jW-F56" firstAttribute="centerY" secondItem="TDD-SC-gUl" secondAttribute="centerY" id="DGC-zc-oW0"/>
+                            <constraint firstItem="bfz-ID-f24" firstAttribute="top" secondItem="dK9-Xd-Q37" secondAttribute="bottom" constant="18" id="Hn2-Be-KEg"/>
+                            <constraint firstItem="Szp-Ih-omT" firstAttribute="top" secondItem="TDD-SC-gUl" secondAttribute="bottom" constant="35" id="Nb3-EF-9oE"/>
+                            <constraint firstItem="hyx-BI-Bfh" firstAttribute="leading" secondItem="Ujj-fl-eMH" secondAttribute="leading" constant="50" id="P1f-NM-jrL">
+                                <variation key="heightClass=regular-widthClass=compact" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="hyx-BI-Bfh" firstAttribute="top" secondItem="Szp-Ih-omT" secondAttribute="bottom" constant="35" id="cmH-uV-1aF"/>
+                            <constraint firstItem="Szp-Ih-omT" firstAttribute="leading" secondItem="Ujj-fl-eMH" secondAttribute="leading" constant="50" id="dEh-7v-dDD">
+                                <variation key="heightClass=regular-widthClass=compact" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="v1l-Ab-63X" firstAttribute="centerY" secondItem="Szp-Ih-omT" secondAttribute="centerY" id="hFJ-gv-93b"/>
+                            <constraint firstItem="TDD-SC-gUl" firstAttribute="leading" secondItem="Ujj-fl-eMH" secondAttribute="leading" constant="50" id="jG4-8v-MyM">
+                                <variation key="heightClass=regular-widthClass=compact" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="dK9-Xd-Q37" firstAttribute="top" secondItem="Ujj-fl-eMH" secondAttribute="top" constant="35" id="jWx-jw-2mP"/>
+                            <constraint firstItem="Ujj-fl-eMH" firstAttribute="trailing" secondItem="qMg-jW-F56" secondAttribute="trailing" constant="50" id="kAp-7X-31h">
+                                <variation key="heightClass=regular-widthClass=compact" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="dK9-Xd-Q37" firstAttribute="leading" secondItem="Ujj-fl-eMH" secondAttribute="leading" constant="35" id="nf6-gg-mWQ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="Ujj-fl-eMH" firstAttribute="trailing" secondItem="bfz-ID-f24" secondAttribute="trailing" constant="87" id="rQj-CH-MxB"/>
+                            <constraint firstItem="Uaq-aN-5Tf" firstAttribute="centerY" secondItem="hyx-BI-Bfh" secondAttribute="centerY" id="rtW-h6-5xD"/>
+                            <constraint firstItem="Ujj-fl-eMH" firstAttribute="trailing" secondItem="Uaq-aN-5Tf" secondAttribute="trailing" constant="50" id="uNe-zD-Zlp">
+                                <variation key="heightClass=regular-widthClass=compact" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="bfz-ID-f24" firstAttribute="leading" secondItem="Ujj-fl-eMH" secondAttribute="leading" constant="87" id="zLN-gs-k8Z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZIh-FM-0Sz"/>
+                    <connections>
+                        <outlet property="audioToggle" destination="v1l-Ab-63X" id="iSu-2Y-9tc"/>
+                        <outlet property="hapticToggle" destination="qMg-jW-F56" id="p1k-Lr-zH6"/>
+                        <outlet property="musicToggle" destination="Uaq-aN-5Tf" id="eLs-0n-uo4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="46b-l6-pZh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-278" y="810"/>
+        </scene>
+        <!--Free PlayVC-->
+        <scene sceneID="PT0-1M-c0I">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="93i-0F-c3Y" customClass="FreePlayVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UcY-7D-sFz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DH2-iV-kOP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ws-vh-D1i">
+                                <rect key="frame" x="254" y="636" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="j04-0h-deM"/>
+                                    <constraint firstAttribute="width" constant="150" id="tF7-TH-9Sf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Fear" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="awnserButtonWithSender:" destination="93i-0F-c3Y" eventType="touchUpInside" id="V3D-hf-MbH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EV1-bh-ynV">
+                                <rect key="frame" x="254" y="486" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1S4-7e-MY4"/>
+                                    <constraint firstAttribute="width" constant="150" id="ANs-MS-ktc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Disgust" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="awnserButtonWithSender:" destination="93i-0F-c3Y" eventType="touchUpInside" id="Qfs-PY-O2T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0n-B6-rgf">
+                                <rect key="frame" x="10" y="486" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6y1-DP-Aa8"/>
+                                    <constraint firstAttribute="width" constant="150" id="JG9-rC-okj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Neutral" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="awnserButtonWithSender:" destination="93i-0F-c3Y" eventType="touchUpInside" id="dx1-vd-ase"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LP3-OO-c9g">
+                                <rect key="frame" x="254" y="561" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="luG-vX-oZh"/>
+                                    <constraint firstAttribute="height" constant="50" id="w3g-SH-ukL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Anger" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="awnserButtonWithSender:" destination="93i-0F-c3Y" eventType="touchUpInside" id="uXU-yR-aix"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5d1-0F-gYk">
+                                <rect key="frame" x="10" y="636" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="B7S-iB-IcX"/>
+                                    <constraint firstAttribute="height" constant="50" id="PIX-zM-J5f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Surprise" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="awnserButtonWithSender:" destination="93i-0F-c3Y" eventType="touchUpInside" id="U6y-tV-ExO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H80-UU-yHo">
+                                <rect key="frame" x="10" y="411" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gl4-cs-RWL"/>
+                                    <constraint firstAttribute="width" constant="150" id="nUS-sH-1To"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Happy" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="awnserButtonWithSender:" destination="93i-0F-c3Y" eventType="touchUpInside" id="uqG-UA-Bc2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qB-G1-BzK">
+                                <rect key="frame" x="254" y="411" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="1Pj-Iw-I91"/>
+                                    <constraint firstAttribute="height" constant="50" id="Cya-Ax-feW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Anxious" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="awnserButtonWithSender:" destination="93i-0F-c3Y" eventType="touchUpInside" id="Z4G-ch-zBB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ss-3L-1lt">
+                                <rect key="frame" x="5" y="35" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="9AG-sk-B3n"/>
+                                    <constraint firstAttribute="height" constant="50" id="O55-Gb-0Jx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Back" backgroundImage="BlueButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn" destination="93i-0F-c3Y" eventType="touchUpInside" id="lSd-Db-Kin"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCe-jW-Sjy">
+                                <rect key="frame" x="10" y="561" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="41y-mJ-y36"/>
+                                    <constraint firstAttribute="height" constant="50" id="jGU-G9-Kbv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Sad" backgroundImage="GreenButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="awnserButtonWithSender:" destination="93i-0F-c3Y" eventType="touchUpInside" id="3DN-LS-eDj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bma-r1-IUG">
+                                <rect key="frame" x="344" y="26" width="50" height="48.666666666666671"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="TeD-Ic-MPL"/>
+                                    <constraint firstAttribute="width" constant="50" id="csp-Bc-iMd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" red="0.52700966599999999" green="0.65464013809999999" blue="0.81704306599999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="camera.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="cameraPressWithSender:" destination="93i-0F-c3Y" eventType="touchUpInside" id="oK9-6C-b4v"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ur5-T1-Hb1"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5d1-0F-gYk" firstAttribute="leading" secondItem="Ur5-T1-Hb1" secondAttribute="leading" constant="50" id="0ex-0o-fI5">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="DH2-iV-kOP" firstAttribute="leading" secondItem="Ur5-T1-Hb1" secondAttribute="leading" id="16N-Mr-WHj"/>
+                            <constraint firstItem="Ur5-T1-Hb1" firstAttribute="trailing" secondItem="EV1-bh-ynV" secondAttribute="trailing" constant="50" id="2QB-hN-skw">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="A0n-B6-rgf" firstAttribute="top" secondItem="H80-UU-yHo" secondAttribute="bottom" constant="25" id="4Xh-VD-ND3"/>
+                            <constraint firstItem="0Ss-3L-1lt" firstAttribute="top" secondItem="UcY-7D-sFz" secondAttribute="topMargin" constant="35" id="90Q-4r-7xw"/>
+                            <constraint firstItem="DH2-iV-kOP" firstAttribute="trailing" secondItem="Ur5-T1-Hb1" secondAttribute="trailing" id="BCS-YC-HmS"/>
+                            <constraint firstItem="Ur5-T1-Hb1" firstAttribute="trailing" secondItem="2ws-vh-D1i" secondAttribute="trailing" constant="50" id="BQA-Pc-Mkv">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="Ur5-T1-Hb1" firstAttribute="trailing" secondItem="9qB-G1-BzK" secondAttribute="trailing" constant="50" id="DSO-xC-jII">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="DH2-iV-kOP" firstAttribute="bottom" secondItem="Ur5-T1-Hb1" secondAttribute="bottom" id="Fai-gz-hJB"/>
+                            <constraint firstItem="5d1-0F-gYk" firstAttribute="top" secondItem="uCe-jW-Sjy" secondAttribute="bottom" constant="25" id="Id6-gz-94Y"/>
+                            <constraint firstItem="Ur5-T1-Hb1" firstAttribute="bottom" secondItem="5d1-0F-gYk" secondAttribute="bottom" constant="50" id="IrR-XH-Dij"/>
+                            <constraint firstItem="DH2-iV-kOP" firstAttribute="top" secondItem="UcY-7D-sFz" secondAttribute="top" id="JCN-ch-bSR"/>
+                            <constraint firstItem="A0n-B6-rgf" firstAttribute="leading" secondItem="Ur5-T1-Hb1" secondAttribute="leading" constant="50" id="JjG-Gb-ELM">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="Ur5-T1-Hb1" firstAttribute="trailing" secondItem="Bma-r1-IUG" secondAttribute="trailing" constant="20" id="Lsw-ch-7gl"/>
+                            <constraint firstItem="0Ss-3L-1lt" firstAttribute="leading" secondItem="UcY-7D-sFz" secondAttribute="leading" constant="35" id="PzA-Tn-tHN">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="Ur5-T1-Hb1" firstAttribute="trailing" secondItem="LP3-OO-c9g" secondAttribute="trailing" constant="50" id="Qow-a8-cPW">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="H80-UU-yHo" firstAttribute="leading" secondItem="Ur5-T1-Hb1" secondAttribute="leading" constant="50" id="YUg-ld-JKy">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="EV1-bh-ynV" firstAttribute="top" secondItem="9qB-G1-BzK" secondAttribute="bottom" constant="25" id="jgN-oX-O8z"/>
+                            <constraint firstItem="Ur5-T1-Hb1" firstAttribute="bottom" secondItem="2ws-vh-D1i" secondAttribute="bottom" constant="50" id="kJT-dm-27V"/>
+                            <constraint firstItem="uCe-jW-Sjy" firstAttribute="top" secondItem="A0n-B6-rgf" secondAttribute="bottom" constant="25" id="m5X-gt-yEa"/>
+                            <constraint firstItem="LP3-OO-c9g" firstAttribute="top" secondItem="EV1-bh-ynV" secondAttribute="bottom" constant="25" id="o64-6u-voy"/>
+                            <constraint firstItem="2ws-vh-D1i" firstAttribute="top" secondItem="LP3-OO-c9g" secondAttribute="bottom" constant="25" id="oSq-LC-CDL"/>
+                            <constraint firstItem="uCe-jW-Sjy" firstAttribute="leading" secondItem="Ur5-T1-Hb1" secondAttribute="leading" constant="50" id="pSO-cf-snw">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="Bma-r1-IUG" firstAttribute="top" secondItem="Ur5-T1-Hb1" secondAttribute="top" constant="25" id="yjA-tC-yCv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cBm-tn-Fu1"/>
+                    <connections>
+                        <outlet property="sceneView" destination="DH2-iV-kOP" id="E9p-e9-Yxd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="70T-uc-lbM" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="528.98550724637687" y="-595.3125"/>
+        </scene>
+        <!--StatementVC-->
+        <scene sceneID="qYb-wW-X4s">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="NOy-bM-ubp" customClass="StatementVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bbX-yf-AYu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jG-s2-hfr">
+                                <rect key="frame" x="5" y="35" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="NeT-m2-XpM"/>
+                                    <constraint firstAttribute="height" constant="50" id="lOX-m0-aGx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Back" backgroundImage="BlueButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn:" destination="NOy-bM-ubp" eventType="touchUpInside" id="2W2-Wd-tQF"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="arU-2T-3mL">
+                                <rect key="frame" x="57" y="207.66666666666663" width="300" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="WMb-4L-x6W"/>
+                                    <constraint firstAttribute="height" constant="100" id="n66-3g-d2T"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a happy sentance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GV1-nu-yTT">
+                                <rect key="frame" x="96.333333333333329" y="135" width="221.66666666666669" height="22.666666666666657"/>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEU-cO-BB3">
+                                <rect key="frame" x="132" y="337.66666666666669" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jDT-ex-DlN"/>
+                                    <constraint firstAttribute="width" constant="150" id="siS-y8-awG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <state key="normal" title="Enter" backgroundImage="PinkButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="enterText:" destination="NOy-bM-ubp" eventType="touchUpInside" id="J3T-7w-0gt"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKq-Wf-yPZ">
+                                <rect key="frame" x="207" y="467.66666666666669" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1x9-7y-pQS"/>
+                        <constraints>
+                            <constraint firstItem="5jG-s2-hfr" firstAttribute="leading" secondItem="1x9-7y-pQS" secondAttribute="leading" constant="35" id="1k9-1B-MVo">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="arU-2T-3mL" firstAttribute="centerX" secondItem="bbX-yf-AYu" secondAttribute="centerX" id="3GV-PA-oXV"/>
+                            <constraint firstItem="arU-2T-3mL" firstAttribute="top" secondItem="GV1-nu-yTT" secondAttribute="bottom" constant="50" id="3ri-XB-4YD"/>
+                            <constraint firstItem="iEU-cO-BB3" firstAttribute="top" secondItem="arU-2T-3mL" secondAttribute="bottom" constant="30" id="H3Z-Ve-qCl"/>
+                            <constraint firstItem="GV1-nu-yTT" firstAttribute="top" secondItem="5jG-s2-hfr" secondAttribute="bottom" constant="50" id="OkX-IJ-Edr"/>
+                            <constraint firstItem="RKq-Wf-yPZ" firstAttribute="centerX" secondItem="bbX-yf-AYu" secondAttribute="centerX" id="RAR-NH-LBF"/>
+                            <constraint firstItem="iEU-cO-BB3" firstAttribute="centerX" secondItem="bbX-yf-AYu" secondAttribute="centerX" id="UxY-in-4IK"/>
+                            <constraint firstItem="RKq-Wf-yPZ" firstAttribute="top" secondItem="iEU-cO-BB3" secondAttribute="bottom" constant="80" id="mnW-07-Yxv"/>
+                            <constraint firstItem="5jG-s2-hfr" firstAttribute="top" secondItem="1x9-7y-pQS" secondAttribute="top" constant="35" id="n5v-x8-6I1"/>
+                            <constraint firstItem="GV1-nu-yTT" firstAttribute="centerX" secondItem="bbX-yf-AYu" secondAttribute="centerX" id="neS-na-SJx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="answerResponse" destination="RKq-Wf-yPZ" id="Yqw-hi-BVT"/>
+                        <outlet property="promptLabel" destination="GV1-nu-yTT" id="qzL-KU-5m8"/>
+                        <outlet property="textBox" destination="arU-2T-3mL" id="C4E-Ul-Yxc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hRB-OD-48I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1516" y="-1213"/>
+        </scene>
+        <!--Landing PageVC-->
+        <scene sceneID="5sr-nZ-MKD">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Sg8-2K-wuq" customClass="LandingPageVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jj-bc-xvo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oYT-v9-zB6">
+                                <rect key="frame" x="136.66666666666666" y="599" width="140.99999999999997" height="32"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <segments>
+                                    <segment title="Login"/>
+                                    <segment title="Register"/>
+                                </segments>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d3w-MB-Xch">
+                                <rect key="frame" x="107" y="525" width="200" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" identifier="passwordWidth" id="7TN-t6-etf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jh5-wv-zWl">
+                                <rect key="frame" x="107" y="451" width="200" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" identifier="userNameWidth" id="xys-mS-AEE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebX-JS-PUN">
+                                <rect key="frame" x="157" y="670" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9bS-8E-Z22"/>
+                                    <constraint firstAttribute="width" constant="100" identifier="buttonWidth" id="M0Q-yQ-1Ju"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <state key="normal" title="Enter" backgroundImage="PinkButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="enterBtn:" destination="Sg8-2K-wuq" eventType="touchUpInside" id="LHS-l4-DmD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zgJ-hR-aXP"/>
+                        <constraints>
+                            <constraint firstItem="Jh5-wv-zWl" firstAttribute="centerY" secondItem="8jj-bc-xvo" secondAttribute="centerY" constant="150" identifier="centerUsernameY" id="4Sd-lq-eXn">
+                                <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="ebX-JS-PUN" firstAttribute="centerX" secondItem="8jj-bc-xvo" secondAttribute="centerX" identifier="centerButtonX" id="7ms-Vr-PbE"/>
+                            <constraint firstItem="d3w-MB-Xch" firstAttribute="top" secondItem="Jh5-wv-zWl" secondAttribute="bottom" constant="40" identifier="passwordSpaceToUsername" id="EXy-4E-05d"/>
+                            <constraint firstItem="Jh5-wv-zWl" firstAttribute="centerX" secondItem="8jj-bc-xvo" secondAttribute="centerX" identifier="centerUsernameX" id="HKs-xL-gyM"/>
+                            <constraint firstItem="oYT-v9-zB6" firstAttribute="centerX" secondItem="8jj-bc-xvo" secondAttribute="centerX" identifier="centerToggleX" id="ZjC-TF-oFV"/>
+                            <constraint firstItem="oYT-v9-zB6" firstAttribute="top" secondItem="d3w-MB-Xch" secondAttribute="bottom" constant="40" identifier="passwordToggleSpacing" id="jmc-hD-uER"/>
+                            <constraint firstItem="d3w-MB-Xch" firstAttribute="centerX" secondItem="8jj-bc-xvo" secondAttribute="centerX" identifier="centerPasswordX" id="lcD-HX-Kh9"/>
+                            <constraint firstItem="ebX-JS-PUN" firstAttribute="top" secondItem="oYT-v9-zB6" secondAttribute="bottom" constant="40" identifier="buttonToptoToggle" id="noH-ME-YQr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="entryTypeToggle" destination="oYT-v9-zB6" id="jOW-7s-1n1"/>
+                        <outlet property="passwordField" destination="d3w-MB-Xch" id="sCa-O1-7ZJ"/>
+                        <outlet property="usernameField" destination="Jh5-wv-zWl" id="qmi-tv-hCG"/>
+                        <segue destination="LxE-eU-dFN" kind="showDetail" identifier="destinationVC" id="9QL-hl-c1N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fAE-Qg-p4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1117" y="77"/>
+        </scene>
+        <!--StudentVC-->
+        <scene sceneID="INA-q6-mNP">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="8Mz-Bv-0h7" customClass="StudentVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GGw-9U-uXI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Student Search" translatesAutoresizingMaskIntoConstraints="NO" id="fWp-lN-Kzm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="W11-dx-9UA"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8Mz-Bv-0h7" id="aJK-az-Brm"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prf-gX-8cl">
+                                <rect key="frame" x="5" y="666" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="66a-UV-llp">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="150"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="50" id="f3h-L1-dwm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="23"/>
+                                <state key="normal" title="Add Student" backgroundImage="PinkButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
+                                </variation>
+                                <connections>
+                                    <action selector="addStudent:" destination="8Mz-Bv-0h7" eventType="touchUpInside" id="lhR-l8-y89"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W02-Z0-TPM">
+                                <rect key="frame" x="0.0" y="60" width="414" height="576"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="vx4-ef-bvi">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vx4-ef-bvi" id="XU2-mQ-cI8">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8Mz-Bv-0h7" id="qit-nW-L3T"/>
+                                    <outlet property="delegate" destination="8Mz-Bv-0h7" id="dId-jD-gdT"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ls-Ld-Ese">
+                                <rect key="frame" x="259" y="666" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HaU-GN-k7q"/>
+                                    <constraint firstAttribute="width" constant="200" id="O6D-3f-1ts">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="150"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="23"/>
+                                <state key="normal" title="Main Menu" backgroundImage="PinkButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="19"/>
+                                </variation>
+                                <connections>
+                                    <action selector="backBtn:" destination="8Mz-Bv-0h7" eventType="touchUpInside" id="k87-Ci-ldd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jhE-XF-xBV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="prf-gX-8cl" firstAttribute="leading" secondItem="jhE-XF-xBV" secondAttribute="leading" constant="20" id="KfU-Cb-QxS">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="jhE-XF-xBV" firstAttribute="bottom" secondItem="prf-gX-8cl" secondAttribute="bottom" constant="20" id="L76-gj-apU"/>
+                            <constraint firstItem="jhE-XF-xBV" firstAttribute="trailing" secondItem="7Ls-Ld-Ese" secondAttribute="trailing" constant="20" id="PjC-se-DQ0">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="W02-Z0-TPM" firstAttribute="top" secondItem="fWp-lN-Kzm" secondAttribute="bottom" id="TNU-WL-upH"/>
+                            <constraint firstItem="fWp-lN-Kzm" firstAttribute="centerX" secondItem="GGw-9U-uXI" secondAttribute="centerX" id="bgS-5w-UAa"/>
+                            <constraint firstItem="fWp-lN-Kzm" firstAttribute="top" secondItem="jhE-XF-xBV" secondAttribute="top" id="cYB-Zr-rs9"/>
+                            <constraint firstItem="W02-Z0-TPM" firstAttribute="leading" secondItem="jhE-XF-xBV" secondAttribute="leading" id="f6X-VW-eqI"/>
+                            <constraint firstItem="fWp-lN-Kzm" firstAttribute="leading" secondItem="jhE-XF-xBV" secondAttribute="leading" id="mYT-WZ-mLP"/>
+                            <constraint firstItem="fWp-lN-Kzm" firstAttribute="top" secondItem="jhE-XF-xBV" secondAttribute="top" id="p2g-M1-q5j"/>
+                            <constraint firstItem="fWp-lN-Kzm" firstAttribute="trailing" secondItem="jhE-XF-xBV" secondAttribute="trailing" id="sbd-hj-i6N"/>
+                            <constraint firstItem="prf-gX-8cl" firstAttribute="top" secondItem="W02-Z0-TPM" secondAttribute="bottom" constant="30" id="tRY-O9-cWD"/>
+                            <constraint firstItem="jhE-XF-xBV" firstAttribute="trailing" secondItem="W02-Z0-TPM" secondAttribute="trailing" id="u7O-Wj-zue"/>
+                            <constraint firstItem="jhE-XF-xBV" firstAttribute="bottom" secondItem="7Ls-Ld-Ese" secondAttribute="bottom" constant="20" id="ycn-NR-CDN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="studentList" destination="W02-Z0-TPM" id="dIS-5P-uoZ"/>
+                        <outlet property="studentSearch" destination="fWp-lN-Kzm" id="3sb-Tk-nkI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0NC-99-zhf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-278.26086956521743" y="-595.3125"/>
+        </scene>
+        <!--Stats View Controller-->
+        <scene sceneID="UzZ-nV-6th">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="0jj-0M-Mhf" customClass="StatsViewController" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oli-ep-bAh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaL-FF-Ine">
+                                <rect key="frame" x="5" y="35" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="YGO-Pn-dqx"/>
+                                    <constraint firstAttribute="height" constant="50" id="nE8-Hw-aeH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Back" backgroundImage="BlueButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn:" destination="0jj-0M-Mhf" eventType="touchUpInside" id="L2H-Hu-JYx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihV-tZ-9Pj">
+                                <rect key="frame" x="234" y="35" width="175" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="4PK-wD-csq"/>
+                                    <constraint firstAttribute="height" constant="50" id="Ugs-iY-Pja"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" Export" backgroundImage="BlueButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="arrow.up.doc" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="exportData:" destination="0jj-0M-Mhf" eventType="touchUpInside" id="2UC-FP-hp4"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibf-h1-eC1">
+                                <rect key="frame" x="0.0" y="105" width="414" height="631"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2NG-R0-K3a">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1800"/>
+                                        <subviews>
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbn-zW-Epf" customClass="LineChartView" customModule="Charts">
+                                                <rect key="frame" x="0.0" y="180" width="414" height="400"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="400" id="AVe-bM-b4t"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg Response Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTB-sI-MEz">
+                                                <rect key="frame" x="110.33333333333333" y="80" width="193.33333333333337" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="DU2-T6-kDP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eml-W3-69l" customClass="LineChartView" customModule="Charts">
+                                                <rect key="frame" x="0.0" y="770" width="414" height="400"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="400" id="LiF-JV-NKh"/>
+                                                </constraints>
+                                            </view>
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hVg-Qq-VRM" customClass="LineChartView" customModule="Charts">
+                                                <rect key="frame" x="0.0" y="1360" width="414" height="400"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="400" id="Dsy-fs-kfx"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions awnsered:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hv-IE-Ro1">
+                                                <rect key="frame" x="107.66666666666669" y="1310" width="199" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="qry-K0-r0X"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Freeplay Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7N1-fO-AF8">
+                                                <rect key="frame" x="59.666666666666657" y="610" width="295" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="aRT-ld-CVe"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="35"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Response Accuracy:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsK-oL-xIV">
+                                                <rect key="frame" x="112.66666666666669" y="670" width="189" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="F8t-bA-R6B"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions awnsered:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xg0-0h-rm7">
+                                                <rect key="frame" x="107.66666666666669" y="130" width="199" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="OUW-kr-0P0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lesson Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1l3-ZE-HML">
+                                                <rect key="frame" x="78.333333333333343" y="20" width="257.33333333333326" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="xhn-rD-BxF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="35"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions awnsered:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9L8-UX-xOn">
+                                                <rect key="frame" x="107.66666666666669" y="720" width="199" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Ju4-PG-U0I"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Writing Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LZ-j4-AMB">
+                                                <rect key="frame" x="69.333333333333343" y="1200" width="275.66666666666663" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="pqE-4z-xm6"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="35"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Response Accuracy:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbb-X3-I7Q">
+                                                <rect key="frame" x="112.66666666666669" y="1260" width="189" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="7Rj-Ib-9Xh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="1l3-ZE-HML" firstAttribute="centerX" secondItem="2NG-R0-K3a" secondAttribute="centerX" id="02e-yA-b5j"/>
+                                            <constraint firstItem="6hv-IE-Ro1" firstAttribute="centerX" secondItem="2NG-R0-K3a" secondAttribute="centerX" id="0wx-OY-ofQ"/>
+                                            <constraint firstItem="Dbn-zW-Epf" firstAttribute="centerX" secondItem="2NG-R0-K3a" secondAttribute="centerX" id="109-z5-DVc"/>
+                                            <constraint firstItem="YsK-oL-xIV" firstAttribute="centerX" secondItem="2NG-R0-K3a" secondAttribute="centerX" id="2Ha-2G-MaZ"/>
+                                            <constraint firstItem="hVg-Qq-VRM" firstAttribute="width" secondItem="2NG-R0-K3a" secondAttribute="width" id="5FQ-IY-iF8"/>
+                                            <constraint firstItem="9L8-UX-xOn" firstAttribute="centerX" secondItem="2NG-R0-K3a" secondAttribute="centerX" id="8K9-my-Iz8"/>
+                                            <constraint firstItem="xg0-0h-rm7" firstAttribute="centerX" secondItem="2NG-R0-K3a" secondAttribute="centerX" id="8SI-rQ-McL"/>
+                                            <constraint firstItem="Qbb-X3-I7Q" firstAttribute="top" secondItem="6LZ-j4-AMB" secondAttribute="bottom" constant="20" id="GJf-V9-aFt"/>
+                                            <constraint firstItem="1l3-ZE-HML" firstAttribute="top" secondItem="2NG-R0-K3a" secondAttribute="top" constant="20" id="GwB-VH-jAI"/>
+                                            <constraint firstAttribute="trailing" secondItem="hVg-Qq-VRM" secondAttribute="trailing" id="HWw-iQ-Jvp"/>
+                                            <constraint firstItem="Dbn-zW-Epf" firstAttribute="width" secondItem="2NG-R0-K3a" secondAttribute="width" id="HZ7-if-2Cz"/>
+                                            <constraint firstItem="7N1-fO-AF8" firstAttribute="centerX" secondItem="2NG-R0-K3a" secondAttribute="centerX" id="JLj-uo-aYn"/>
+                                            <constraint firstItem="Qbb-X3-I7Q" firstAttribute="centerX" secondItem="2NG-R0-K3a" secondAttribute="centerX" id="Jru-X6-EoP"/>
+                                            <constraint firstItem="6LZ-j4-AMB" firstAttribute="centerX" secondItem="2NG-R0-K3a" secondAttribute="centerX" id="Qsd-5x-ddF"/>
+                                            <constraint firstItem="7N1-fO-AF8" firstAttribute="top" secondItem="Dbn-zW-Epf" secondAttribute="bottom" constant="30" id="RFl-KV-Mb2"/>
+                                            <constraint firstAttribute="height" constant="1800" id="VFv-W1-EpW"/>
+                                            <constraint firstItem="xg0-0h-rm7" firstAttribute="top" secondItem="NTB-sI-MEz" secondAttribute="bottom" constant="20" id="XOb-Al-KbI"/>
+                                            <constraint firstItem="eml-W3-69l" firstAttribute="top" secondItem="9L8-UX-xOn" secondAttribute="bottom" constant="20" id="Z4E-OR-6fq"/>
+                                            <constraint firstItem="9L8-UX-xOn" firstAttribute="top" secondItem="YsK-oL-xIV" secondAttribute="bottom" constant="20" id="ZgI-EN-JlP"/>
+                                            <constraint firstItem="6hv-IE-Ro1" firstAttribute="top" secondItem="Qbb-X3-I7Q" secondAttribute="bottom" constant="20" id="akx-Cg-U1p"/>
+                                            <constraint firstItem="hVg-Qq-VRM" firstAttribute="top" secondItem="6hv-IE-Ro1" secondAttribute="bottom" constant="20" id="blT-7d-ABm"/>
+                                            <constraint firstItem="NTB-sI-MEz" firstAttribute="centerX" secondItem="2NG-R0-K3a" secondAttribute="centerX" id="ds8-mD-T3V"/>
+                                            <constraint firstItem="Dbn-zW-Epf" firstAttribute="top" secondItem="xg0-0h-rm7" secondAttribute="bottom" constant="20" id="gJY-fu-Fjw"/>
+                                            <constraint firstItem="6LZ-j4-AMB" firstAttribute="top" secondItem="eml-W3-69l" secondAttribute="bottom" constant="30" id="n5z-Vp-xAf"/>
+                                            <constraint firstAttribute="trailing" secondItem="eml-W3-69l" secondAttribute="trailing" id="qaG-SU-AGU"/>
+                                            <constraint firstItem="hVg-Qq-VRM" firstAttribute="leading" secondItem="2NG-R0-K3a" secondAttribute="leading" id="rCN-KH-LO5"/>
+                                            <constraint firstItem="eml-W3-69l" firstAttribute="leading" secondItem="2NG-R0-K3a" secondAttribute="leading" id="sYA-Ae-M68"/>
+                                            <constraint firstItem="YsK-oL-xIV" firstAttribute="top" secondItem="7N1-fO-AF8" secondAttribute="bottom" constant="20" id="vkR-wn-zjX"/>
+                                            <constraint firstItem="NTB-sI-MEz" firstAttribute="top" secondItem="1l3-ZE-HML" secondAttribute="bottom" constant="20" id="yma-pb-ND0"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2NG-R0-K3a" firstAttribute="centerX" secondItem="ibf-h1-eC1" secondAttribute="centerX" id="1I9-rO-gcr"/>
+                                    <constraint firstItem="2NG-R0-K3a" firstAttribute="bottom" secondItem="j0T-rM-kDh" secondAttribute="bottom" id="MdX-0t-j7z"/>
+                                    <constraint firstItem="2NG-R0-K3a" firstAttribute="leading" secondItem="UNJ-hw-hC8" secondAttribute="leading" id="RtV-nb-HJd"/>
+                                    <constraint firstAttribute="trailing" secondItem="2NG-R0-K3a" secondAttribute="trailing" id="uCN-W5-Mbf"/>
+                                    <constraint firstItem="2NG-R0-K3a" firstAttribute="top" secondItem="j0T-rM-kDh" secondAttribute="top" id="yJb-or-RPP"/>
+                                    <constraint firstAttribute="bottom" secondItem="2NG-R0-K3a" secondAttribute="bottom" id="z8N-9O-3zA"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="j0T-rM-kDh"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="UNJ-hw-hC8"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="88m-EV-YLP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="88m-EV-YLP" firstAttribute="trailing" secondItem="ihV-tZ-9Pj" secondAttribute="trailing" constant="35" id="1zk-6M-5dk">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="ibf-h1-eC1" firstAttribute="centerX" secondItem="oli-ep-bAh" secondAttribute="centerX" id="34d-ih-yrV"/>
+                            <constraint firstItem="IaL-FF-Ine" firstAttribute="leading" secondItem="88m-EV-YLP" secondAttribute="leading" constant="35" id="6YX-WE-Gos">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="ibf-h1-eC1" firstAttribute="leading" secondItem="88m-EV-YLP" secondAttribute="leading" id="DKe-qc-3pc"/>
+                            <constraint firstItem="ihV-tZ-9Pj" firstAttribute="baseline" secondItem="IaL-FF-Ine" secondAttribute="baseline" id="NDs-MC-wag"/>
+                            <constraint firstItem="ibf-h1-eC1" firstAttribute="bottom" secondItem="88m-EV-YLP" secondAttribute="bottom" id="Ttp-BH-x2c"/>
+                            <constraint firstItem="ihV-tZ-9Pj" firstAttribute="top" secondItem="88m-EV-YLP" secondAttribute="top" constant="35" id="hVl-lj-VhX"/>
+                            <constraint firstItem="ibf-h1-eC1" firstAttribute="top" secondItem="ihV-tZ-9Pj" secondAttribute="bottom" constant="20" id="idg-bI-YpU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accuracyFreeplayLabel" destination="YsK-oL-xIV" id="sqT-PW-469"/>
+                        <outlet property="accuracyWritingLabel" destination="Qbb-X3-I7Q" id="g7N-Hw-h2n"/>
+                        <outlet property="avgResponseLessonLabel" destination="NTB-sI-MEz" id="i6l-h7-ZLz"/>
+                        <outlet property="freeplayChart" destination="eml-W3-69l" id="sAF-DY-f8N"/>
+                        <outlet property="freeplayQuestionsLabel" destination="9L8-UX-xOn" id="s8x-0Y-Yxe"/>
+                        <outlet property="lessonChart" destination="Dbn-zW-Epf" id="7ca-ax-8hy"/>
+                        <outlet property="lessonQuestionsLabel" destination="xg0-0h-rm7" id="SlP-Ke-4bm"/>
+                        <outlet property="writingChart" destination="hVg-Qq-VRM" id="GO8-tA-pDQ"/>
+                        <outlet property="writingQuestionsLabel" destination="6hv-IE-Ro1" id="25y-Cc-NwU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h8b-Qe-HOI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1116" y="809"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Angry" width="326" height="328"/>
+        <image name="Anxious" width="324" height="335"/>
+        <image name="BlueButton" width="500" height="200"/>
+        <image name="Coin" width="300" height="300"/>
+        <image name="Disgusted" width="327" height="326"/>
+        <image name="Fearful" width="311" height="340"/>
+        <image name="GreenButton" width="500" height="200"/>
+        <image name="Happy" width="331" height="330"/>
+        <image name="Neutral" width="328" height="334"/>
+        <image name="PinkButton" width="500" height="200"/>
+        <image name="Sad" width="324" height="333"/>
+        <image name="Surprised" width="311" height="340"/>
+        <image name="Title_Options" width="1536" height="500"/>
+        <image name="Title_Shop" width="1536" height="500"/>
+        <image name="arrow.up.doc" catalog="system" width="115" height="128"/>
+        <image name="camera.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
