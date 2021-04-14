@@ -24,12 +24,15 @@ class ShopDataConstruction{
     
     var priceIncrese : Int = 0
     
-    var priceIncrement = 50
+    var priceIncrement = 100
     
     //This function is used to look into the files that were added as scenes and then add them to coreData
     func populateData(studentData:StudentData) {
         
-        priceIncrese = 50
+        
+        priceIncrese = 100
+        
+        getMaxValue(studentData: studentData)
         
         //Populate array with the files in the directory
         do{
@@ -75,6 +78,7 @@ class ShopDataConstruction{
             if(items.isEmpty){
                 save(name: sceneArray[index], cost: Int64(Int32(priceIncrese)), studentData: studentData)
                 print("New entry created for " + sceneArray[index])
+                priceIncrese += priceIncrement
             }
             //If there is data, then do nothing. This prevents duplicate masks being added to the shop
             else{
@@ -82,9 +86,30 @@ class ShopDataConstruction{
             }
             
             //Increase the price by 50 for each new mask
-            priceIncrese += priceIncrement
+           // priceIncrese += priceIncrement
         }
         
+    }
+    
+    func getMaxValue(studentData:StudentData){
+        let request = ShopData.fetchRequest() as NSFetchRequest<ShopData>
+        request.fetchLimit = 1
+        
+        let sorter = NSSortDescriptor(key: "price", ascending: false)
+        request.sortDescriptors = [sorter]
+        
+        let predString = "student == %@"
+        
+        let pred = NSPredicate(format: predString, studentData)
+        request.predicate = pred
+        
+        do{
+            items = try context.fetch(request)
+            priceIncrese = Int(items.first?.price ?? 100)
+        }
+        catch{
+            print("Unable to retrive data")
+        }
     }
     
     //Save the new face information with default values
@@ -96,12 +121,13 @@ class ShopDataConstruction{
         
         if(name == "Girl" || name == "Boy"){
             newFace.setValue(true, forKey: "purchased")
+            newFace.setValue(0, forKey: "price")
             priceIncrese -= priceIncrement
         }
         else{
             newFace.setValue(false, forKey: "purchased")
+            newFace.setValue(cost, forKey: "price")
         }
-        newFace.setValue(cost, forKey: "price")
         newFace.setValue(Date(), forKey: "dateCreated")
         newFace.setValue(studentData, forKey: "student")
         

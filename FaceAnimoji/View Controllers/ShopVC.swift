@@ -68,6 +68,9 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         let predString = "student == %@"
 
         let pred = NSPredicate(format: predString, student!)
+        
+        let sorter = NSSortDescriptor(key: "price", ascending: true)
+        request.sortDescriptors = [sorter]
 
         request.predicate = pred
 
@@ -179,7 +182,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             }
             //If the mask isn't purchased, then check to see if the user can unlock it with their points
             else{
-                if(item[0].price < student!.points){
+                if(item[0].price <= student!.points){
                     //If you can purcahse the mask, then update the coreData entry
                     item[0].setValue(true, forKey: "purchased")
                     
