@@ -12,8 +12,10 @@ class ReviewVC: UIViewController {
     
     var BaseFunc = BaseFunctions()
 
+    //Just spawn in particles and background
     override func viewDidLoad() {
         super.viewDidLoad()
+        BaseFunc.setUpParticles(View: self.view, Leaves: false)
         BaseFunc.setUpBackground(view: self.view, imageName: "BackgroundPink")
     }
     

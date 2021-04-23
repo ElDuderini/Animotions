@@ -38,6 +38,8 @@ class MainMenuVC: UIViewController {
         //if(!BaseFunc!.musicPlayer!.isPlaying){
             //BaseFunc!.StartMusic()
         //}
+        
+        BaseFunc!.setUpParticles(View: self.view, Leaves: false)
         //Set up the background
         BaseFunc!.setUpBackground(view: self.view, imageName: "BackgroundGreen")
         

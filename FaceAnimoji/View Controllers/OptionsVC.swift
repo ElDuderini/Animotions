@@ -21,9 +21,13 @@ class OptionsVC: UIViewController {
     
     var baseFunc:BaseFunctions? = nil
     
+    let particles = BaseFunctions()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Add particles behind interactive UI elements
+        particles.setUpParticles(View: self.view, Leaves: false)
         //Add the background to the view
         baseFunc!.setUpBackground(view: self.view, imageName: "BackgroundPink")
         

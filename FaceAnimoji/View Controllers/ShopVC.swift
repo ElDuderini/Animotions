@@ -37,6 +37,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        baseFunc.setUpParticles(View: self.view, Leaves: false)
         //set up background picture in view
         baseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
         

@@ -58,6 +58,8 @@ class StatementVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        BaseFunc.setUpParticles(View: self.view, Leaves: false)
+        
         //Set up the background image for this view
         BaseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
         

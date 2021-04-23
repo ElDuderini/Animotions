@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import CoreData
 
+
+//This is an unused document for when I was trying to figure out the best way to transfer information between scenes. Found the prepare function was better for transfering variable values
 class CoreDataVariableStorage{
     
     var students:[StudentData] = []
@@ -20,7 +22,6 @@ class CoreDataVariableStorage{
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func populateCurrentTeacher(teachEntry: TeacherData){
-  
         
         currentTeacher = teachEntry
         

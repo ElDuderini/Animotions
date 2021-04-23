@@ -52,6 +52,7 @@ class StatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        baseFunc.setUpParticles(View: self.view, Leaves: false)
         baseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
         
         //Clear arrays for repopulation later on

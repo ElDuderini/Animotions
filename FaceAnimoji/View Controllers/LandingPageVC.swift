@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SpriteKit
 
 class LandingPageVC: UIViewController {
     
@@ -25,12 +26,20 @@ class LandingPageVC: UIViewController {
     
     var baseFunc = BaseFunctions()
     
+    let particles = BaseFunctions()
+    
+    //let leavesView = SKView()
+    
+    //let fliesView = SKView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.dismissKeyboard()
         
         passwordField.isSecureTextEntry = true
+        
+        particles.setUpParticles(View: self.view, Leaves: true)
         
         baseFunc.setUpBackground(view: self.view, imageName: "LogInScreen")
         

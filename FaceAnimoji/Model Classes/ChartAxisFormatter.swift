@@ -9,6 +9,7 @@
 import Foundation
 import Charts
 
+//This is an unsed document. It was made to chart time on a axis for the charts API. Found it to be unneeded and didn't work out when I tried to do it.
 class ChartAxisFormetter : NSObject {
     fileprivate var dateFormatter:DateFormatter?
     fileprivate var referenceTimeInterval:TimeInterval?
