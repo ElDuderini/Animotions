@@ -155,7 +155,7 @@ class StatementVC: UIViewController {
         
         let currentVal = emotions.randomElement()!
         
-        //If selecting an element from the array randomly returns a privously used value or an undesired value, then call the method again and cancel the current instance of it
+        //If selecting an element from the array randomly returns a privously used value or an undesired value, then call the method again and cancel the current instance of it. Exclude some terms that are too hard for kids to understand
         if(currentVal == promptValue || currentVal == "humor" || currentVal == "incongruity"){
             generatePrompt()
             return;

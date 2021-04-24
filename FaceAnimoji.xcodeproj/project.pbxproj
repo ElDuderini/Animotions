@@ -15,7 +15,6 @@
 		616CBBBB25D2FF9C0039022B /* ChartAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBBA25D2FF9C0039022B /* ChartAxisFormatter.swift */; };
 		616CBBC325DEE1C00039022B /* LandingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBC225DEE1BF0039022B /* LandingPageVC.swift */; };
 		616CBBC725DEE2A00039022B /* StudentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBC625DEE2A00039022B /* StudentVC.swift */; };
-		616CBBCD25E46C200039022B /* CoreDataVariableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBCC25E46C200039022B /* CoreDataVariableStorage.swift */; };
 		616CBBD525F69D880039022B /* StatementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBD425F69D880039022B /* StatementVC.swift */; };
 		616CBBDB25F6A00D0039022B /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBDA25F6A00D0039022B /* ReviewVC.swift */; };
 		616CBBE125F824290039022B /* AlertImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CBBE025F824290039022B /* AlertImageExtension.swift */; };
@@ -82,7 +81,6 @@
 		616CBBBA25D2FF9C0039022B /* ChartAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartAxisFormatter.swift; sourceTree = "<group>"; };
 		616CBBC225DEE1BF0039022B /* LandingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageVC.swift; sourceTree = "<group>"; };
 		616CBBC625DEE2A00039022B /* StudentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentVC.swift; sourceTree = "<group>"; };
-		616CBBCC25E46C200039022B /* CoreDataVariableStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataVariableStorage.swift; sourceTree = "<group>"; };
 		616CBBD425F69D880039022B /* StatementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementVC.swift; sourceTree = "<group>"; };
 		616CBBDA25F6A00D0039022B /* ReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
 		616CBBE025F824290039022B /* AlertImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertImageExtension.swift; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 			children = (
 				6180EA8825BF9A84003CAE40 /* BaseFunctions.swift */,
 				6180EA8E25BF9EFD003CAE40 /* Question.swift */,
-				616CBBCC25E46C200039022B /* CoreDataVariableStorage.swift */,
 				6180EA9325BF9F98003CAE40 /* LessonBrain.swift */,
 				615DFF1825C0BF3E00A268A1 /* ShopDataConstruction.swift */,
 				616CBBBA25D2FF9C0039022B /* ChartAxisFormatter.swift */,
@@ -406,7 +403,6 @@
 				615DFF1925C0BF3E00A268A1 /* ShopDataConstruction.swift in Sources */,
 				616CBBC725DEE2A00039022B /* StudentVC.swift in Sources */,
 				616CBC29262F753C0039022B /* LeavesScenes.swift in Sources */,
-				616CBBCD25E46C200039022B /* CoreDataVariableStorage.swift in Sources */,
 				616CBBC325DEE1C00039022B /* LandingPageVC.swift in Sources */,
 				615DFF1325C0BB2100A268A1 /* AnimotionsData.xcdatamodeld in Sources */,
 				616CBBFF2620BBD40039022B /* DismissKeyboard.swift in Sources */,

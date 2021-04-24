@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Charts
+import UniformTypeIdentifiers
 
 class StatsViewController: UIViewController {
 
@@ -375,10 +376,21 @@ class StatsViewController: UIViewController {
         do{
             try csvWriting.write(to: fileURL, atomically: true, encoding: .utf8)
             print("Exported writing")
+            let alert = UIAlertController(title: "Data sucessfully exported", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "View files", style: .default, handler: {action in self.OpenFolder()}))
+            self.present(alert, animated: false)
         }
         catch{
             print("Unable to export writing data")
         }
         
     }
+    
+    func OpenFolder(){
+        print("Folder opened")
+        let documentView = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.data])
+        self.present(documentView, animated: true, completion: nil)
+    }
+    
 }
