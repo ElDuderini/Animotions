@@ -11,7 +11,7 @@ import CoreData
 import Charts
 import UniformTypeIdentifiers
 
-class StatsViewController: UIViewController {
+class StatsViewController: UIViewController, UIDocumentPickerDelegate, UIDocumentInteractionControllerDelegate {
 
     
     @IBOutlet weak var avgResponseLessonLabel: UILabel!
@@ -378,7 +378,7 @@ class StatsViewController: UIViewController {
             print("Exported writing")
             let alert = UIAlertController(title: "Data sucessfully exported", message: "", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "View files", style: .default, handler: {action in self.OpenFolder()}))
+            alert.addAction(UIAlertAction(title: "Share files", style: .default, handler: {action in self.OpenFolder()}))
             self.present(alert, animated: false)
         }
         catch{
@@ -389,8 +389,24 @@ class StatsViewController: UIViewController {
     
     func OpenFolder(){
         print("Folder opened")
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let documentView = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.data])
+        documentView.directoryURL = path
+        documentView.delegate = self
+        documentView.allowsMultipleSelection = false
         self.present(documentView, animated: true, completion: nil)
     }
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL){
+        print("Opened File")
+        let controller = UIDocumentInteractionController(url: url)
+        controller.delegate = self
+        controller.presentPreview(animated: true)
+    }
+    
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+    
     
 }
