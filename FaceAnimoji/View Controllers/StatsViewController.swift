@@ -408,5 +408,7 @@ class StatsViewController: UIViewController, UIDocumentPickerDelegate, UIDocumen
         return self
     }
     
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
 }

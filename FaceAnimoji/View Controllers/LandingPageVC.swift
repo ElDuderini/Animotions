@@ -28,10 +28,6 @@ class LandingPageVC: UIViewController {
     
     let particles = BaseFunctions()
     
-    //let leavesView = SKView()
-    
-    //let fliesView = SKView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -177,5 +173,9 @@ class LandingPageVC: UIViewController {
             destinationVC.teacher = teachers[0]
             destinationVC.BaseFunc = baseFunc
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
 }

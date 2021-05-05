@@ -146,4 +146,8 @@ class MainMenuVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
         BaseFunc!.Feedback()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
 }

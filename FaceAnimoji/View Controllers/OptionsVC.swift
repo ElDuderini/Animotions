@@ -65,4 +65,8 @@ class OptionsVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
         baseFunc!.Feedback()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
 }

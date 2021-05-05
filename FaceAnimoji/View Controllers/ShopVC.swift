@@ -224,4 +224,8 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
         let index = storeButtons.firstIndex(of: button)
         storeLabels[index!].text = "Purchased"
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
 }

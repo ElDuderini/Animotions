@@ -32,10 +32,10 @@ class StatementVC: UIViewController {
     var emotions:[String] = []
     
     //URL to access the VERN API
-    let url = URL(string: "http://vern.stage.vernai.com/analyze")
+    let url = URL(string: "https://vernapi.com/analyze")
     
     //The starting prompt for the child to respond to
-    let promptStart = "Create a sentance that has "
+    let promptStart = "Create a sentence that has "
     
     var promptValue = ""
     
@@ -57,6 +57,8 @@ class StatementVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.dismissKeyboard()
         
         BaseFunc.setUpParticles(View: self.view, Leaves: false)
         
@@ -176,9 +178,10 @@ class StatementVC: UIViewController {
         
         //Create a for loop that checks for the prompt value, then checks to see if that prompt value goes over 51 points based on the API response
         for item in results!.scores{
+            print(item.name)
+            print(item.value)
             if(item.name == promptValue){
-                print(item.value)
-                if(item.value >= 51){
+                if(item.value >= 33){
                     return true;
                 }
             }
@@ -225,6 +228,10 @@ class StatementVC: UIViewController {
         else{
             answerResponse.text = "Try again."
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
     
 }

@@ -140,17 +140,13 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
             && mouthOpen?.decimalValue ?? 0.0 < 0.3{
             self.analysis = "Happy"
         }
-        //        else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9
-        //                && mouthOpen?.decimalValue ?? 0.0 > 0.3{
-        //            self.analysis = "Joy"
-        //        }
-        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.6 {
+        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.1 {
             self.analysis = "Sad"
         }
         else if ((noseSneerLeft?.decimalValue ?? 0.0) + (noseSneerRight?.decimalValue ?? 0.0)) > 0.6{
             self.analysis = "Disgust"
         }
-        else if ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.6{
+        else if ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.4{
             self.analysis = "Anger"
         }
         else if mouthPoggers?.decimalValue ?? 0.0 > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5{
@@ -162,7 +158,7 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         else if ((eyeWideLeft?.decimalValue ?? 0.0) + (eyeWideRight?.decimalValue ?? 0.0)) > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5 && mouthOpen?.decimalValue ?? 0.0 > 0.5{
             self.analysis = "Fear"
         }
-        else if((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) < 0.2 {
+        else if((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && browInnerUp?.decimalValue ?? 0.0 > 0.5 {
             self.analysis = "Anxious"
         }
         else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) < 0.8
@@ -188,14 +184,15 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
             
             // This will only work correctly if the shape keys are given the exact same name as the blendshape names
             for (key, value) in blendShapes {
-                if let fValue = value as? Float{
+                if var fValue = value as? Float{
                     var childNodes: [SCNNode]?
                     
                     childNodes = self.contentNode?.childNodes
                     
                     for child in childNodes!{
-                        // print(child.morpher?.weight(forTargetNamed: key.rawValue))
-                        //  print(key.rawValue)
+                        if(key.rawValue == "mouthFrown_L" || key.rawValue == "mouthFrown_R"){
+                            fValue = fValue * 5;
+                        }
                         child.morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
                     }
                 }

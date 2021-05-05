@@ -23,4 +23,8 @@ class ReviewVC: UIViewController {
         BaseFunc.Feedback()
         self.dismiss(animated: true, completion: nil)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
 }

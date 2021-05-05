@@ -119,7 +119,7 @@
                                 <rect key="frame" x="0.0" y="85" width="414" height="3915"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIT-Ji-pbh">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="3012.3333333333335"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2974.3333333333335"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gR9-VX-Ddu">
                                                 <rect key="frame" x="99.333333333333329" y="50" width="215.33333333333337" height="34"/>
@@ -145,7 +145,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="S0a-Tx-fRT"/>
                                                 </constraints>
-                                                <string key="text">Happy is a possitive emotion that you feel when you feel good. You often feel happy when you are having fun and spending time with friends.</string>
+                                                <string key="text">Happiness is a positive emotion that you feel when you feel good. You often feel happy when you are having fun and spending time with friends.</string>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -163,7 +163,7 @@
                                                     <constraint firstAttribute="width" constant="150" id="8A4-aJ-epb"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sad is a negative emotion that is felt when you feel bad. You often feel lost, alone or ignored when you feel sad." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgn-a0-k5J">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sadness is a negative emotion that is felt when you feel bad. You often feel lost, alone or ignored when you feel sad." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgn-a0-k5J">
                                                 <rect key="frame" x="50" y="726.33333333333337" width="314" height="57.666666666666629"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="iyI-W9-SAI"/>
@@ -180,11 +180,11 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lX-ee-39X">
-                                                <rect key="frame" x="50" y="1066.6666666666667" width="314" height="96"/>
+                                                <rect key="frame" x="50" y="1066.6666666666667" width="314" height="77"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="mdk-Pl-q6b"/>
                                                 </constraints>
-                                                <string key="text">Anger is a negative emotion that that is felt when you are upset with yourself or with others. It is often felt when arguements arrise or have something taken away from you.</string>
+                                                <string key="text">Anger is a negative emotion that is felt when you are upset with yourself or with others. It is often felt when arguing or having something taken away from you.</string>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -196,44 +196,44 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Surprised" translatesAutoresizingMaskIntoConstraints="NO" id="xWV-I9-6UM">
-                                                <rect key="frame" x="132" y="1255.3333333333333" width="150" height="150"/>
+                                                <rect key="frame" x="132" y="1236.3333333333333" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="gKO-Z2-peq"/>
                                                     <constraint firstAttribute="width" constant="150" id="i0X-qe-m0H"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fearful" translatesAutoresizingMaskIntoConstraints="NO" id="IXr-v0-sUt">
-                                                <rect key="frame" x="132" y="1635.6666666666667" width="150" height="150"/>
+                                                <rect key="frame" x="132" y="1597.6666666666667" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="hcQ-MO-Fnh"/>
                                                     <constraint firstAttribute="width" constant="150" id="v1b-0L-yq3"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igu-tN-sCz">
-                                                <rect key="frame" x="50" y="1825.6666666666667" width="314" height="77"/>
+                                                <rect key="frame" x="50" y="1787.6666666666667" width="314" height="77"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="goM-5m-e4c"/>
                                                 </constraints>
-                                                <string key="text">Fear is a negative emotion felt when something scares you. It is often felt when you are doing something new or are in a unfamiliar place.</string>
+                                                <string key="text">Fear is a negative emotion felt when something scares you. It is often felt when you are doing something new or are in an unfamiliar place.</string>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fear" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8n-MQ-hqo">
-                                                <rect key="frame" x="186.66666666666666" y="1593" width="40.666666666666657" height="22.666666666666742"/>
+                                                <rect key="frame" x="186.66666666666666" y="1555" width="40.666666666666657" height="22.666666666666742"/>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Anxious" translatesAutoresizingMaskIntoConstraints="NO" id="zyu-ZW-sHD">
-                                                <rect key="frame" x="132" y="1995.3333333333335" width="150" height="150"/>
+                                                <rect key="frame" x="132" y="1957.3333333333333" width="150" height="149.99999999999977"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="3Tu-pN-CzP"/>
                                                     <constraint firstAttribute="width" constant="150" id="ybq-SM-8qk"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anxious is a negative emotion similar to fear, but is milder. It is often felt when doing tests at school." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0f-zM-7hv">
-                                                <rect key="frame" x="50" y="2185.3333333333335" width="314" height="57.666666666666515"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anxiety is a negative emotion similar to fear, but is milder. It is often felt when doing tests at school." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0f-zM-7hv">
+                                                <rect key="frame" x="50" y="2147.3333333333335" width="314" height="57.666666666666515"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="tPQ-m2-5HD"/>
                                                 </constraints>
@@ -242,69 +242,69 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anxious" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djz-mF-1u8">
-                                                <rect key="frame" x="172" y="1952.6666666666667" width="70" height="22.666666666666742"/>
+                                                <rect key="frame" x="172" y="1914.6666666666667" width="70" height="22.666666666666742"/>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surprise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwf-IL-gY6">
-                                                <rect key="frame" x="172" y="1212.6666666666667" width="70" height="22.666666666666742"/>
+                                                <rect key="frame" x="172" y="1193.6666666666667" width="70" height="22.666666666666742"/>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1g1-iQ-pqg">
-                                                <rect key="frame" x="50" y="1445.3333333333333" width="314" height="96"/>
+                                                <rect key="frame" x="50" y="1426.3333333333333" width="314" height="77"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="0HM-2E-AtN"/>
                                                 </constraints>
-                                                <string key="text">Surprize is a emotion that can either be negative or possitive. It can be felt durring a unexpected event like a surprize party or having someone jump infront of you.</string>
+                                                <string key="text">Surprise is an emotion that can either be negative or positive. It can be felt during an unexpected event like a surprise party or having someone jump in front of you.</string>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Disgusted" translatesAutoresizingMaskIntoConstraints="NO" id="JVt-hL-xaY">
-                                                <rect key="frame" x="132" y="2335.6666666666665" width="150" height="150"/>
+                                                <rect key="frame" x="132" y="2297.6666666666665" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="kue-gA-AXw"/>
                                                     <constraint firstAttribute="height" constant="150" id="tsG-Bh-c7G"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSo-Va-lck">
-                                                <rect key="frame" x="50" y="2525.6666666666665" width="314" height="77"/>
+                                                <rect key="frame" x="50" y="2487.6666666666665" width="314" height="77"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="8ac-z4-hZ3"/>
                                                 </constraints>
-                                                <string key="text">Disgust is a negative emotion felt when you experiance something gross. It is often felt when smelling or tasting something bad,.</string>
+                                                <string key="text">Disgust is a negative emotion felt when you experience something gross. It is often felt when smelling or tasting something bad.</string>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disgust" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5h7-v6-7Sj">
-                                                <rect key="frame" x="174.66666666666666" y="2293" width="64.666666666666657" height="22.666666666666515"/>
+                                                <rect key="frame" x="174.66666666666666" y="2255" width="64.666666666666657" height="22.666666666666515"/>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Neutral" translatesAutoresizingMaskIntoConstraints="NO" id="6O4-eZ-Vv7">
-                                                <rect key="frame" x="132" y="2695.3333333333335" width="150" height="150"/>
+                                                <rect key="frame" x="132" y="2657.3333333333335" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="P0v-rx-wao"/>
                                                     <constraint firstAttribute="width" constant="150" id="vom-MQ-zRg"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPF-sP-1xg">
-                                                <rect key="frame" x="50" y="2885.3333333333335" width="314" height="77"/>
+                                                <rect key="frame" x="50" y="2847.3333333333335" width="314" height="77"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="jkv-he-tfo"/>
                                                 </constraints>
-                                                <string key="text">Neutral is a emotion that is not negative or positive. It is experiance when nothing is happening or you are waiting for something.</string>
+                                                <string key="text">Neutral is an emotion that is not negative or positive. It is experienced when nothing is happening or you are waiting for something.</string>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neutral" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yy-3W-BZ3">
-                                                <rect key="frame" x="172.66666666666666" y="2652.6666666666665" width="69" height="22.666666666666515"/>
+                                                <rect key="frame" x="172.66666666666666" y="2614.6666666666665" width="69" height="22.666666666666515"/>
                                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -749,13 +749,13 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haptic Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDD-SC-gUl">
-                                <rect key="frame" x="25.000000000000014" y="314.66666666666669" width="228.33333333333337" height="38"/>
+                                <rect key="frame" x="25" y="314.66666666666669" width="229" height="38"/>
                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szp-Ih-omT">
-                                <rect key="frame" x="25.000000000000014" y="387.66666666666669" width="218.33333333333337" height="34"/>
+                                <rect key="frame" x="25" y="387.66666666666669" width="219" height="34"/>
                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -789,7 +789,7 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyx-BI-Bfh">
-                                <rect key="frame" x="25.000000000000014" y="456.66666666666669" width="218.33333333333337" height="34"/>
+                                <rect key="frame" x="25" y="456.66666666666669" width="219" height="34"/>
                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1085,7 +1085,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="arU-2T-3mL">
-                                <rect key="frame" x="57" y="207.66666666666663" width="300" height="100"/>
+                                <rect key="frame" x="57" y="208" width="300" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="WMb-4L-x6W"/>
@@ -1095,8 +1095,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a happy sentance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GV1-nu-yTT">
-                                <rect key="frame" x="96.333333333333329" y="135" width="221.66666666666669" height="22.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a happy sentence" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GV1-nu-yTT">
+                                <rect key="frame" x="97" y="135" width="220" height="23"/>
                                 <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1105,7 +1105,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEU-cO-BB3">
-                                <rect key="frame" x="132" y="337.66666666666669" width="150" height="50"/>
+                                <rect key="frame" x="132" y="338" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="jDT-ex-DlN"/>
                                     <constraint firstAttribute="width" constant="150" id="siS-y8-awG"/>
@@ -1118,24 +1118,37 @@
                                     <action selector="enterText:" destination="NOy-bM-ubp" eventType="touchUpInside" id="J3T-7w-0gt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKq-Wf-yPZ">
-                                <rect key="frame" x="207" y="467.66666666666669" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKq-Wf-yPZ">
+                                <rect key="frame" x="207" y="468" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmJ-3z-fyb">
+                                <rect key="frame" x="50" y="520" width="314" height="113"/>
+                                <string key="text">Written emotion detection is provided by V.E.R.N. AI. This technology is still in development and some unexpected results could occur.</string>
+                                <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="BerlinSansFBDemi-Bold" family="Berlin Sans FB Demi" pointSize="20"/>
+                                </variation>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1x9-7y-pQS"/>
                         <constraints>
+                            <constraint firstItem="hmJ-3z-fyb" firstAttribute="leading" secondItem="1x9-7y-pQS" secondAttribute="leading" constant="50" id="0Sy-y2-NqY"/>
                             <constraint firstItem="5jG-s2-hfr" firstAttribute="leading" secondItem="1x9-7y-pQS" secondAttribute="leading" constant="35" id="1k9-1B-MVo">
                                 <variation key="heightClass=regular-widthClass=compact" constant="5"/>
                             </constraint>
                             <constraint firstItem="arU-2T-3mL" firstAttribute="centerX" secondItem="bbX-yf-AYu" secondAttribute="centerX" id="3GV-PA-oXV"/>
                             <constraint firstItem="arU-2T-3mL" firstAttribute="top" secondItem="GV1-nu-yTT" secondAttribute="bottom" constant="50" id="3ri-XB-4YD"/>
+                            <constraint firstItem="hmJ-3z-fyb" firstAttribute="top" secondItem="RKq-Wf-yPZ" secondAttribute="bottom" constant="52" id="CWS-FI-hf1"/>
                             <constraint firstItem="iEU-cO-BB3" firstAttribute="top" secondItem="arU-2T-3mL" secondAttribute="bottom" constant="30" id="H3Z-Ve-qCl"/>
                             <constraint firstItem="GV1-nu-yTT" firstAttribute="top" secondItem="5jG-s2-hfr" secondAttribute="bottom" constant="50" id="OkX-IJ-Edr"/>
                             <constraint firstItem="RKq-Wf-yPZ" firstAttribute="centerX" secondItem="bbX-yf-AYu" secondAttribute="centerX" id="RAR-NH-LBF"/>
                             <constraint firstItem="iEU-cO-BB3" firstAttribute="centerX" secondItem="bbX-yf-AYu" secondAttribute="centerX" id="UxY-in-4IK"/>
+                            <constraint firstItem="1x9-7y-pQS" firstAttribute="trailing" secondItem="hmJ-3z-fyb" secondAttribute="trailing" constant="50" id="c8l-xI-SsE"/>
                             <constraint firstItem="RKq-Wf-yPZ" firstAttribute="top" secondItem="iEU-cO-BB3" secondAttribute="bottom" constant="80" id="mnW-07-Yxv"/>
                             <constraint firstItem="5jG-s2-hfr" firstAttribute="top" secondItem="1x9-7y-pQS" secondAttribute="top" constant="35" id="n5v-x8-6I1"/>
                             <constraint firstItem="GV1-nu-yTT" firstAttribute="centerX" secondItem="bbX-yf-AYu" secondAttribute="centerX" id="neS-na-SJx"/>
