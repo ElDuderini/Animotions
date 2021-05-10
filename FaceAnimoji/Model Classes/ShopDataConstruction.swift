@@ -82,6 +82,7 @@ class ShopDataConstruction{
             //If there is data, then do nothing. This prevents duplicate masks being added to the shop
             else{
                 print("Dupe prevented for " + sceneArray[index])
+                getMaxValue(studentData: studentData)
             }
         }
         
