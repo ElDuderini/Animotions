@@ -8,6 +8,7 @@
 
 import UIKit
 import Dispatch
+import Network
 
 //Create the structs that will be used to parse the Jston string with
 struct BaseResponse : Decodable {
@@ -55,8 +56,17 @@ class StatementVC: UIViewController {
     //Needed to connect to the database
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    private let queue = DispatchQueue.main
+    private var monitor: NWPathMonitor?
+    
+    public private(set) var isConnected: Bool = false
+    
+    var priorVC:UIViewController? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        monitor = NWPathMonitor()
         
         self.dismissKeyboard()
         
@@ -70,6 +80,27 @@ class StatementVC: UIViewController {
         
         //Send a message to the API to retrive info on what emotions are currenty supported
         getResponse(textValue: "test")
+        
+        checkForNetworkChanges()
+    }
+    
+    func checkForNetworkChanges(){
+        monitor!.start(queue: queue)
+        monitor!.pathUpdateHandler = {[weak self] path in
+            self?.isConnected = path.status != .unsatisfied
+            //OperationQueue.main.addOperation{
+            if(self!.isConnected == false){
+                print("Disconnected")
+                OperationQueue.main.addOperation { [self] in
+                    let alert = UIAlertController(title: "Disconnected from the internet", message: "Please reconnect to play the writing activity.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                    
+                    self!.priorVC!.present(alert, animated: true)
+                }
+                self!.returnToMain()
+            }
+           // }
+        }
     }
     
     //This method reaches out to the API to get information about the statement the student wrote or to populate the emotions supported
@@ -203,12 +234,17 @@ class StatementVC: UIViewController {
     
     //Return to main menu and save session data
     @IBAction func backBtn(_ sender:UIButton){
+        returnToMain()
+    }
+    
+    func returnToMain(){
         BaseFunc.Feedback()
         self.dismiss(animated: true, completion: nil)
         if(totalQuestions != 0){
             print("Content saved")
             saveSessionData()
         }
+        monitor!.cancel()
     }
     
     //Press the enter button to check if you got the right awnser

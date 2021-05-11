@@ -627,6 +627,7 @@
                     </view>
                     <connections>
                         <outlet property="currentStudentLabel" destination="2np-Ev-9tU" id="H36-TI-JK1"/>
+                        <outlet property="writingButton" destination="VzI-Lh-JYG" id="1Ie-uQ-3el"/>
                         <outletCollection property="mainMenuButtonArray" destination="4Hb-Ex-p57" collectionClass="NSMutableArray" id="v7g-uv-mYY"/>
                         <outletCollection property="mainMenuButtonArray" destination="Gfx-5h-eHF" collectionClass="NSMutableArray" id="AUC-BU-RHP"/>
                         <outletCollection property="mainMenuButtonArray" destination="Uf3-vY-r06" collectionClass="NSMutableArray" id="ozL-0v-zBW"/>
