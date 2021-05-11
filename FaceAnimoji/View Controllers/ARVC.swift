@@ -202,6 +202,8 @@ class ARVC: UIViewController, ARSCNViewDelegate {
             beginTimePerQuestion = clock()
             lessonQuestions.nextQuestion()
             baseFunc!.Feedback()
+            let addedPoints = student!.points + 10
+            student!.setValue(addedPoints, forKey: "points")
             OperationQueue.main.addOperation{
                 self.emoteLable.text = self.lessonQuestions.getQuestionText()
             }

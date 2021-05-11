@@ -220,6 +220,10 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
             student?.setValue(addedPoints, forKey: "points")
             correcntResponces += 1
             baseFunc!.Feedback()
+            sender.isEnabled = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                sender.isEnabled = true
+            }
         }
     }
     

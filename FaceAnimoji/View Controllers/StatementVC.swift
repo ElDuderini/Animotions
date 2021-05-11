@@ -88,7 +88,6 @@ class StatementVC: UIViewController {
         monitor!.start(queue: queue)
         monitor!.pathUpdateHandler = {[weak self] path in
             self?.isConnected = path.status != .unsatisfied
-            //OperationQueue.main.addOperation{
             if(self!.isConnected == false){
                 print("Disconnected")
                 OperationQueue.main.addOperation { [self] in
@@ -99,7 +98,6 @@ class StatementVC: UIViewController {
                 }
                 self!.returnToMain()
             }
-           // }
         }
     }
     
