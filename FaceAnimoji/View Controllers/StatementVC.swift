@@ -84,6 +84,8 @@ class StatementVC: UIViewController {
         checkForNetworkChanges()
     }
     
+    //This is similar to the network check in the the main menu script with a few changes.
+    //When the user is disconnected, then eject the user from the activity compleatly and display a UI alert letting the user know they have been disconnected
     func checkForNetworkChanges(){
         monitor!.start(queue: queue)
         monitor!.pathUpdateHandler = {[weak self] path in

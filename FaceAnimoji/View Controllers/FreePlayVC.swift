@@ -220,6 +220,8 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
             student?.setValue(addedPoints, forKey: "points")
             correcntResponces += 1
             baseFunc!.Feedback()
+            
+            //The button is disabled for a short time after getting a right awnser to prevent the user from spamming the button to farm points for new masks. It also encorages the user to make a new face
             sender.isEnabled = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 5){
                 sender.isEnabled = true

@@ -195,7 +195,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         expression(anchor: faceAnchor)
         
         //If the user is making the face that the prompt asks for, then add to the array for the average time of responce, add points, go to the next question, and provide audio/haptic feedback
-        if(lessonQuestions.checkAnswer(userAnswer: analysis, studentData: student!) && canCheckAwnser){
+        if(lessonQuestions.checkAnswer(userAnswer: analysis) && canCheckAwnser){
             totalQuestions += 1
             let timeForResponse = Double(clock() - beginTimePerQuestion) / Double(CLOCKS_PER_SEC)
             timePerQuestion.append(timeForResponse)
@@ -204,6 +204,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
             baseFunc!.Feedback()
             let addedPoints = student!.points + 10
             student!.setValue(addedPoints, forKey: "points")
+            
             OperationQueue.main.addOperation{
                 self.emoteLable.text = self.lessonQuestions.getQuestionText()
             }

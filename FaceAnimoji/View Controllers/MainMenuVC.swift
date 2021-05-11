@@ -84,6 +84,9 @@ class MainMenuVC: UIViewController {
         }
     }
     
+    //If there is a current student selected, then start the network monitor to update when network changes occur.
+    //If the user loses connection, then disable writing activity button
+    //If the connection comes back, then re-enable the writing button
     func checkForNetworkChanges(){
         monitor!.start(queue: queue)
         monitor!.pathUpdateHandler = {[weak self] path in

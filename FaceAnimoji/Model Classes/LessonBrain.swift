@@ -86,11 +86,8 @@ struct LessonBrain {
     }
     
     //Use this method to check to see if the user is responding to the question correctly. If so, then add to the users score
-    mutating func checkAnswer(userAnswer: String, studentData: StudentData) -> Bool {
+    mutating func checkAnswer(userAnswer: String) -> Bool {
         if userAnswer == quiz[questionNumber].answer {
-            //score += 10
-//            let addedPoints = studentData.points + 10
-//            studentData.setValue(addedPoints, forKey: "points")
             return true
         } else {
             return false
