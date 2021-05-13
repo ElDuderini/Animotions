@@ -123,7 +123,7 @@ class ShopDataConstruction{
         }
         else{
             newFace.setValue(false, forKey: "purchased")
-            newFace.setValue(cost, forKey: "price")
+            newFace.setValue(0, forKey: "price")
         }
         newFace.setValue(Date(), forKey: "dateCreated")
         newFace.setValue(studentData, forKey: "student")
