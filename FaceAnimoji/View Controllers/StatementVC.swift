@@ -8,6 +8,7 @@
 
 import UIKit
 import Dispatch
+import Network
 
 //Create the structs that will be used to parse the Jston string with
 struct BaseResponse : Decodable {
@@ -32,10 +33,10 @@ class StatementVC: UIViewController {
     var emotions:[String] = []
     
     //URL to access the VERN API
-    let url = URL(string: "http://vern.stage.vernai.com/analyze")
+    let url = URL(string: "https://vernapi.com/analyze")
     
     //The starting prompt for the child to respond to
-    let promptStart = "Create a sentance that has "
+    let promptStart = "Create a sentence that has "
     
     var promptValue = ""
     
@@ -55,8 +56,21 @@ class StatementVC: UIViewController {
     //Needed to connect to the database
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    private let queue = DispatchQueue.main
+    private var monitor: NWPathMonitor?
+    
+    public private(set) var isConnected: Bool = false
+    
+    var priorVC:UIViewController? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        monitor = NWPathMonitor()
+        
+        self.dismissKeyboard()
+        
+        BaseFunc.setUpParticles(View: self.view, Leaves: false)
         
         //Set up the background image for this view
         BaseFunc.setUpBackground(view: self.view, imageName: "BackgroundBlue")
@@ -66,6 +80,27 @@ class StatementVC: UIViewController {
         
         //Send a message to the API to retrive info on what emotions are currenty supported
         getResponse(textValue: "test")
+        
+        checkForNetworkChanges()
+    }
+    
+    //This is similar to the network check in the the main menu script with a few changes.
+    //When the user is disconnected, then eject the user from the activity compleatly and display a UI alert letting the user know they have been disconnected
+    func checkForNetworkChanges(){
+        monitor!.start(queue: queue)
+        monitor!.pathUpdateHandler = {[weak self] path in
+            self?.isConnected = path.status != .unsatisfied
+            if(self!.isConnected == false){
+                print("Disconnected")
+                OperationQueue.main.addOperation { [self] in
+                    let alert = UIAlertController(title: "Disconnected from the internet", message: "Please reconnect to play the writing activity.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                    
+                    self!.priorVC!.present(alert, animated: true)
+                }
+                self!.returnToMain()
+            }
+        }
     }
     
     //This method reaches out to the API to get information about the statement the student wrote or to populate the emotions supported
@@ -153,7 +188,7 @@ class StatementVC: UIViewController {
         
         let currentVal = emotions.randomElement()!
         
-        //If selecting an element from the array randomly returns a privously used value or an undesired value, then call the method again and cancel the current instance of it
+        //If selecting an element from the array randomly returns a privously used value or an undesired value, then call the method again and cancel the current instance of it. Exclude some terms that are too hard for kids to understand
         if(currentVal == promptValue || currentVal == "humor" || currentVal == "incongruity"){
             generatePrompt()
             return;
@@ -174,9 +209,10 @@ class StatementVC: UIViewController {
         
         //Create a for loop that checks for the prompt value, then checks to see if that prompt value goes over 51 points based on the API response
         for item in results!.scores{
+            print(item.name)
+            print(item.value)
             if(item.name == promptValue){
-                print(item.value)
-                if(item.value >= 51){
+                if(item.value >= 33){
                     return true;
                 }
             }
@@ -198,12 +234,17 @@ class StatementVC: UIViewController {
     
     //Return to main menu and save session data
     @IBAction func backBtn(_ sender:UIButton){
+        returnToMain()
+    }
+    
+    func returnToMain(){
         BaseFunc.Feedback()
         self.dismiss(animated: true, completion: nil)
         if(totalQuestions != 0){
             print("Content saved")
             saveSessionData()
         }
+        monitor!.cancel()
     }
     
     //Press the enter button to check if you got the right awnser
@@ -223,6 +264,10 @@ class StatementVC: UIViewController {
         else{
             answerResponse.text = "Try again."
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
     
 }

@@ -39,6 +39,8 @@ class ARVC: UIViewController, ARSCNViewDelegate {
     
     var student:StudentData? = nil
     
+    var canCheckAwnser = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -137,7 +139,7 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         let smileLeft = anchor.blendShapes[.mouthSmileLeft]
         let smileRight = anchor.blendShapes[.mouthSmileRight]
         let frownLeft = anchor.blendShapes[.mouthFrownLeft]
-        let frownRight = anchor.blendShapes[.mouthFrownRight]
+        let frownRight = anchor.blendShapes[.mouthSmileRight]
         let browDownLeft = anchor.blendShapes[.browDownLeft]
         let browDownRight = anchor.blendShapes[.browDownRight]
         let browInnerUp = anchor.blendShapes[.browInnerUp]
@@ -152,34 +154,27 @@ class ARVC: UIViewController, ARSCNViewDelegate {
             && mouthOpen?.decimalValue ?? 0.0 < 0.3{
             self.analysis = "Happy"
         }
-//        else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9
-//                && mouthOpen?.decimalValue ?? 0.0 > 0.3{
-//            self.analysis = "Joy"
-//        }
-        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.6 {
+        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.25 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && (browInnerUp?.decimalValue ?? 0.0 < 0.4) && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) < 0.3{
             self.analysis = "Sad"
         }
         else if ((noseSneerLeft?.decimalValue ?? 0.0) + (noseSneerRight?.decimalValue ?? 0.0)) > 0.6{
             self.analysis = "Disgust"
         }
-        else if ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.6{
+        else if ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.3 {
             self.analysis = "Anger"
         }
-        else if mouthPoggers?.decimalValue ?? 0.0 > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5{
-            self.analysis = "Poggers"
-        }
-        else if ((eyeWideLeft?.decimalValue ?? 0.0) + (eyeWideRight?.decimalValue ?? 0.0)) > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5 &&  mouthOpen?.decimalValue ?? 0.0 < 0.2{
+        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) < 0.1 && browInnerUp?.decimalValue ?? 0.0 > 0.5 &&  mouthOpen?.decimalValue ?? 0.0 < 0.2{
             self.analysis = "Surprise"
         }
         else if ((eyeWideLeft?.decimalValue ?? 0.0) + (eyeWideRight?.decimalValue ?? 0.0)) > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5 && mouthOpen?.decimalValue ?? 0.0 > 0.5{
             self.analysis = "Fear"
         }
-        else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) < 0.8
-                && ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) < 0.1 {
-            self.analysis = "Neutral"
-        }
-        else if((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) < 0.2 {
+        else if((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.25 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && browInnerUp?.decimalValue ?? 0.0 > 0.4 {
             self.analysis = "Anxious"
+        }
+        else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) < 0.8
+                && ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) < 0.25 {
+            self.analysis = "Neutral"
         }
         else{
             //If none of the emotions above are being made, then let the user know their expression is neutural
@@ -197,15 +192,25 @@ class ARVC: UIViewController, ARSCNViewDelegate {
         expression(anchor: faceAnchor)
         
         //If the user is making the face that the prompt asks for, then add to the array for the average time of responce, add points, go to the next question, and provide audio/haptic feedback
-        if(lessonQuestions.checkAnswer(userAnswer: analysis, studentData: student!)){
+        if(lessonQuestions.checkAnswer(userAnswer: analysis) && canCheckAwnser){
             totalQuestions += 1
             let timeForResponse = Double(clock() - beginTimePerQuestion) / Double(CLOCKS_PER_SEC)
             timePerQuestion.append(timeForResponse)
             beginTimePerQuestion = clock()
             lessonQuestions.nextQuestion()
             baseFunc!.Feedback()
+            let addedPoints = student!.points + 10
+            student!.setValue(addedPoints, forKey: "points")
+            
             OperationQueue.main.addOperation{
                 self.emoteLable.text = self.lessonQuestions.getQuestionText()
+            }
+            
+            //This is put into the code to prevent the app from checking for an expression right after the prior one was made. It is a one second delay and then the expressions can be checked
+            canCheckAwnser = false
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                self.canCheckAwnser = true
             }
         }
         
@@ -215,15 +220,19 @@ class ARVC: UIViewController, ARSCNViewDelegate {
             // This will only work correctly if the shape keys are given the exact same name as the blendshape names
             //Changes the mesh based on the blendshapes the user is producing
             for (key, value) in blendShapes {
-                if let fValue = value as? Float{
+                if var fValue = value as? Float{
                     var childNodes: [SCNNode]?
                     
                     childNodes = self.contentNode?.childNodes
                     
                     //This updates each node in the scene when the face is split up into multiple objects
                     for child in childNodes!{
-                       // print(child.morpher?.weight(forTargetNamed: key.rawValue))
-                      //  print(key.rawValue)
+                        if(key.rawValue == "mouthFrown_L" || key.rawValue == "mouthFrown_R"){
+                            fValue = fValue * 3
+                            if(fValue > 1){
+                                fValue = 1
+                            }
+                        }
                         child.morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
                     }
                 }

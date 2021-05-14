@@ -29,7 +29,6 @@ class ShopDataConstruction{
     //This function is used to look into the files that were added as scenes and then add them to coreData
     func populateData(studentData:StudentData) {
         
-        
         priceIncrese = 100
         
         getMaxValue(studentData: studentData)
@@ -83,10 +82,8 @@ class ShopDataConstruction{
             //If there is data, then do nothing. This prevents duplicate masks being added to the shop
             else{
                 print("Dupe prevented for " + sceneArray[index])
+                getMaxValue(studentData: studentData)
             }
-            
-            //Increase the price by 50 for each new mask
-           // priceIncrese += priceIncrement
         }
         
     }

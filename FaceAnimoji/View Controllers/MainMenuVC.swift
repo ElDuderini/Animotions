@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 import CoreData
+import Network
+import Foundation
 
 class MainMenuVC: UIViewController {
     
@@ -30,14 +32,30 @@ class MainMenuVC: UIViewController {
     
     var student:StudentData?
     
+    private let queue = DispatchQueue.main
+    private var monitor: NWPathMonitor?
+    
+    public private(set) var isConnected: Bool = false
+    
+    @IBOutlet weak var writingButton: UIButton!
+    
+//    var connected: Bool = false{
+//        didSet {
+//            if(studentsFound == true){
+//                print("Value changed")
+//                writingButton.isEnabled = connected
+//            }
+//        }
+//    }
+    
     @IBOutlet var mainMenuButtonArray: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //if(!BaseFunc!.musicPlayer!.isPlaying){
-            //BaseFunc!.StartMusic()
-        //}
+        monitor = NWPathMonitor()
+        
+        BaseFunc!.setUpParticles(View: self.view, Leaves: false)
         //Set up the background
         BaseFunc!.setUpBackground(view: self.view, imageName: "BackgroundGreen")
         
@@ -54,6 +72,7 @@ class MainMenuVC: UIViewController {
             }
             getCurrentStudent()
             shopData.populateData(studentData: student!)
+            checkForNetworkChanges()
         }
         //If the value of the student is null, then let the teacher know they need to select/add a student. Disable the buttons that require a student
         else{
@@ -61,6 +80,19 @@ class MainMenuVC: UIViewController {
             
             for button in mainMenuButtonArray{
                 button.isEnabled = false
+            }
+        }
+    }
+    
+    //If there is a current student selected, then start the network monitor to update when network changes occur.
+    //If the user loses connection, then disable writing activity button
+    //If the connection comes back, then re-enable the writing button
+    func checkForNetworkChanges(){
+        monitor!.start(queue: queue)
+        monitor!.pathUpdateHandler = {[weak self] path in
+            self?.isConnected = path.status != .unsatisfied
+            OperationQueue.main.addOperation{
+                self!.writingButton.isEnabled = self!.isConnected
             }
         }
     }
@@ -126,6 +158,7 @@ class MainMenuVC: UIViewController {
         case "statementVC":
             let destinationVC:StatementVC = segue.destination as! StatementVC
             destinationVC.student = student
+            destinationVC.priorVC = self
             break;
             
         default:
@@ -143,5 +176,10 @@ class MainMenuVC: UIViewController {
     @IBAction func logOutBtn(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
         BaseFunc!.Feedback()
+        monitor!.cancel()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
 }

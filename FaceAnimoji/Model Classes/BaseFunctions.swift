@@ -11,6 +11,7 @@ import AVFoundation
 import UIKit
 import ARKit
 import SceneKit
+import SpriteKit
 
 class BaseFunctions {
     
@@ -24,6 +25,8 @@ class BaseFunctions {
     
     var musicPlayer : AVAudioPlayer?
     
+    var skView = SKView()
+    
     //Function called that checks userDefaults to play a sound and haptic feedback
     func Feedback(){
         if(defaults.bool(forKey: "audioOn")){
@@ -35,9 +38,6 @@ class BaseFunctions {
     }
     
     func StartMusic(){
-//        if(!defaults.bool(forKey: "musicOn")){
-//            return;
-//        }
         
         guard let url = Bundle.main.url(forResource: "BGMusic", withExtension: ".wav") else {return}
         
@@ -92,6 +92,7 @@ class BaseFunctions {
         return screenshotImage
     }
     
+    //A popup that shows up when the user takes a screenshot
     open func imageAlert(image:UIImage, viewController:UIViewController){
         let alert = UIAlertController(title: "Screenshot saved", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
@@ -115,5 +116,48 @@ class BaseFunctions {
         imageView.center = view.center
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
+    }
+    
+    //Spawn the sprite view in the view, settings up constraints
+    func setUpParticles(View: UIView, Leaves: Bool){
+        
+        skView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let top = skView.topAnchor.constraint(equalTo: View.topAnchor, constant: 0)
+        let leading = skView.leadingAnchor.constraint(equalTo: View.leadingAnchor, constant: 0)
+        let trailing = skView.trailingAnchor.constraint(equalTo: View.trailingAnchor, constant: 0)
+        let bottom = skView.bottomAnchor.constraint(equalTo: View.bottomAnchor, constant: 0)
+        
+        //This is needed so you can see the background image that is set up afterwards
+        skView.allowsTransparency = true
+        View.addSubview(skView)
+        View.sendSubviewToBack(skView)
+        NSLayoutConstraint.activate([top, leading, trailing, bottom])
+        
+        
+        if(Leaves){
+            initLeaves()
+        }
+        else{
+            initFireFlies()
+        }
+    }
+    
+    //Spawn the fireflies particle into the sprite view
+    private func initFireFlies(){
+        let particleScene = FireFlyScene(size: CGSize(width: 1080, height: 1920))
+        particleScene.scaleMode = .aspectFill
+        particleScene.backgroundColor = .clear
+        
+        skView.presentScene(particleScene)
+    }
+    
+    //Spawn the leaves particle into the sprite view
+    private func initLeaves(){
+        let particleScene = LeavesScenes(size: CGSize(width: 1080, height: 1920))
+        particleScene.scaleMode = .aspectFill
+        particleScene.backgroundColor = .clear
+        
+        skView.presentScene(particleScene)
     }
 }

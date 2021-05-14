@@ -30,7 +30,7 @@ struct LessonBrain {
         
         Question(a: "Surprise", q: "How do you feel when someone suddenly jumps in front of you?"),
         Question(a: "Surprise", q: "How do you feel when you get a gift you weren't expecting?"),
-        Question(a: "Surprise", q: "How do you feel when you get a good grade on an assingment you thought you failed?"),
+        Question(a: "Surprise", q: "How do you feel when you get a good grade on an assignment you thought you failed?"),
         Question(a: "Surprise", q: "How do you feel when a friend comes over that you weren't expecting?"),
         
         Question(a: "Disgust", q: "How do you feel when you smell something bad?"),
@@ -51,7 +51,7 @@ struct LessonBrain {
         
         Question(a: "Neutral", q: "How do you feel while you are waiting?"),
         Question(a: "Neutral", q: "How do you feel when nothing is happening?"),
-        Question(a: "Neutral", q: "How do you feel you can't find something to do?"),
+        Question(a: "Neutral", q: "How do you feel when you can't find something to do?"),
         Question(a: "Neutral", q: "How do you feel when there is nothing to watch on TV?"),
         
         Question(a: "Anxious", q: "How do you feel when you are at the dentist?"),
@@ -86,11 +86,8 @@ struct LessonBrain {
     }
     
     //Use this method to check to see if the user is responding to the question correctly. If so, then add to the users score
-    mutating func checkAnswer(userAnswer: String, studentData: StudentData) -> Bool {
+    mutating func checkAnswer(userAnswer: String) -> Bool {
         if userAnswer == quiz[questionNumber].answer {
-            score += 10
-            let addedPoints = studentData.points + 10
-            studentData.setValue(addedPoints, forKey: "points")
             return true
         } else {
             return false

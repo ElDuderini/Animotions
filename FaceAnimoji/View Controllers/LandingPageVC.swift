@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SpriteKit
 
 class LandingPageVC: UIViewController {
     
@@ -25,12 +26,16 @@ class LandingPageVC: UIViewController {
     
     var baseFunc = BaseFunctions()
     
+    let particles = BaseFunctions()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.dismissKeyboard()
         
         passwordField.isSecureTextEntry = true
+        
+        particles.setUpParticles(View: self.view, Leaves: true)
         
         baseFunc.setUpBackground(view: self.view, imageName: "LogInScreen")
         
@@ -168,5 +173,9 @@ class LandingPageVC: UIViewController {
             destinationVC.teacher = teachers[0]
             destinationVC.BaseFunc = baseFunc
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
 }
