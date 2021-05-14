@@ -109,7 +109,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
             imageView.frame = CGRect(x: xCord - view.frame.width/4, y: yCord, width: view.frame.width/2, height: view.frame.width/2)
             imageView.contentMode = UIView.ContentMode.scaleAspectFit
             
-            button.frame = CGRect(x: xCord - view.frame.width/6, y: yCord + imageView.frame.height, width: view.frame.width/3, height: view.frame.width/5)
+            button.frame = CGRect(x: xCord - view.frame.width/4, y: yCord + imageView.frame.height, width: view.frame.width/2, height: view.frame.width/5)
             
             button.setTitle(myButtonArray[index].name, for: .normal)
             button.setBackgroundImage(UIImage(named: "PinkButton"), for: UIControl.State.normal)
@@ -132,7 +132,7 @@ class ShopVC: UIViewController, UIScrollViewDelegate {
                 lable.text = "Buy: " + String(myButtonArray[index].price)
             }
             
-            lable.frame = CGRect(x: xCord - view.frame.width/8, y: yCord + imageView.frame.height + (2 * button.frame.height/3), width: view.frame.width/4, height: view.frame.width/5)
+            lable.frame = CGRect(x: xCord - view.frame.width/6, y: yCord + imageView.frame.height + (2 * button.frame.height/3), width: view.frame.width/3, height: view.frame.width/5)
             lable.font = UIFont(name: "BerlinSansFBDemi-Bold", size: lable.frame.height/4)
             lable.textAlignment = NSTextAlignment.center
             lable.textColor = UIColor.white

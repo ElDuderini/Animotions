@@ -191,7 +191,10 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
                     
                     for child in childNodes!{
                         if(key.rawValue == "mouthFrown_L" || key.rawValue == "mouthFrown_R"){
-                            fValue = fValue * 5;
+                            fValue = fValue * 3
+                            if(fValue > 1){
+                                fValue = 1
+                            }
                         }
                         child.morpher?.setWeight(CGFloat(fValue), forTargetNamed: key.rawValue)
                     }
