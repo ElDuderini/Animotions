@@ -133,36 +133,32 @@ class FreePlayVC: UIViewController, ARSCNViewDelegate {
         let eyeWideRight = anchor.blendShapes[.eyeWideRight]
         let noseSneerLeft = anchor.blendShapes[.noseSneerLeft]
         let noseSneerRight = anchor.blendShapes[.noseSneerRight]
-        let mouthPoggers = anchor.blendShapes[.mouthFunnel]
         let mouthOpen = anchor.blendShapes[.jawOpen]
         
         if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9
             && mouthOpen?.decimalValue ?? 0.0 < 0.3{
             self.analysis = "Happy"
         }
-        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.1 {
+        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.25 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && (browInnerUp?.decimalValue ?? 0.0 < 0.4) && ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) < 0.3{
             self.analysis = "Sad"
         }
         else if ((noseSneerLeft?.decimalValue ?? 0.0) + (noseSneerRight?.decimalValue ?? 0.0)) > 0.6{
             self.analysis = "Disgust"
         }
-        else if ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.4{
+        else if ((browDownLeft?.decimalValue ?? 0.0) + (browDownRight?.decimalValue ?? 0.0)) > 0.3 {
             self.analysis = "Anger"
         }
-        else if mouthPoggers?.decimalValue ?? 0.0 > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5{
-            self.analysis = "Poggers"
-        }
-        else if ((eyeWideLeft?.decimalValue ?? 0.0) + (eyeWideRight?.decimalValue ?? 0.0)) > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5 &&  mouthOpen?.decimalValue ?? 0.0 < 0.2{
+        else if ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) < 0.1 && browInnerUp?.decimalValue ?? 0.0 > 0.5 &&  mouthOpen?.decimalValue ?? 0.0 < 0.2{
             self.analysis = "Surprise"
         }
         else if ((eyeWideLeft?.decimalValue ?? 0.0) + (eyeWideRight?.decimalValue ?? 0.0)) > 0.8 && browInnerUp?.decimalValue ?? 0.0 > 0.5 && mouthOpen?.decimalValue ?? 0.0 > 0.5{
             self.analysis = "Fear"
         }
-        else if((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.1 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && browInnerUp?.decimalValue ?? 0.0 > 0.5 {
+        else if((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) > 0.25 && mouthOpen?.decimalValue ?? 0.0 < 0.2 && browInnerUp?.decimalValue ?? 0.0 > 0.4 {
             self.analysis = "Anxious"
         }
         else if((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) < 0.8
-                && ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) < 0.1 {
+                && ((frownLeft?.decimalValue ?? 0.0) + (frownRight?.decimalValue ?? 0.0)) < 0.25 {
             self.analysis = "Neutral"
         }
         else{
