@@ -42,6 +42,8 @@
 		7942AA382342693800A133C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7942AA362342693800A133C0 /* LaunchScreen.storyboard */; };
 		7942AA432342693800A133C0 /* FaceAnimojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942AA422342693800A133C0 /* FaceAnimojiTests.swift */; };
 		7942AA4E2342693800A133C0 /* FaceAnimojiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942AA4D2342693800A133C0 /* FaceAnimojiUITests.swift */; };
+		DCEF4809272C915D00CEF8E9 /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEF4808272C915D00CEF8E9 /* PrivacyVC.swift */; };
+		DCEF480B272C917900CEF8E9 /* CreditsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEF480A272C917900CEF8E9 /* CreditsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		7942AA492342693800A133C0 /* FaceAnimojiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceAnimojiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7942AA4D2342693800A133C0 /* FaceAnimojiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceAnimojiUITests.swift; sourceTree = "<group>"; };
 		7942AA4F2342693800A133C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCEF4808272C915D00CEF8E9 /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivacyVC.swift; path = "../../../../../Downloads/Final Build/FaceAnimoji/View Controllers/PrivacyVC.swift"; sourceTree = "<group>"; };
+		DCEF480A272C917900CEF8E9 /* CreditsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsVC.swift; path = "../../../../../Downloads/Final Build/FaceAnimoji/View Controllers/CreditsVC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 		6180EA8D25BF9EA0003CAE40 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCEF480A272C917900CEF8E9 /* CreditsVC.swift */,
+				DCEF4808272C915D00CEF8E9 /* PrivacyVC.swift */,
 				616CBBDA25F6A00D0039022B /* ReviewVC.swift */,
 				616CBBD425F69D880039022B /* StatementVC.swift */,
 				6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */,
@@ -398,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6180EA7125BA7CE8003CAE40 /* OptionsVC.swift in Sources */,
+				DCEF4809272C915D00CEF8E9 /* PrivacyVC.swift in Sources */,
 				61B4C5A925B7609A00B48D0F /* ARVC.swift in Sources */,
 				7942AA2C2342693100A133C0 /* AppDelegate.swift in Sources */,
 				616CBBE825F8304B0039022B /* ImageExtension.swift in Sources */,
@@ -407,6 +414,7 @@
 				616CBBC725DEE2A00039022B /* StudentVC.swift in Sources */,
 				616CBC29262F753C0039022B /* LeavesScenes.swift in Sources */,
 				616CBBC325DEE1C00039022B /* LandingPageVC.swift in Sources */,
+				DCEF480B272C917900CEF8E9 /* CreditsVC.swift in Sources */,
 				615DFF1325C0BB2100A268A1 /* AnimotionsData.xcdatamodeld in Sources */,
 				616CBBFF2620BBD40039022B /* DismissKeyboard.swift in Sources */,
 				616CBBDB25F6A00D0039022B /* ReviewVC.swift in Sources */,
@@ -598,13 +606,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4PPBH6JZ53;
+				DEVELOPMENT_TEAM = AUZXFUDQS4;
 				INFOPLIST_FILE = FaceAnimoji/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AnimojiExample;
+				PRODUCT_BUNDLE_IDENTIFIER = AnimotionsTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -618,13 +626,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4PPBH6JZ53;
+				DEVELOPMENT_TEAM = AUZXFUDQS4;
 				INFOPLIST_FILE = FaceAnimoji/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AnimojiExample;
+				PRODUCT_BUNDLE_IDENTIFIER = AnimotionsTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
