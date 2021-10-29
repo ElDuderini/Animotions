@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sg8-2K-wuq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sg8-2K-wuq">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -660,7 +660,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5nh-gs-yyd">
-                                <rect key="frame" x="0.0" y="838" width="414" height="28"/>
+                                <rect key="frame" x="0.0" y="839.66666666666663" width="414" height="26.333333333333371"/>
                             </pageControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points earned:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUC-gI-aF2">
                                 <rect key="frame" x="10" y="253" width="197" height="34"/>
@@ -1236,6 +1236,46 @@
             </objects>
             <point key="canvasLocation" x="-1117.3913043478262" y="76.630434782608702"/>
         </scene>
+        <!--PrivacyVC-->
+        <scene sceneID="ukC-ZM-PPS">
+            <objects>
+                <viewController id="dNt-7s-Ams" customClass="PrivacyVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ofi-FM-tAx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5qT-Ct-5Fs">
+                                <rect key="frame" x="20" y="95" width="374" height="632"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Privacy Policy for Animotions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6g-1w-YGP">
+                                        <rect key="frame" x="14" y="8" width="347" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This policy applies to all information collected or submitted for our apps for iPhone and any other devices and platforms." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3z-wr-OMy">
+                                        <rect key="frame" x="14" y="60" width="346" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <viewLayoutGuide key="contentLayoutGuide" id="bVJ-zP-x4U"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="l9T-Xp-I6h"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lkW-AT-0jd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H7Y-jY-nVu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1205.7971014492755" y="-926.08695652173924"/>
+        </scene>
         <!--StudentVC-->
         <scene sceneID="INA-q6-mNP">
             <objects>
@@ -1278,7 +1318,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="vx4-ef-bvi">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vx4-ef-bvi" id="XU2-mQ-cI8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
