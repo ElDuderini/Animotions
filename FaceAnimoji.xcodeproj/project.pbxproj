@@ -42,6 +42,7 @@
 		7942AA382342693800A133C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7942AA362342693800A133C0 /* LaunchScreen.storyboard */; };
 		7942AA432342693800A133C0 /* FaceAnimojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942AA422342693800A133C0 /* FaceAnimojiTests.swift */; };
 		7942AA4E2342693800A133C0 /* FaceAnimojiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942AA4D2342693800A133C0 /* FaceAnimojiUITests.swift */; };
+		DCE661EF273581A000FBDF56 /* NSAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE661EE273581A000FBDF56 /* NSAttributedStringExtension.swift */; };
 		DCEF4809272C915D00CEF8E9 /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEF4808272C915D00CEF8E9 /* PrivacyVC.swift */; };
 		DCEF480B272C917900CEF8E9 /* CreditsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEF480A272C917900CEF8E9 /* CreditsVC.swift */; };
 /* End PBXBuildFile section */
@@ -117,6 +118,7 @@
 		7942AA492342693800A133C0 /* FaceAnimojiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceAnimojiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7942AA4D2342693800A133C0 /* FaceAnimojiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceAnimojiUITests.swift; sourceTree = "<group>"; };
 		7942AA4F2342693800A133C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCE661EE273581A000FBDF56 /* NSAttributedStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtension.swift; sourceTree = "<group>"; };
 		DCEF4808272C915D00CEF8E9 /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivacyVC.swift; path = "../../../../../Downloads/Final Build/FaceAnimoji/View Controllers/PrivacyVC.swift"; sourceTree = "<group>"; };
 		DCEF480A272C917900CEF8E9 /* CreditsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsVC.swift; path = "../../../../../Downloads/Final Build/FaceAnimoji/View Controllers/CreditsVC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +186,7 @@
 			children = (
 				DCEF480A272C917900CEF8E9 /* CreditsVC.swift */,
 				DCEF4808272C915D00CEF8E9 /* PrivacyVC.swift */,
+				DCE661EE273581A000FBDF56 /* NSAttributedStringExtension.swift */,
 				616CBBDA25F6A00D0039022B /* ReviewVC.swift */,
 				616CBBD425F69D880039022B /* StatementVC.swift */,
 				6180EA7025BA7CE8003CAE40 /* OptionsVC.swift */,
@@ -420,6 +423,7 @@
 				616CBBDB25F6A00D0039022B /* ReviewVC.swift in Sources */,
 				6180EA9425BF9F98003CAE40 /* LessonBrain.swift in Sources */,
 				6180EA8925BF9A84003CAE40 /* BaseFunctions.swift in Sources */,
+				DCE661EF273581A000FBDF56 /* NSAttributedStringExtension.swift in Sources */,
 				6180EA8F25BF9EFD003CAE40 /* Question.swift in Sources */,
 				616CBBBB25D2FF9C0039022B /* ChartAxisFormatter.swift in Sources */,
 				616CBBE125F824290039022B /* AlertImageExtension.swift in Sources */,
