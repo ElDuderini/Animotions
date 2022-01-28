@@ -17,7 +17,7 @@
         <!--ARVC-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BV1-FR-VrT" customClass="ARVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BV1-FR-VrT" customClass="ARVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -94,7 +94,7 @@
         <!--ReviewVC-->
         <scene sceneID="y6c-xQ-KAd">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="iLm-LZ-ury" customClass="ReviewVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="iLm-LZ-ury" customClass="ReviewVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="esa-HS-iYx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="4000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -407,7 +407,7 @@
         <!--Main MenuVC-->
         <scene sceneID="jV4-Wp-6Yj">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LxE-eU-dFN" customClass="MainMenuVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LxE-eU-dFN" customClass="MainMenuVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qqK-oj-4b7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -644,7 +644,7 @@
         <!--ShopVC-->
         <scene sceneID="7SM-xh-tFE">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="SfY-zE-T6s" customClass="ShopVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="SfY-zE-T6s" customClass="ShopVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bVi-N0-Cei">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -732,7 +732,7 @@
         <!--OptionsVC-->
         <scene sceneID="5cl-mO-7px">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="68B-iC-ajA" customClass="OptionsVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="68B-iC-ajA" customClass="OptionsVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zBk-og-daN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -847,7 +847,7 @@
         <!--Free PlayVC-->
         <scene sceneID="PT0-1M-c0I">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="93i-0F-c3Y" customClass="FreePlayVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="93i-0F-c3Y" customClass="FreePlayVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UcY-7D-sFz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1064,7 +1064,7 @@
         <!--StatementVC-->
         <scene sceneID="qYb-wW-X4s">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="NOy-bM-ubp" customClass="StatementVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="NOy-bM-ubp" customClass="StatementVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bbX-yf-AYu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1168,7 +1168,7 @@
         <!--Landing PageVC-->
         <scene sceneID="5sr-nZ-MKD">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Sg8-2K-wuq" customClass="LandingPageVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Sg8-2K-wuq" customClass="LandingPageVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jj-bc-xvo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <subviews>
@@ -1261,7 +1261,7 @@
         <!--CreditsVC-->
         <scene sceneID="NZ6-et-LHZ">
             <objects>
-                <viewController id="yzA-nH-zOp" customClass="CreditsVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yzA-nH-zOp" customClass="CreditsVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yog-et-594">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1780"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1539,7 +1539,7 @@
         <!--PrivacyVC-->
         <scene sceneID="ukC-ZM-PPS">
             <objects>
-                <viewController id="dNt-7s-Ams" customClass="PrivacyVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dNt-7s-Ams" customClass="PrivacyVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofi-FM-tAx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="2200"/>
                         <subviews>
@@ -1799,7 +1799,7 @@
         <!--StudentVC-->
         <scene sceneID="INA-q6-mNP">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="8Mz-Bv-0h7" customClass="StudentVC" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="8Mz-Bv-0h7" customClass="StudentVC" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GGw-9U-uXI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1905,7 +1905,7 @@
         <!--Stats View Controller-->
         <scene sceneID="UzZ-nV-6th">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="0jj-0M-Mhf" customClass="StatsViewController" customModule="FaceAnimoji" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="0jj-0M-Mhf" customClass="StatsViewController" customModule="FaceAnimotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oli-ep-bAh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
