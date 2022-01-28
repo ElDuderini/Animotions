@@ -105,17 +105,17 @@
 		61B4C5B025B7634800B48D0F /* MainMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
 		61B4C5B525B76ADB00B48D0F /* ShopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopVC.swift; sourceTree = "<group>"; };
 		61FAC7A9264B118800C2B92F /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
-		7942AA282342693100A133C0 /* FaceAnimoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceAnimoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7942AA282342693100A133C0 /* FaceAnimotions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceAnimotions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7942AA2B2342693100A133C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7942AA2D2342693100A133C0 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		7942AA322342693100A133C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7942AA342342693800A133C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7942AA372342693800A133C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7942AA392342693800A133C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7942AA3E2342693800A133C0 /* FaceAnimojiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceAnimojiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7942AA3E2342693800A133C0 /* FaceAnimotionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceAnimotionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7942AA422342693800A133C0 /* FaceAnimojiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceAnimojiTests.swift; sourceTree = "<group>"; };
 		7942AA442342693800A133C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7942AA492342693800A133C0 /* FaceAnimojiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceAnimojiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7942AA492342693800A133C0 /* FaceAnimotionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceAnimotionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7942AA4D2342693800A133C0 /* FaceAnimojiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceAnimojiUITests.swift; sourceTree = "<group>"; };
 		7942AA4F2342693800A133C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCE661EE273581A000FBDF56 /* NSAttributedStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtension.swift; sourceTree = "<group>"; };
@@ -204,9 +204,9 @@
 		7942AA1F2342693100A133C0 = {
 			isa = PBXGroup;
 			children = (
-				7942AA2A2342693100A133C0 /* FaceAnimoji */,
-				7942AA412342693800A133C0 /* FaceAnimojiTests */,
-				7942AA4C2342693800A133C0 /* FaceAnimojiUITests */,
+				7942AA2A2342693100A133C0 /* FaceAnimotions */,
+				7942AA412342693800A133C0 /* FaceAnimotionsTests */,
+				7942AA4C2342693800A133C0 /* FaceAnimotionsUITests */,
 				7942AA292342693100A133C0 /* Products */,
 				6138C37D25CA112C000CA925 /* Frameworks */,
 			);
@@ -215,14 +215,14 @@
 		7942AA292342693100A133C0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7942AA282342693100A133C0 /* FaceAnimoji.app */,
-				7942AA3E2342693800A133C0 /* FaceAnimojiTests.xctest */,
-				7942AA492342693800A133C0 /* FaceAnimojiUITests.xctest */,
+				7942AA282342693100A133C0 /* FaceAnimotions.app */,
+				7942AA3E2342693800A133C0 /* FaceAnimotionsTests.xctest */,
+				7942AA492342693800A133C0 /* FaceAnimotionsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7942AA2A2342693100A133C0 /* FaceAnimoji */ = {
+		7942AA2A2342693100A133C0 /* FaceAnimotions */ = {
 			isa = PBXGroup;
 			children = (
 				616CBC062624D0D00039022B /* BRLNSDB.TTF */,
@@ -241,33 +241,33 @@
 				616CBC18262F62020039022B /* Leaves.sks */,
 				616CBC1C262F63C40039022B /* Fireflies.sks */,
 			);
-			path = FaceAnimoji;
+			path = FaceAnimotions;
 			sourceTree = "<group>";
 		};
-		7942AA412342693800A133C0 /* FaceAnimojiTests */ = {
+		7942AA412342693800A133C0 /* FaceAnimotionsTests */ = {
 			isa = PBXGroup;
 			children = (
 				7942AA422342693800A133C0 /* FaceAnimojiTests.swift */,
 				7942AA442342693800A133C0 /* Info.plist */,
 			);
-			path = FaceAnimojiTests;
+			path = FaceAnimotionsTests;
 			sourceTree = "<group>";
 		};
-		7942AA4C2342693800A133C0 /* FaceAnimojiUITests */ = {
+		7942AA4C2342693800A133C0 /* FaceAnimotionsUITests */ = {
 			isa = PBXGroup;
 			children = (
 				7942AA4D2342693800A133C0 /* FaceAnimojiUITests.swift */,
 				7942AA4F2342693800A133C0 /* Info.plist */,
 			);
-			path = FaceAnimojiUITests;
+			path = FaceAnimotionsUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7942AA272342693100A133C0 /* FaceAnimoji */ = {
+		7942AA272342693100A133C0 /* FaceAnimotions */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7942AA522342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimoji" */;
+			buildConfigurationList = 7942AA522342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimotions" */;
 			buildPhases = (
 				7942AA242342693100A133C0 /* Sources */,
 				7942AA252342693100A133C0 /* Frameworks */,
@@ -278,17 +278,17 @@
 			);
 			dependencies = (
 			);
-			name = FaceAnimoji;
+			name = FaceAnimotions;
 			packageProductDependencies = (
 				6138C37125C9DBF4000CA925 /* Charts */,
 			);
 			productName = FaceAnimoji;
-			productReference = 7942AA282342693100A133C0 /* FaceAnimoji.app */;
+			productReference = 7942AA282342693100A133C0 /* FaceAnimotions.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7942AA3D2342693800A133C0 /* FaceAnimojiTests */ = {
+		7942AA3D2342693800A133C0 /* FaceAnimotionsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7942AA552342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimojiTests" */;
+			buildConfigurationList = 7942AA552342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimotionsTests" */;
 			buildPhases = (
 				7942AA3A2342693800A133C0 /* Sources */,
 				7942AA3B2342693800A133C0 /* Frameworks */,
@@ -299,14 +299,14 @@
 			dependencies = (
 				7942AA402342693800A133C0 /* PBXTargetDependency */,
 			);
-			name = FaceAnimojiTests;
+			name = FaceAnimotionsTests;
 			productName = FaceAnimojiTests;
-			productReference = 7942AA3E2342693800A133C0 /* FaceAnimojiTests.xctest */;
+			productReference = 7942AA3E2342693800A133C0 /* FaceAnimotionsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7942AA482342693800A133C0 /* FaceAnimojiUITests */ = {
+		7942AA482342693800A133C0 /* FaceAnimotionsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7942AA582342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimojiUITests" */;
+			buildConfigurationList = 7942AA582342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimotionsUITests" */;
 			buildPhases = (
 				7942AA452342693800A133C0 /* Sources */,
 				7942AA462342693800A133C0 /* Frameworks */,
@@ -317,9 +317,9 @@
 			dependencies = (
 				7942AA4B2342693800A133C0 /* PBXTargetDependency */,
 			);
-			name = FaceAnimojiUITests;
+			name = FaceAnimotionsUITests;
 			productName = FaceAnimojiUITests;
-			productReference = 7942AA492342693800A133C0 /* FaceAnimojiUITests.xctest */;
+			productReference = 7942AA492342693800A133C0 /* FaceAnimotionsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -345,7 +345,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7942AA232342693100A133C0 /* Build configuration list for PBXProject "FaceAnimoji" */;
+			buildConfigurationList = 7942AA232342693100A133C0 /* Build configuration list for PBXProject "FaceAnimotions" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -361,9 +361,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7942AA272342693100A133C0 /* FaceAnimoji */,
-				7942AA3D2342693800A133C0 /* FaceAnimojiTests */,
-				7942AA482342693800A133C0 /* FaceAnimojiUITests */,
+				7942AA272342693100A133C0 /* FaceAnimotions */,
+				7942AA3D2342693800A133C0 /* FaceAnimotionsTests */,
+				7942AA482342693800A133C0 /* FaceAnimotionsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -456,12 +456,12 @@
 /* Begin PBXTargetDependency section */
 		7942AA402342693800A133C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7942AA272342693100A133C0 /* FaceAnimoji */;
+			target = 7942AA272342693100A133C0 /* FaceAnimotions */;
 			targetProxy = 7942AA3F2342693800A133C0 /* PBXContainerItemProxy */;
 		};
 		7942AA4B2342693800A133C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7942AA272342693100A133C0 /* FaceAnimoji */;
+			target = 7942AA272342693100A133C0 /* FaceAnimotions */;
 			targetProxy = 7942AA4A2342693800A133C0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -611,7 +611,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9PLZ3NRC38;
-				INFOPLIST_FILE = FaceAnimoji/Info.plist;
+				INFOPLIST_FILE = FaceAnimotions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -631,7 +631,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9PLZ3NRC38;
-				INFOPLIST_FILE = FaceAnimoji/Info.plist;
+				INFOPLIST_FILE = FaceAnimotions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -661,7 +661,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FaceAnimoji.app/FaceAnimoji";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FaceAnimotions.app/FaceAnimotions";
 			};
 			name = Debug;
 		};
@@ -682,7 +682,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FaceAnimoji.app/FaceAnimoji";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FaceAnimotions.app/FaceAnimotions";
 			};
 			name = Release;
 		};
@@ -729,7 +729,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7942AA232342693100A133C0 /* Build configuration list for PBXProject "FaceAnimoji" */ = {
+		7942AA232342693100A133C0 /* Build configuration list for PBXProject "FaceAnimotions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7942AA502342693800A133C0 /* Debug */,
@@ -738,7 +738,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7942AA522342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimoji" */ = {
+		7942AA522342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimotions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7942AA532342693800A133C0 /* Debug */,
@@ -747,7 +747,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7942AA552342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimojiTests" */ = {
+		7942AA552342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimotionsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7942AA562342693800A133C0 /* Debug */,
@@ -756,7 +756,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7942AA582342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimojiUITests" */ = {
+		7942AA582342693800A133C0 /* Build configuration list for PBXNativeTarget "FaceAnimotionsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7942AA592342693800A133C0 /* Debug */,
