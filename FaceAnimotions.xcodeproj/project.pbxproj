@@ -611,7 +611,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9PLZ3NRC38;
-				INFOPLIST_FILE = FaceAnimoji/Info.plist;
+				INFOPLIST_FILE = FaceAnimotions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -631,7 +631,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9PLZ3NRC38;
-				INFOPLIST_FILE = FaceAnimoji/Info.plist;
+				INFOPLIST_FILE = FaceAnimotions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
