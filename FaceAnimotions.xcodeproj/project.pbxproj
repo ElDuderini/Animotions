@@ -40,11 +40,11 @@
 		7942AA332342693100A133C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7942AA312342693100A133C0 /* Main.storyboard */; };
 		7942AA352342693800A133C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7942AA342342693800A133C0 /* Assets.xcassets */; };
 		7942AA382342693800A133C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7942AA362342693800A133C0 /* LaunchScreen.storyboard */; };
-		7942AA432342693800A133C0 /* FaceAnimojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942AA422342693800A133C0 /* FaceAnimojiTests.swift */; };
-		7942AA4E2342693800A133C0 /* FaceAnimojiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942AA4D2342693800A133C0 /* FaceAnimojiUITests.swift */; };
+		7942AA432342693800A133C0 /* FaceAnimotionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942AA422342693800A133C0 /* FaceAnimotionsTests.swift */; };
+		7942AA4E2342693800A133C0 /* FaceAnimotionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942AA4D2342693800A133C0 /* FaceAnimotionsUITests.swift */; };
+		DC5AF33C27A4628D004233C8 /* CreditsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5AF33A27A4628D004233C8 /* CreditsVC.swift */; };
+		DC5AF33D27A4628D004233C8 /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5AF33B27A4628D004233C8 /* PrivacyVC.swift */; };
 		DCE661EF273581A000FBDF56 /* NSAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE661EE273581A000FBDF56 /* NSAttributedStringExtension.swift */; };
-		DCEF4809272C915D00CEF8E9 /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEF4808272C915D00CEF8E9 /* PrivacyVC.swift */; };
-		DCEF480B272C917900CEF8E9 /* CreditsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEF480A272C917900CEF8E9 /* CreditsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,14 +113,14 @@
 		7942AA372342693800A133C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7942AA392342693800A133C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7942AA3E2342693800A133C0 /* FaceAnimotionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceAnimotionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7942AA422342693800A133C0 /* FaceAnimojiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceAnimojiTests.swift; sourceTree = "<group>"; };
+		7942AA422342693800A133C0 /* FaceAnimotionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceAnimotionsTests.swift; sourceTree = "<group>"; };
 		7942AA442342693800A133C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7942AA492342693800A133C0 /* FaceAnimotionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceAnimotionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7942AA4D2342693800A133C0 /* FaceAnimojiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceAnimojiUITests.swift; sourceTree = "<group>"; };
+		7942AA4D2342693800A133C0 /* FaceAnimotionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceAnimotionsUITests.swift; sourceTree = "<group>"; };
 		7942AA4F2342693800A133C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC5AF33A27A4628D004233C8 /* CreditsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsVC.swift; sourceTree = "<group>"; };
+		DC5AF33B27A4628D004233C8 /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
 		DCE661EE273581A000FBDF56 /* NSAttributedStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtension.swift; sourceTree = "<group>"; };
-		DCEF4808272C915D00CEF8E9 /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivacyVC.swift; path = "../../../../../Downloads/Final Build/FaceAnimoji/View Controllers/PrivacyVC.swift"; sourceTree = "<group>"; };
-		DCEF480A272C917900CEF8E9 /* CreditsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsVC.swift; path = "../../../../../Downloads/Final Build/FaceAnimoji/View Controllers/CreditsVC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,8 +184,8 @@
 		6180EA8D25BF9EA0003CAE40 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DCEF480A272C917900CEF8E9 /* CreditsVC.swift */,
-				DCEF4808272C915D00CEF8E9 /* PrivacyVC.swift */,
+				DC5AF33A27A4628D004233C8 /* CreditsVC.swift */,
+				DC5AF33B27A4628D004233C8 /* PrivacyVC.swift */,
 				DCE661EE273581A000FBDF56 /* NSAttributedStringExtension.swift */,
 				616CBBDA25F6A00D0039022B /* ReviewVC.swift */,
 				616CBBD425F69D880039022B /* StatementVC.swift */,
@@ -247,7 +247,7 @@
 		7942AA412342693800A133C0 /* FaceAnimotionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				7942AA422342693800A133C0 /* FaceAnimojiTests.swift */,
+				7942AA422342693800A133C0 /* FaceAnimotionsTests.swift */,
 				7942AA442342693800A133C0 /* Info.plist */,
 			);
 			path = FaceAnimotionsTests;
@@ -256,7 +256,7 @@
 		7942AA4C2342693800A133C0 /* FaceAnimotionsUITests */ = {
 			isa = PBXGroup;
 			children = (
-				7942AA4D2342693800A133C0 /* FaceAnimojiUITests.swift */,
+				7942AA4D2342693800A133C0 /* FaceAnimotionsUITests.swift */,
 				7942AA4F2342693800A133C0 /* Info.plist */,
 			);
 			path = FaceAnimotionsUITests;
@@ -406,18 +406,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC5AF33D27A4628D004233C8 /* PrivacyVC.swift in Sources */,
 				6180EA7125BA7CE8003CAE40 /* OptionsVC.swift in Sources */,
-				DCEF4809272C915D00CEF8E9 /* PrivacyVC.swift in Sources */,
 				61B4C5A925B7609A00B48D0F /* ARVC.swift in Sources */,
 				7942AA2C2342693100A133C0 /* AppDelegate.swift in Sources */,
 				616CBBE825F8304B0039022B /* ImageExtension.swift in Sources */,
+				DC5AF33C27A4628D004233C8 /* CreditsVC.swift in Sources */,
 				61B4C5B625B76ADB00B48D0F /* ShopVC.swift in Sources */,
 				616CBBD525F69D880039022B /* StatementVC.swift in Sources */,
 				615DFF1925C0BF3E00A268A1 /* ShopDataConstruction.swift in Sources */,
 				616CBBC725DEE2A00039022B /* StudentVC.swift in Sources */,
 				616CBC29262F753C0039022B /* LeavesScenes.swift in Sources */,
 				616CBBC325DEE1C00039022B /* LandingPageVC.swift in Sources */,
-				DCEF480B272C917900CEF8E9 /* CreditsVC.swift in Sources */,
 				615DFF1325C0BB2100A268A1 /* AnimotionsData.xcdatamodeld in Sources */,
 				616CBBFF2620BBD40039022B /* DismissKeyboard.swift in Sources */,
 				616CBBDB25F6A00D0039022B /* ReviewVC.swift in Sources */,
@@ -439,7 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7942AA432342693800A133C0 /* FaceAnimojiTests.swift in Sources */,
+				7942AA432342693800A133C0 /* FaceAnimotionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7942AA4E2342693800A133C0 /* FaceAnimojiUITests.swift in Sources */,
+				7942AA4E2342693800A133C0 /* FaceAnimotionsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

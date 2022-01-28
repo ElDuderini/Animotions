@@ -1,6 +1,6 @@
 //
-//  FaceAnimojiUITests.swift
-//  FaceAnimojiUITests
+//  FaceAnimotionsUITests.swift
+//  FaceAnimotionsUITests
 //
 //  Created by ashutosh.dingankar on 9/30/19.
 //  Copyright © 2019 ashutosh.dingankar. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class FaceAnimojiUITests: XCTestCase {
+class FaceAnimotionsUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
