@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  FaceAnimoji
+//  FaceAnimotions
 //
 //  Created by ashutosh.dingankar on 9/30/19.
 //  Copyright © 2019 ashutosh.dingankar. All rights reserved.
